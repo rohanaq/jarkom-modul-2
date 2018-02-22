@@ -88,4 +88,50 @@ Kemudian buka file __/etc/bind/named.conf.local__ pada PUCANG dan tambahkan synt
 
 ![Klampis17](images/17.png)
 
-Apabila terjadi kegagalan pada DNS Server KLAMPIS, maka DNS Server akan dialihkan ke server PUCANG. Ubah nameserver client yang tersambung dengan KLAMPIS (NGAGEL dan NGINDEN) dengan mengedit file __/etc/resolv.conf__ menjadi IP PUCANG
+Apabila terjadi kegagalan pada DNS Server KLAMPIS, maka DNS Server akan dialihkan ke Server PUCANG. Ubah nameserver client yang tersambung dengan KLAMPIS (NGINDEN dan NGAGEL) dengan mengedit file __etc/resolv.conf__ menjadi IP PUCANG
+
+![Klampis18](images/18.png)
+
+### 1.7 Membuat Subdomain
+Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu ke suatu alamat fisik di sebuah situs contohnya: __klampis.com__ merupakan sebuah domain induk. Sedangkan __test.klampis.com__ merupakan sebuah subdomain.
+
+Edit file __/etc/bind/klampis/klampis.com__ lalu tambahkan subdomain untuk klampis.com yang mengarah ke IP KLAMPIS.
+
+![Klampis19](images/19.png)
+
+### 1.8 Delegasi Subdomain
+Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS baru.
+
+Pada KLAMPIS, edit file __/etc/bind/klampis/klampis.com__ dan ubah menjadi seperti di bawah ini sesuai dengan pembagian IP KLAMPIS kelompok masing-masing.
+
+![Klampis20](images/20.png)
+
+Kemudian comment __dnssec-validation auto;__ dan tambahkan baris berikut pada __/etc/bind/named.conf.options__
+
+![Klampis21](images/21.png)
+
+Kemudian edit file __/etc/bind/named.conf.local__ menjadi seperti gambar di bawah:
+
+![Klampis22](images/22.png)
+
+Setelah itu restart dengan menjalankan __service bind9 restart__
+
+Pada PUCANG, comment __dnssec-validation auto;__ dan tambahkan baris berikut pada __/etc/bind/named.conf.options__
+
+![Klampis23](images/23.png)
+
+Kemudian edit file __/etc/bind/named.conf.local__ menjadi seperti gambar di bawah:
+
+![Klampis24](images/24.png)
+
+Kemudian pada __/etc/bind/pucang/pucang.klampis.com__ ubah dan tambahkan record NS dan A untuk domain __pucang.klampis.com__ dan satu lagi record A untuk subdomain www.pucang.klampis.com yang mengarah ke PUCANG (sesuaikan dengan IP masing-masing)
+
+![Klampis25](images/25.png)
+
+Restart dengan menjalankan __service bind9 restart__
+
+Setelah mendelegasikan zone pucang.klampis.com menuju __PUCANG__, kita dapat mengakses subdomain (www.pucang.klampis.com) yang ada pada pucang.klampis.com dengan menggunakan nameserver __KLAMPIS__ maupun __PUCANG__ dengan cara ping www.pucang.klampis.com pada client (__NGAGEL__ dan __NGINDEN__)
+
+![Klampis26](images/26.png)
+
+# 2. Web Server
