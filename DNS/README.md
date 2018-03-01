@@ -2,6 +2,8 @@
 DNS (_Domain Name System_) adalah sistem penamaan untuk semua device(smartphone, computer, atau
 network) yang terhubung dengan internet. DNS Server berfungsi menerjemahkan nama domain menjadi alamat IP.
 
+![DNS](images/DNS.jpg)
+
 ### 1.1 Instalasi bind dan dnsutils
 Yang akan dijadikan DNS Server adalah KLAMPIS. Maka install bind pada KLAMPIS. Sebelum itu, pastikan sudah menjalankan perintah __apt-get update__.
 
@@ -131,3 +133,7 @@ Restart dengan menjalankan __service bind9 restart__
 Setelah mendelegasikan zone pucang.klampis.com menuju __PUCANG__, kita dapat mengakses subdomain (www.pucang.klampis.com) yang ada pada pucang.klampis.com dengan menggunakan nameserver __KLAMPIS__ maupun __PUCANG__ dengan cara ping www.pucang.klampis.com pada client (__NGAGEL__ dan __NGINDEN__)
 
 ![Klampis26](images/26.png)
+
+## References
+* https://computer.howstuffworks.com/dns.htm
+* 
