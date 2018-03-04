@@ -32,6 +32,8 @@ Kemudian buka file __klampis/klampis.com__ dan edit seperti berikut dengan IP KL
 
 ![Klampis6](images/06.png)
 
+Sebelum di restart coba cek konfig yang sudah dibuat benar atau salah dengan mengetikkan __named -g__
+
 Restart bind9 dengan perintah __service bind9 restart__
 
 ### 1.3 Setting nameserver pada client
@@ -134,6 +136,45 @@ Setelah mendelegasikan zone pucang.klampis.com menuju __PUCANG__, kita dapat men
 
 ![Klampis26](images/26.png)
 
+### Keterangan
+- #### DNS Record
+1. SOA adalah catatan oritas awal (Start of Authority) mengacu server DNS yang menyediakan otorisasi informasi tentang sebuah domain.
+1. NS adalah catatan server nama memetakan, sebuah nama domain ke dalam satu daftar dari server DNS untuk domain tersebut
+1. A adalah catatan alamat untuk memetakan sebuah nama host ke alamat IP 32-bit (IPv4)
+1. AAAA adalah catatan untuk IPv6 sebuah alamat host ke IP 128-bit
+1. CNAME adalah catatan nama alias untuk domain
+1. PTR adlaah record yang digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya
+- #### SOA (Start of Authority)
+1. Serial - Jumlah revisi dari file zona ini. Kenaikan nomor ini setiap kali file zone diubah sehingga perubahannya akan didistribusikan ke server DNS sekunder manapun.
+
+1. Refresh - Jumlah waktu dalam detik bahwa nameserver sekunder harus menunggu untuk memeriksa salinan baru dari zona DNS dari nameserver utama domain. Jika file zona telah berubah maka server DNS sekunder akan memperbarui salinan zona tersebut agar sesuai dengan zona server DNS utama.
+
+1. Retry - Jumlah waktu dalam hitungan detik bahwa nameserver utama domain (atau server) harus menunggu jika upaya refresh oleh nameserver sekunder gagal sebelum mencoba refresh zona domain dengan nameserver sekunder itu lagi.
+
+1. Expire - Jumlah waktu dalam hitungan detik bahwa nameserver sekunder (atau server) akan menahan zona sebelum tidak lagi mempunyai otoritas.
+
+1. Minimum - Jumlah waktu dalam hitungan detik bahwa catatan sumber daya domain valid. Ini juga dikenal sebagai TTL minimum, dan dapat diganti oleh TTL catatan sumber daya individu.
+
+1. TTL (waktu untuk tinggal) - Jumlah detik nama domain di-cache secara lokal sebelum kadaluarsa dan kembali ke nameserver otoritatif untuk informasi terbaru.
+
+- #### Penulisan Serial
+1. Ditulis dengan format YYYYMMDDXXX
+```
+YYYY adalah tahun
+MM adalah bulan
+DD adalah tanggal
+XXX adalah counter
+```
+Contoh :
+
+![Klampis26](images/)
+
+
 ## References
 * https://computer.howstuffworks.com/dns.htm
-* 
+* http://knowledgelayer.softlayer.com/faq/what-does-serial-refresh-retry-expire-minimum-and-ttl-mean
+
+<!-- 
+3. Perintah named -g (untuk mengecek apakah sintaks sudah sesuai)
+5. www biasanya CNAME
+-->
