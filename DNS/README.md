@@ -144,6 +144,10 @@ Setelah mendelegasikan zone pucang.klampis.com menuju __PUCANG__, kita dapat men
 | SOA           | Mengacu server DNS yang mengediakan otorisasi informasi tentang sebuah domain Internet|
 | TXT           | Mengijinkan administrator untuk memasukan data acak ke dalam catatan DNS, catatan ini juga digunakan di spesifikasi Sender Policy Framework|
 
+## Latihan
+1. Buatlah domain mawho.com dan www.mawho.com (CNAME mawho.com). Apa yang terjadi jika melakukan ping mawho.com dengan ping www.mawho.com? Mengapa hal itu terjadi?
+2. Buatlah sebuah subdomain pada domain mawho.com dengan nama abc.mawho.com
+
 ## References
 * https://computer.howstuffworks.com/dns.htm
 * https://en.wikipedia.org/wiki/List_of_DNS_record_types
