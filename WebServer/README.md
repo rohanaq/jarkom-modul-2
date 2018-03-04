@@ -50,5 +50,3 @@ Setelah itu ubah __DocumentRoot__ menjadi __/var/www/__ seperti gambar di bawah 
 
 Setelah itu restart apache2 dengan perintah `service apache2 restart` dan coba akses kembali halaman __coba.php__ pada browser anda.
 
-## Latihan
-1. Download halaman web di 10.151.36./web2.tar.gz dan taruh di /var/www
