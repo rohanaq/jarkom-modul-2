@@ -32,9 +32,7 @@ Kemudian buka file __klampis/klampis.com__ dan edit seperti berikut dengan IP KL
 
 ![Klampis6](images/06.png)
 
-Sebelum di restart coba cek konfig yang sudah dibuat benar atau salah dengan mengetikkan __named -g__
-
-Restart bind9 dengan perintah __service bind9 restart__
+Restart bind9 dengan perintah __service bind9 restart__ atau menggunakan perintah __named -g__ untuk restart dan debugging.
 
 ### 1.3 Setting nameserver pada client
 Pada NGAGEL dan NGINDEN arahkan nameserver menuju IP KLAMPIS dengan mengedit file _resolv.conf_ dengan mengetikkan perintah __nano /etc/resolv.conf__
@@ -46,7 +44,7 @@ Untuk mencoba koneksi DNS, lakukan ping domain klampis.com dengan melakukan __pi
 ![Klampis8](images/08.png)
 
 ### 1.4 Reverse DNS (Record PTR)
-Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya. Edit file __/etc/bind/named/conf.local__ pada KLAMPIS
+Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya. Edit file __/etc/bind/named.conf.local__ pada KLAMPIS
 
 ![Klampis9](images/09.png)
 
