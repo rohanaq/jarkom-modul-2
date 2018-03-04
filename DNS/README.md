@@ -135,6 +135,20 @@ Restart dengan menjalankan __service bind9 restart__
 Setelah mendelegasikan zone pucang.klampis.com menuju __PUCANG__, kita dapat mengakses subdomain (www.pucang.klampis.com) yang ada pada pucang.klampis.com dengan menggunakan nameserver __KLAMPIS__ maupun __PUCANG__ dengan cara ping www.pucang.klampis.com pada client (__NGAGEL__ dan __NGINDEN__)
 
 ![Klampis26](images/26.png)
+### 1.9 List DNS Record
+| Tipe          | Deskripsi                     |
+| ------------- |:-----------------------------|
+| A             | Memetakan nama domain ke alamat IP (IPv4) dari komputer hosting domain|
+| AAAA          | AAAA record hampir mirip A record, tapi mengarahkan domain ke alamat Ipv6|
+| CNAME         | Alias ​​dari satu nama ke nama lain: pencarian DNS akan dilanjutkan dengan mencoba lagi pencarian dengan nama baru|
+| NS            | Delegasikan zona DNS untuk menggunakan authoritative name servers yang diberikan|
+| PTR           | Digunakan untuk Reverse DNS (Domain Name System) lookup|
+| SOA           | Mengacu server DNS yang mengediakan otorisasi informasi tentang sebuah domain Internet|
+| TXT           | Mengijinkan administrator untuk memasukan data acak ke dalam catatan DNS, catatan ini juga digunakan di spesifikasi Sender Policy Framework|
+
+## Latihan
+1. Buatlah domain mawho.com dan www.mawho.com (CNAME mawho.com). Apa yang terjadi jika melakukan ping mawho.com dengan ping www.mawho.com? Mengapa hal itu terjadi?
+2. Buatlah sebuah subdomain pada domain mawho.com dengan nama abc.mawho.com
 
 ### Keterangan
 - #### DNS Record
@@ -172,9 +186,14 @@ Contoh :
 
 ## References
 * https://computer.howstuffworks.com/dns.htm
+<<<<<<< HEAD
 * http://knowledgelayer.softlayer.com/faq/what-does-serial-refresh-retry-expire-minimum-and-ttl-mean
 
 <!-- 
 3. Perintah named -g (untuk mengecek apakah sintaks sudah sesuai)
 5. www biasanya CNAME
 -->
+=======
+* https://en.wikipedia.org/wiki/List_of_DNS_record_types
+* https://kb.indowebsite.id/knowledge-base/pengertian-catatan-dns-atau-record-dns/
+>>>>>>> b571af3cf1ea11cb7e777c6bfa66d5e43761a654

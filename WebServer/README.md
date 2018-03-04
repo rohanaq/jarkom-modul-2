@@ -49,3 +49,4 @@ Setelah itu ubah __DocumentRoot__ menjadi __/var/www/__ seperti gambar di bawah 
 ![Pucang6](images/06.png)
 
 Setelah itu restart apache2 dengan perintah `service apache2 restart` dan coba akses kembali halaman __coba.php__ pada browser anda.
+
