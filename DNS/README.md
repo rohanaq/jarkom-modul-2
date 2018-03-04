@@ -4,136 +4,171 @@ network) yang terhubung dengan internet. DNS Server berfungsi menerjemahkan nama
 
 ![DNS](images/DNS.jpg)
 
-### 1.1 Instalasi bind dan dnsutils
-Yang akan dijadikan DNS Server adalah KLAMPIS. Maka install bind pada KLAMPIS. Sebelum itu, pastikan sudah menjalankan perintah __apt-get update__.
+### 1.1 Instalasi bind
+Yang akan dijadikan DNS Server adalah KLAMPIS. Maka install bind pada KLAMPIS. Sebelum itu, pastikan sudah menjalankan perintah **apt-get update**.
 
-![Klampis1](images/01.png)
+![Klampis1](image/1.png)
 
-Kemudian ketikkan __apt-get install bind9__ pada KLAMPIS
+Kemudian ketikkan **apt-get install bind9** pada KLAMPIS
 
-![Klampis2](images/02.png)
-
-Kemudian install dnsutils pada __NGAGEL__ dan __NGINDEN__ dengan mengetikkan __apt-get install dnsutils__
+![Klampis2](image/2.png)
 
 ### 1.2 Pembuatan Domain
-Untuk membuat domain klampis.com, lakukan perintah __nano /etc/bind/named.conf.local__. Isikan seperti berikut:
+Untuk membuat domain klampis.com, lakukan perintah **nano /etc/bind/named.conf.local**. Isikan seperti berikut:
 
-![Klampis3](images/03.png)
+![Klampis3](image/3.png)
 
-Buat folder __klampis__ di dalam __/etc/bind__ 
+Buat folder **klampis** di dalam **/etc/bind** 
 
-![Klampis4](images/04.png)
+![Klampis4](image/4.png)
 
-Copykan file __db.local__ ke dalam folder klampis yang baru saja dibuat dan ubah namanya menjadi __klampis.com__
+Copykan file **db.local** ke dalam folder klampis yang baru saja dibuat dan ubah namanya menjadi **klampis.com**
 
-![Klampis5](images/05.png)
+![Klampis5](image/5.png)
 
-Kemudian buka file __klampis/klampis.com__ dan edit seperti berikut dengan IP KLAMPIS masing-masing kelompok:
+Kemudian buka file **klampis/klampis.com** dan edit seperti berikut dengan IP KLAMPIS masing-masing kelompok:
 
-![Klampis6](images/06.png)
+![Klampis6](image/6.png)
 
-Restart bind9 dengan perintah __service bind9 restart__ atau menggunakan perintah __named -g__ untuk restart dan debugging.
+Restart bind9 dengan perintah **service bind9 restart** atau menggunakan perintah **named -g** untuk restart dan debugging.
 
 ### 1.3 Setting nameserver pada client
-Pada NGAGEL dan NGINDEN arahkan nameserver menuju IP KLAMPIS dengan mengedit file _resolv.conf_ dengan mengetikkan perintah __nano /etc/resolv.conf__
+Pada NGAGEL dan NGINDEN arahkan nameserver menuju IP KLAMPIS dengan mengedit file _resolv.conf_ dengan mengetikkan perintah **nano /etc/resolv.conf**
 
-![Klampis7](images/07.png)
+![Klampis7](image/7.png)
 
-Untuk mencoba koneksi DNS, lakukan ping domain klampis.com dengan melakukan __ping klampis.com__ pada NGAGEL dan NGINDEN
+Untuk mencoba koneksi DNS, lakukan ping domain klampis.com dengan melakukan **ping klampis.com** pada NGAGEL dan NGINDEN
 
-![Klampis8](images/08.png)
+![Klampis8](image/8.png)
 
 ### 1.4 Reverse DNS (Record PTR)
-Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya. Edit file __/etc/bind/named.conf.local__ pada KLAMPIS
+Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya. Edit file **/etc/bind/named.conf.local** pada KLAMPIS
 
-![Klampis9](images/09.png)
+![Klampis9](image/9.png)
 
-Copy file db.local ke folder klampis dan ubah namanya menjadi __83.151.10.in-addr.arpa__
+Copy file db.local ke folder klampis dan ubah namanya menjadi **79.151.10.in-addr.arpa**
 
-![Klampis10](images/10.png)
+![Klampis10](image/10.png)
 
-Edit file __83.151.10.in-addr.arpa__
+Edit file **79.151.10.in-addr.arpa**
 
-![Klampis11](images/11.png)
+![Klampis11](image/11.png)
 
-Kemudian restart bind9 dengan perintah __service bind9 restart__
+Kemudian restart bind9 dengan perintah **service bind9 restart**
 
-Untuk mengecek lakukan perintah __nslookup__ atau __dig__
+Untuk mengecek lakukan perintah **nslookup** atau **dig**
 
-![Klampis12](images/12.png)
+![Klampis12](image/12.png)
 
 ### 1.5 Record CNAME
 Record CNAME adalah sebuah record yang membuat alias name dan mengarahkan domain ke alamat/domain yang lain.
 
 Buka file klampis.com pada KLAMPIS dan tambahkan syntax berikut:
 
-![Klampis13](images/13.png)
+![Klampis13](image/13.png)
 
-Kemudian restart bind9 dengan perintah __service bind9 restart__
+Kemudian restart bind9 dengan perintah **service bind9 restart**
 
-Lalu cek dengan melakukan __ping www.klampis.com__ dan __ping klampis.com__ keduanya akan mengarah ke host dengan IP yang sama.
+Lalu cek dengan melakukan **host -t CNAME www.klampis.com** atau **ping www.klampis.com** akan mengarah ke host dengan IP KLAMPIS.
 
-![Klampis14](images/14.png)
+![Klampis14](image/14.png)
 
-![Klampis15](images/15.png)
 
 ### 1.6 Membuat DNS Slave
-DNS Slave adalah DNS cadangan yang akan diakses jika server DNS utama mengalami kegagalan. Lakukan __apt-get update__ kemudian install bind9 di PUCANG dengan perintah __apt-get install bind9__
+DNS Slave adalah DNS cadangan yang akan diakses jika server DNS utama mengalami kegagalan. Lakukan **apt-get update** kemudian install bind9 di PUCANG dengan perintah **apt-get install bind9**
 
-Edit file __/etc/bind/named.conf.local__ pada KLAMPIS dan tambahkan syntax berikut:
+Edit file **/etc/bind/named.conf.local** pada KLAMPIS dan tambahkan syntax berikut:
 
-![Klampis16](images/16.png)
+![Klampis16](image/15.png)
 
-Kemudian buka file __/etc/bind/named.conf.local__ pada PUCANG dan tambahkan syntax berikut:
+Kemudian buka file **/etc/bind/named.conf.local** pada PUCANG dan tambahkan syntax berikut:
 
-![Klampis17](images/17.png)
+![Klampis17](image/16.png)
 
-Apabila terjadi kegagalan pada DNS Server KLAMPIS, maka DNS Server akan dialihkan ke Server PUCANG. Ubah nameserver client yang tersambung dengan KLAMPIS (NGINDEN dan NGAGEL) dengan mengedit file __etc/resolv.conf__ menjadi IP PUCANG
+Restart **service bind9 restart**
 
-![Klampis18](images/18.png)
+Apabila terjadi kegagalan pada DNS Server KLAMPIS, maka DNS Server akan dialihkan ke Server PUCANG. Ubah nameserver client yang tersambung dengan KLAMPIS (NGINDEN dan NGAGEL) dengan mengedit file **etc/resolv.conf** menjadi IP PUCANG
+
+![Klampis18](image/17.png)
 
 ### 1.7 Membuat Subdomain
-Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu ke suatu alamat fisik di sebuah situs contohnya: __klampis.com__ merupakan sebuah domain induk. Sedangkan __test.klampis.com__ merupakan sebuah subdomain.
+Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu ke suatu alamat fisik di sebuah situs contohnya: **klampis.com** merupakan sebuah domain induk. Sedangkan **test.klampis.com** merupakan sebuah subdomain.
 
-Edit file __/etc/bind/klampis/klampis.com__ lalu tambahkan subdomain untuk klampis.com yang mengarah ke IP KLAMPIS.
+Edit file **/etc/bind/klampis/klampis.com** lalu tambahkan subdomain untuk klampis.com yang mengarah ke IP KLAMPIS.
 
-![Klampis19](images/19.png)
+![Klampis19](image/18.png)
+
+Restart **service bind9 restart**
+
+Coba ping ke subdomain dengan perintah **ping cloud.klampis.com" atau **host -t A cloud.klampis.com**
+
+![Klampis19](image/19.png)
+
 
 ### 1.8 Delegasi Subdomain
 Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS baru.
 
-Pada KLAMPIS, edit file __/etc/bind/klampis/klampis.com__ dan ubah menjadi seperti di bawah ini sesuai dengan pembagian IP KLAMPIS kelompok masing-masing.
+Pada KLAMPIS, edit file **/etc/bind/klampis/klampis.com** dan ubah menjadi seperti di bawah ini sesuai dengan pembagian IP KLAMPIS kelompok masing-masing.
 
-![Klampis20](images/20.png)
+![Klampis20](image/20.png)
 
-Kemudian comment __dnssec-validation auto;__ dan tambahkan baris berikut pada __/etc/bind/named.conf.options__
+Kemudian comment **dnssec-validation auto;** dan tambahkan baris berikut pada **/etc/bind/named.conf.options**
 
-![Klampis21](images/21.png)
+![Klampis21](image/21.png)
 
-Kemudian edit file __/etc/bind/named.conf.local__ menjadi seperti gambar di bawah:
+Kemudian edit file **/etc/bind/named.conf.local** menjadi seperti gambar di bawah:
 
-![Klampis22](images/22.png)
+![Klampis22](image/22.png)
 
-Setelah itu restart dengan menjalankan __service bind9 restart__
+Setelah itu restart dengan menjalankan **service bind9 restart**
 
-Pada PUCANG, comment __dnssec-validation auto;__ dan tambahkan baris berikut pada __/etc/bind/named.conf.options__
+Pada PUCANG, comment **dnssec-validation auto;** dan tambahkan baris berikut pada **/etc/bind/named.conf.options**
 
-![Klampis23](images/23.png)
+![Klampis23](image/23.png)
 
-Kemudian edit file __/etc/bind/named.conf.local__ menjadi seperti gambar di bawah:
+Masuk direktori /etc/bind **cd /etc/bind/** Kemudian edit file **named.conf.local** menjadi seperti gambar di bawah:
 
-![Klampis24](images/24.png)
+![Klampis24](image/24.png)
 
-Kemudian pada __/etc/bind/pucang/pucang.klampis.com__ ubah dan tambahkan record NS dan A untuk domain __pucang.klampis.com__ dan satu lagi record A untuk subdomain www.pucang.klampis.com yang mengarah ke PUCANG (sesuaikan dengan IP masing-masing)
+Kemudian buat direktori dengan nama pucang **mkdir pucang** dan copy db.local ke direktori pucang dan edit namanya menjadi pucang.klampis.com **cp db.local pucang/pucang.klampis.com**
 
-![Klampis25](images/25.png)
+![Klampis25](image/25.png)
 
-Restart dengan menjalankan __service bind9 restart__
+Kemudian pada **/etc/bind/pucang/pucang.klampis.com** ubah dan tambahkan record NS dan A untuk domain **pucang.klampis.com** dan satu lagi record A untuk subdomain www.pucang.klampis.com yang mengarah ke PUCANG (sesuaikan dengan IP masing-masing)
 
-Setelah mendelegasikan zone pucang.klampis.com menuju __PUCANG__, kita dapat mengakses subdomain (www.pucang.klampis.com) yang ada pada pucang.klampis.com dengan menggunakan nameserver __KLAMPIS__ maupun __PUCANG__ dengan cara ping www.pucang.klampis.com pada client (__NGAGEL__ dan __NGINDEN__)
+![Klampis25](image/26.png)
 
-![Klampis26](images/26.png)
-### 1.9 List DNS Record
+Restart dengan menjalankan **service bind9 restart**
+
+Setelah mendelegasikan zone pucang.klampis.com menuju **PUCANG**, kita dapat mengakses subdomain (daerah.pucang.klampis.com) yang ada pada pucang.klampis.com dengan menggunakan nameserver **KLAMPIS** maupun **PUCANG** dengan cara **ping daerah.pucang.klampis.com** pada client (**NGAGEL** dan **NGINDEN**)
+
+![Klampis26](image/27.png)
+
+### 1.9 DNS Forwarder
+
+DNS Forwarder digunakan untuk mengarahkan DNS Server ke IP yang ingin dituju.
+
+Edit file di /etc/bind/named.conf.option
+Uncomment pada bagian ini
+```
+forwarders {
+    8.8.8.8;
+};
+```
+Comment pada bagian ini
+```
+// dnssec-validation auto;
+```
+Dan tambahkan
+```
+allow-query{any;};
+```
+
+![Klampis30](image/30.png)
+
+Harusnya jika nameserver pada /etc/resolv.conf diubah menjadi IP KLAMPIS maka akan diforward ke IP google yaitu 8.8.8.8 dan bisa mendapatkan koneksi.
+
+### 2.0 List DNS Record
 | Tipe          | Deskripsi                     |
 | ------------- |:-----------------------------|
 | A             | Memetakan nama domain ke alamat IP (IPv4) dari komputer hosting domain|
@@ -144,7 +179,7 @@ Setelah mendelegasikan zone pucang.klampis.com menuju __PUCANG__, kita dapat men
 | SOA           | Mengacu server DNS yang mengediakan otorisasi informasi tentang sebuah domain Internet|
 | TXT           | Mengijinkan administrator untuk memasukan data acak ke dalam catatan DNS, catatan ini juga digunakan di spesifikasi Sender Policy Framework|
 
-### 2.0 Keterangan
+### 2.1 Keterangan
 - #### SOA (Start of Authority)
 | Nama          | Deskripsi                     |
 | ------------- |:-----------------------------|
@@ -165,7 +200,7 @@ XXX adalah counter
 ```
 Contoh :
 
-![Klampis26](images/)
+![Klampis26](image/28.png)
 
 ## Latihan
 1. Buatlah domain mawho.com dan www.mawho.com (CNAME mawho.com). Apa yang terjadi jika melakukan ping mawho.com dengan ping www.mawho.com? Mengapa hal itu terjadi?
