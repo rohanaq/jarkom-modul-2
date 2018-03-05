@@ -191,12 +191,12 @@ Harusnya jika nameserver pada /etc/resolv.conf diubah menjadi IP KLAMPIS maka ak
 | TTL           | (waktu untuk tinggal) - Jumlah detik nama domain di-cache secara lokal sebelum kadaluarsa dan kembali ke nameserver otoritatif untuk informasi terbaru|
 
 - #### Penulisan Serial
-1. Ditulis dengan format YYYYMMDDXXX
+1. Ditulis dengan format YYYYMMDDXX
 ```
 YYYY adalah tahun
 MM adalah bulan
 DD adalah tanggal
-XXX adalah counter
+XX adalah counter
 ```
 Contoh :
 
