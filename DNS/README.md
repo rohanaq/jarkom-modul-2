@@ -166,7 +166,7 @@ allow-query{any;};
 
 ![Klampis30](image/30.PNG)
 
-Harusnya jika nameserver pada /etc/resolv.conf diubah menjadi IP KLAMPIS maka akan diforward ke IP google yaitu 8.8.8.8 dan bisa mendapatkan koneksi.
+Harusnya jika nameserver pada /etc/resolv.conf diubah menjadi IP KLAMPIS maka akan diforward ke IP DNS google yaitu 8.8.8.8 dan bisa mendapatkan koneksi.
 
 ### 2.0 List DNS Record
 | Tipe          | Deskripsi                     |
