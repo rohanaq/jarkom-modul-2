@@ -30,7 +30,7 @@ Kemudian buka file **klampis/klampis.com** dan edit seperti berikut dengan IP KL
 
 ![Klampis6](image/6.PNG)
 
-Keterangan [Klik Disini](#21-keterangan)
+__PENTING !!: Keterangan [Klik Disini](#21-keterangan)__
 
 Restart bind9 dengan perintah **service bind9 restart** atau menggunakan perintah **named -g** untuk restart dan debugging.
 
