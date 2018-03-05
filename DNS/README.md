@@ -50,6 +50,8 @@ Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat do
 
 Copy file db.local ke folder klampis dan ubah namanya menjadi **79.151.10.in-addr.arpa**
 
+**Keterangan _79.151.10_ adalah 3 digit pertama IP Klampis yang dibalik urutan penulisannya**
+
 ![Klampis10](image/10.PNG)
 
 Edit file **79.151.10.in-addr.arpa**
