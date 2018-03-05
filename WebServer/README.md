@@ -153,3 +153,47 @@ Restart apache2 kemudian coba akses website masing-masing maka direktori __html_
 
 ### 2.8 Basic Authentication
 Basic Authentication digunakan untuk mebatasi akses terhadap suatu halaman dengan memberikan suatu autentikasi untuk user-user tertentu dengan password yang sudah ditentukan.
+
+Silahkan masuk ke dalam __/etc/apache2__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
+
+![Pucang19](images/19.png)
+
+Kemudian buat folder __/var/www/basic__ dengan perintah `mkdir /var/www/basic` dan buatlah file index.html di dalamnya. Pada file index.html isikan apa saja, sebagai contoh:
+```html
+<html>
+<head>
+    <title>JARKOM 2018</title>
+</head>
+<body>
+    <h3>Basic Authentication</h3>
+</body>
+</html>
+```
+
+Setelah itu ketikkan sintaks berikut:
+```
+htpasswd -c /var/www/basic/.htpasswd basicauth
+```
+
+__Keterangan__:
+* __htpasswd__
+Untuk menambahkan autentikasi basic untuk sebuah user
+* __/var/www/basic/.htpasswd__
+File yang menyimpan data user dan password
+* __basicauth__
+Nama user
+
+Kemudian akan muncul permintaan password untuk user __basicauth__, isi permintaan password tersebut sesuai dengan keinginan kalian.
+
+Untuk mencobanya, akses pada browser kalian dengan mengetikkan __IP PUCANG TIAP KELOMPOK/basic__ atau __pucang.com/basic__ (sesuai dengan DNS yang sudah dibuat masing-masing kelompok)
+
+![Pucang20](images/20.png)
+
+Masukkan user dan password yang sudah dibuat sebelumnya maka halaman index.html akan ditampilkan:
+![Pucang21](images/21.png)
+
+Jika user dan password tidak dimasukkan maka akan muncul halaman __401 Unauthorized__ seperti gambar di bawah:
+
+![Pucang22](images/22.png)
+
+### 2.9 Digest Authentication
