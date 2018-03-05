@@ -56,7 +56,7 @@ Edit file **79.151.10.in-addr.arpa**
 
 Kemudian restart bind9 dengan perintah **service bind9 restart**
 
-Untuk mengecek lakukan perintah **nslookup** atau **dig**
+Untuk mengecek lakukan perintah **host -t PTR IP**
 
 ![Klampis12](image/12.PNG)
 
