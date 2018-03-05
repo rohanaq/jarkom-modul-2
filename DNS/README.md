@@ -146,30 +146,16 @@ Setelah mendelegasikan zone pucang.klampis.com menuju __PUCANG__, kita dapat men
 | SOA           | Mengacu server DNS yang mengediakan otorisasi informasi tentang sebuah domain Internet|
 | TXT           | Mengijinkan administrator untuk memasukan data acak ke dalam catatan DNS, catatan ini juga digunakan di spesifikasi Sender Policy Framework|
 
-## Latihan
-1. Buatlah domain mawho.com dan www.mawho.com (CNAME mawho.com). Apa yang terjadi jika melakukan ping mawho.com dengan ping www.mawho.com? Mengapa hal itu terjadi?
-2. Buatlah sebuah subdomain pada domain mawho.com dengan nama abc.mawho.com
-
-### Keterangan
-- #### DNS Record
-1. SOA adalah catatan oritas awal (Start of Authority) mengacu server DNS yang menyediakan otorisasi informasi tentang sebuah domain.
-1. NS adalah catatan server nama memetakan, sebuah nama domain ke dalam satu daftar dari server DNS untuk domain tersebut
-1. A adalah catatan alamat untuk memetakan sebuah nama host ke alamat IP 32-bit (IPv4)
-1. AAAA adalah catatan untuk IPv6 sebuah alamat host ke IP 128-bit
-1. CNAME adalah catatan nama alias untuk domain
-1. PTR adlaah record yang digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya
+### 2.0 Keterangan
 - #### SOA (Start of Authority)
-1. Serial - Jumlah revisi dari file zona ini. Kenaikan nomor ini setiap kali file zone diubah sehingga perubahannya akan didistribusikan ke server DNS sekunder manapun.
-
-1. Refresh - Jumlah waktu dalam detik bahwa nameserver sekunder harus menunggu untuk memeriksa salinan baru dari zona DNS dari nameserver utama domain. Jika file zona telah berubah maka server DNS sekunder akan memperbarui salinan zona tersebut agar sesuai dengan zona server DNS utama.
-
-1. Retry - Jumlah waktu dalam hitungan detik bahwa nameserver utama domain (atau server) harus menunggu jika upaya refresh oleh nameserver sekunder gagal sebelum mencoba refresh zona domain dengan nameserver sekunder itu lagi.
-
-1. Expire - Jumlah waktu dalam hitungan detik bahwa nameserver sekunder (atau server) akan menahan zona sebelum tidak lagi mempunyai otoritas.
-
-1. Minimum - Jumlah waktu dalam hitungan detik bahwa catatan sumber daya domain valid. Ini juga dikenal sebagai TTL minimum, dan dapat diganti oleh TTL catatan sumber daya individu.
-
-1. TTL (waktu untuk tinggal) - Jumlah detik nama domain di-cache secara lokal sebelum kadaluarsa dan kembali ke nameserver otoritatif untuk informasi terbaru.
+| Nama          | Deskripsi                     |
+| ------------- |:-----------------------------|
+| Serial        | Jumlah revisi dari file zona ini. Kenaikan nomor ini setiap kali file zone diubah sehingga perubahannya akan didistribusikan ke server DNS sekunder manapun|
+| Refresh       | Jumlah waktu dalam detik bahwa nameserver sekunder harus menunggu untuk memeriksa salinan baru dari zona DNS dari nameserver utama domain. Jika file zona telah berubah maka server DNS sekunder akan memperbarui salinan zona tersebut agar sesuai dengan zona server DNS utama|
+| Retry         | Jumlah waktu dalam hitungan detik bahwa nameserver utama domain (atau server) harus menunggu jika upaya refresh oleh nameserver sekunder gagal sebelum mencoba refresh zona domain dengan nameserver sekunder itu lagi|
+| Expire        | Jumlah waktu dalam hitungan detik bahwa nameserver sekunder (atau server) akan menahan zona sebelum tidak lagi mempunyai otoritas|
+| Minimum       | Jumlah waktu dalam hitungan detik bahwa catatan sumber daya domain valid. Ini juga dikenal sebagai TTL minimum, dan dapat diganti oleh TTL catatan sumber daya individu|
+| TTL           | (waktu untuk tinggal) - Jumlah detik nama domain di-cache secara lokal sebelum kadaluarsa dan kembali ke nameserver otoritatif untuk informasi terbaru|
 
 - #### Penulisan Serial
 1. Ditulis dengan format YYYYMMDDXXX
@@ -183,17 +169,12 @@ Contoh :
 
 ![Klampis26](images/)
 
+## Latihan
+1. Buatlah domain mawho.com dan www.mawho.com (CNAME mawho.com). Apa yang terjadi jika melakukan ping mawho.com dengan ping www.mawho.com? Mengapa hal itu terjadi?
+2. Buatlah sebuah subdomain pada domain mawho.com dengan nama abc.mawho.com
 
 ## References
 * https://computer.howstuffworks.com/dns.htm
-<<<<<<< HEAD
 * http://knowledgelayer.softlayer.com/faq/what-does-serial-refresh-retry-expire-minimum-and-ttl-mean
-
-<!-- 
-3. Perintah named -g (untuk mengecek apakah sintaks sudah sesuai)
-5. www biasanya CNAME
--->
-=======
 * https://en.wikipedia.org/wiki/List_of_DNS_record_types
 * https://kb.indowebsite.id/knowledge-base/pengertian-catatan-dns-atau-record-dns/
->>>>>>> b571af3cf1ea11cb7e777c6bfa66d5e43761a654
