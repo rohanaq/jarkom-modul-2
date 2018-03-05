@@ -30,6 +30,8 @@ Kemudian buka file **klampis/klampis.com** dan edit seperti berikut dengan IP KL
 
 ![Klampis6](image/6.PNG)
 
+Keterangan [Klik Disini](#21-keterangan)
+
 Restart bind9 dengan perintah **service bind9 restart** atau menggunakan perintah **named -g** untuk restart dan debugging.
 
 ### 1.3 Setting nameserver pada client
