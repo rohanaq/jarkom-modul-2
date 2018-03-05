@@ -1,5 +1,5 @@
 # **PENTING UNTUK DIBACA**
-1. Pastikan UML KLAMPIS dan PUCANG Memory yang sebelumnya 96 diganti 256 pada file topologi.sh.
+1. Pastikan UML KLAMPIS dan PUCANG Memory yang sebelumnya **96 diganti 256** pada file topologi.sh.
 2. Jalankan **iptables -t nat .....** agar NGINDEN dan NGAGEL bisa terhubung ke internet.
 3. Ketika ingin mengakses internet pastikan sudah mengexport proxy terlebih dahulu. **syntaxnya cek modul pengenalan UML** .
 4. Jangan melakukan apapun sebelum asisten memberikan perintah.
@@ -148,7 +148,7 @@ Kemudian buat direktori dengan nama pucang **mkdir pucang** dan copy db.local ke
 
 Kemudian pada **/etc/bind/pucang/pucang.klampis.com** ubah dan tambahkan record NS dan A untuk domain **pucang.klampis.com** dan satu lagi record A untuk subdomain www.pucang.klampis.com yang mengarah ke PUCANG (sesuaikan dengan IP masing-masing)
 
-![Klampis25](image/26.PNG)
+![Klampis25](image/26.PNG)DISCLAIMER
 
 Restart dengan menjalankan **service bind9 restart**
 
