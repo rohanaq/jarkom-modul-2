@@ -103,18 +103,18 @@ Lalu untuk menjalankannya ketikkan `a2ensite default2.conf` dan kemudian restart
 ![Pucang9](images/09.png)
 
 ### 2.5 Alias Directory
-Alias directory adalah membuat direktori lebih mudah diakses tetapi tetap di bawah DocumentRoot. Silahkan masuk ke dalam __/etc/apache2__ dan salinlah file __000-default.conf__ yang ada pada folder __sites-available__ dan ubah namanya menjadi __alias.conf__. Langkah-langkahnya sama dengan ketika membuat file __default.conf__ pada poin sebelumnya. Kemudian buka __alias.conf__ dan tambahkan sintaks seperti gambar di bawah:
+Alias directory adalah membuat direktori lebih mudah diakses tetapi tetap di bawah DocumentRoot. Silahkan masuk ke dalam __/etc/apache2__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
 
 ![Pucang10](images/10.png)
 
-Setelah itu buatlah direktori __/alias/test/jarkom/__ dengan mengetikkan
+Kemudian restart apache2 dengan perintah `service apache2 restart`. Setelah itu buatlah direktori __/alias/test/jarkom/__ dengan mengetikkan
 ```
 mkdir /var/www/alias
 mkdir /var/www/alias/test
 mkdir /var/www/alias/test/jarkom
 ```
 
-Kemudian pada direktori __/var/www/alias/test/jarkom__ buatlah sebuah file bernama __jarkom.php__. Sebelum mengaktifkan konfigurasi __alias.conf__, pastikan konfigurasi yang lain sudah dimatikan. Karena konfigurasi yang baru kita coba adalah __default2.conf__ maka matikan konfigurasi tersebut dengan perintah `a2dissite default2.conf` kemudian restart apache2 dengan `service apache2 restart`. Setelah itu baru kita aktifkan konfigurasi __alias.conf__ dengan perintah `a2ensite alias.conf` dan kemudian restart apache2 `service apache2 restart`.
+Kemudian pada direktori __/var/www/alias/test/jarkom__ buatlah sebuah file bernama __jarkom.php__.
 
 Sekarang coba buka pada browser __IP PUCANG TIAP KELOMPOK/jarkom__ atau __pucang.com/jarkom__ (sesuai dengan DNS yang sudah dibuat masing-masing kelompok)
 
@@ -124,3 +124,32 @@ Lalu apa perbedaannya ketika kita mengakses __/test/jarkom__?
 ![Pucang12](images/12.png)
 
 ### 2.6 Directory Listing
+Silahkan masuk ke dalam __/etc/apache2__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
+
+![Pucang13](images/13.png)
+
+Kemudian coba akses website masing-masing maka akan muncul gambar seperti ini:
+
+![Pucang14](images/14.png)
+
+Lalu bagaimana cara agar kita dapat melihat isi dari direktori tersebut? Buka kembali __default2.conf__ dan ganti seperti gambar di bawah:
+
+![Pucang15](images/15.png)
+
+Setelah itu restart apache2 dan coba akses kembali website masing-masing maka kita dapat melihat isi file dari direktori seperti gambar di bawah:
+
+![Pucang16](images/16.png)
+
+### 2.7 Allow dan Deny
+Dalam web server dibutuhkan adanya proteksi dan penjagaan terhadap web server agar tetap aman. Dalam web server, kita bisa membatasi hak akses siapa saja yang boleh mengakses web server tersebut.
+
+Silahkan masuk ke dalam __/etc/apache2__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
+
+![Pucang17](images/17.png)
+
+Untuk mencoba konfigurasi yang baru saja kita buat, jangan lupa mematikan konfigurasi lain yang sedang aktif. Setelah itu aktifkan konfigurasi __aman.conf__ dengan perintah `a2ensite aman.conf` dan kemudian restart apache2. Kemudian coba akses website masing-masing maka direktori __html__ akan menghilang:
+
+![Pucang18](images/18.png)
+
+### 2.8 Basic Authentication
+Basic Authentication digunakan untuk mebatasi akses terhadap suatu halaman dengan memberikan suatu autentikasi untuk user-user tertentu dengan password yang sudah ditentukan.
