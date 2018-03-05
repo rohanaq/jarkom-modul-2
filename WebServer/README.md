@@ -147,7 +147,7 @@ Silahkan masuk ke dalam __/etc/apache2__ kemudian buka file __default2.conf__ ya
 
 ![Pucang17](images/17.png)
 
-Untuk mencoba konfigurasi yang baru saja kita buat, jangan lupa mematikan konfigurasi lain yang sedang aktif. Setelah itu aktifkan konfigurasi __aman.conf__ dengan perintah `a2ensite aman.conf` dan kemudian restart apache2. Kemudian coba akses website masing-masing maka direktori __html__ akan menghilang:
+Restart apache2 kemudian coba akses website masing-masing maka direktori __html__ akan menghilang:
 
 ![Pucang18](images/18.png)
 
