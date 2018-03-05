@@ -1,4 +1,4 @@
-# **PENTING UNTK DIBACA**
+# **PENTING UNTUK DIBACA**
 1. Pastikan UML KLAMPIS dan PUCANG Memory yang sebelumnya 96 diganti 256 pada file topologi.sh.
 2. Jalankan **iptables -t nat .....** agar NGINDEN dan NGAGEL bisa terhubung ke internet.
 3. Ketika ingin mengakses internet pastikan sudah mengexport proxy terlebih dahulu. **syntaxnya cek modul pengenalan UML** .
