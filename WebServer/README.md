@@ -12,17 +12,13 @@ Supaya web server dapat menjalankan perintah PHP, maka kita perlu menginstall PH
 ![Pucang2](images/02.png)
 
 Setelah proses instalasi selesai, untuk mengetahui apakah instalasi PHP berhasil atau tidak, silahkan membuat file PHP yang diletakkan di __/var/www/html__
-```
-cd /var/www/html
-nano ini.php
+
+Jalankan perintah untuk membuat file __ini.php__:
+```bash
+echo "<?php phpinfo(); ?>" > /var/www/html/ini.php
 ```
 
-Kemudian isikan pada file __ini.php__:
-```
-<?php phpinfo(); ?>
-```
-
-Setelah selesai membuat file __ini.php__, untuk mencoba membukanya akses dengan __IP PUCANG TIAP KELOMPOK/ini.php__ maka akan muncul seperti gambar di bawah:
+Setelah selesai membuat file __ini.php__, untuk mencoba membukanya akses dengan `http://IP_PUCANG_TIAP_KELOMPOK/ini.php` pada browser laptop masing-masing maka akan muncul seperti gambar di bawah:
 
 ![Pucang3](images/03.png)
 
@@ -35,30 +31,44 @@ Sekarang bayangkan ketika kita ingin mengakses sebuah halaman web kita harus men
 Jika lupa caranya, silahkan buka lagi modul sebelumnya yang membahas tentang [DNS](https://github.com/rohanaq/jarkom2/tree/master/DNS).
 
 ### 2.3 Mengubah Direktori Default
-Cobalah membuat sebuah halaman web di luar direktori __/var/www/html__ sebagai contoh kita akan membuat halaman __coba.php__ pada direktori __/var/www__. Maka ketika diakses akan muncul seperti gambar di bawah:
+Webserver akan memproses file sesuai URL yang diminta oleh client. Sebagai contoh, ketika client mengakses `http://pucang.com:8080/index.php`.
 
-![Pucang5](images/05.png)
+Sebagai | Contoh
+------------ | -------------
+fullpath URL | `http://pucang.com:8080/index.php`
+hostname | `pucang.com`
+port | `8080`
+URL | `/index.php`
 
-Tulisan yang ditampilkan pada browser adalah __NOT FOUND__, karena secara default web server apache akan mengakses file-file yang ada pada direktori __/var/www/html__. Namun halaman __coba.php__ tetap bisa diakses dengan cara mengubah direktori default dengan mengetikkan:
+Secara _default_, apache2 menggunakan __/var/www/html__ sebagai direktori default. Ketika mengakses `http://pucang.com/ini.php`, sebenarnya webserver sedang mengakses file __/var/www/html/ini.php__.
+
+Dalam kasus tertentu kita ingin mengganti default direktori menjadi direktori lain. Sebagai contoh, apabila direktori default dari apache2 diganti menjadi __/home/rohanaq/mysite__, maka ketika mengakses `http://pucang.com/pasar/index.php`, webserver akan mengakses file __/home/rohanaq/mysite/pasar/index.php__.
+
+
+Default direktori pada apache2 ditandai dengan _syntax_ `DocumentRoot`. Contohnya
 ```
-nano /etc/apache2/sites-enabled/000-default.conf
+    DocumentRoot /var/www/html
 ```
 
-Setelah itu ubah __DocumentRoot__ menjadi __/var/www/__ seperti gambar di bawah ini:
+Sekarang, coba ubah direktori default menjadi __/var/www/__, seperti dibawah ini:
 
 ![Pucang6](images/06.png)
+
+Setelah itu, coba buatlah file __coba.php__ pada direktori __/var/www__ dengan perintah
+```
+echo "<?php echo 'Hello, ini coba.php'; ?>" > /var/www/coba.php
+```
 
 Setelah itu restart apache2 dengan perintah `service apache2 restart` dan coba akses kembali halaman __coba.php__ pada browser kalian.
 
 ### 2.4 Konfigurasi VirtualHost
 Sekarang kita akan mengkonfigurasi __VirtualHost__ untuk bisa mengakses web server. Pada PUCANG lakukan copy file terhadap file konfigurasi bawaan dari apache2. Setelah menyalin file konfigurasi bukalah dengan perintah __nano__
-```
-cd /etc/apache2
-cp sites-available/000-default.conf sites-available/default2.conf
+```bash
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/default2.conf
 nano sites-available/default2.conf
 ```
 
-Lalu silahkan ganti port pada __VirtualHost__ menjadi 8080, dan ubah __DocumentRoot__ menjadi /var/www/8080 dan tambahkan sintaks seperti di bawah ini:
+Lalu silahkan ganti port pada __VirtualHost__ menjadi __8080__, dan ubah __DocumentRoot__ menjadi __/var/www/8080__ dan tambahkan sintaks seperti di bawah ini:
 ```
 <VirtualHost *:8080>
 ```
