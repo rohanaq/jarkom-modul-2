@@ -125,8 +125,9 @@ Penting untuk diketahui:
         
 8. Buka browser dan akses alamat http://[IP Pucang]:8080
 
-
-
+    ![](/WebServer/gambar/14.PNG)
+    
+    
 
 
 
