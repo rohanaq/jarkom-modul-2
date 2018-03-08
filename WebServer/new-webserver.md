@@ -111,6 +111,8 @@ Penting untuk diketahui:
     
     ![](/WebServer/gambar/12.PNG)
     
+    kemudian tekan enter.
+    
     
 
 
