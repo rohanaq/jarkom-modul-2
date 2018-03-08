@@ -128,8 +128,8 @@ Penting untuk diketahui:
     ![](/WebServer/gambar/14.PNG)
 
 ## H. Mari Berimajinasi
-### H.1. Prolog
-Udin dan Nia 
+### H.1. Setting Domain Pada Apache2
+Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **klampis.com** 
 
 
 
