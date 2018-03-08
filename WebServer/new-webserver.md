@@ -35,6 +35,16 @@ Webserver Apache memiliki folder untuk konfigurasi yang berada di **/etc/apache2
 ![](/WebServer/gambar/5.PNG)
 
 Pada folder **/etc/apache2** terdapat berbagai file dan folder untuk konfigurasi
+
+Penting untuk diketahui:
+1. apache2.conf adalah file konfigurasi utama apache2.
+2. ports.conf adalah file konfigurasi port yang digunakan untuk webserver.
+3. sites-available adalah folder tempat konfigurasi website yang tersedia.
+4. sites-enabled adalah folder tempat konfigurasi website yang tersedia dan sudah aktif.
+5. mods-available adalah folder tempat modul-modul apache2 yang tersedia.
+6. mods-enable adalah folder tempat modul-modul apache2 yang tersedia dan sudah aktif.
+
+
     
     
     
