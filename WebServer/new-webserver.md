@@ -61,15 +61,15 @@ Penting untuk diketahui:
 
     a. port berapa yang digunakan.
     
-        `<VirtualHost *:80> # Menggunakan port 80`
+        <VirtualHost *:80> # Menggunakan port 80
         
     b. domain
     
-        `# ServerName www.example.com`
+        # ServerName www.example.com
         
     c. folder tempat website
     
-        `DocumentRoot /var/www/html`
+        DocumentRoot /var/www/html
     
     
     
