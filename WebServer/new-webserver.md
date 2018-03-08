@@ -139,7 +139,9 @@ Maka yang harus dilakukan Udin adalah:
     
 2. Buka file **klampis.com.com**, kemudian
 
-    2.1. Uncomment **ServerName** dan ganti **www.example.com** menjadi **klampis.com**
+    2.1. Uncomment **ServerName** dan ganti **www.example.com** menjadi **klampis.com**.
+    2.2 Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/klampis.com**
+    
 
     
     
