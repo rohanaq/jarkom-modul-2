@@ -46,7 +46,7 @@ Penting untuk diketahui:
 
 ## G. Konfigurasi Apache Sederhana
 ### G.1. Penggunaan Sederhana
-1. Buka folder **/etc/apache2/sites-available**
+1. Pindah ke folder **/etc/apache2/sites-available**
 
     ![](/WebServer/gambar/6.PNG)
     
@@ -71,7 +71,7 @@ Penting untuk diketahui:
     
         DocumentRoot /var/www/html
      
-4. Buka folder tempat website pada file konfigurasi default yaitu **/var/www/html** dan buat file **index.php** yang berisi
+4. Pindah ke folder tempat website pada file konfigurasi default yaitu **/var/www/html** dan buat file **index.php** yang berisi
 
         <?php
             phpinfo();
@@ -133,7 +133,7 @@ Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat web
 
 Maka yang harus dilakukan Udin adalah:
 
-1. Buka folder **/etc/apache2/sites-available** dan copy file     **000-default.conf** menjadi **klampis.com.conf**
+1. Pindah ke folder **/etc/apache2/sites-available** dan copy file     **000-default.conf** menjadi **klampis.com.conf**
 
     ![](/WebServer/gambar/15.PNG)
     
@@ -171,12 +171,24 @@ Maka yang harus dilakukan Udin adalah:
     ![](/WebServer/gambar/19.PNG)
 
 ### H.2. Directory Listing
-Di dalam folder **/var/www/klampis.com** terdapat folder **download**, **assets** dan **assets/javascript**
+Di dalam folder **/var/www/klampis.com** terdapat folder **download**, **private** ,**assets** dan **assets/javascript**
 
         /var/www/klampis.com
                             /download
                             /assets
                             /assets/javascript
+                            /private
 
 Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **klampis.com**, Nia ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Nia tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
+
+Maka yang harus dilakukan udin adalah:
+
+1. Buat folder **download**, **private** ,**assets** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
+    
+        mkdir -p /var/www/klampis.com/download
+        mkdir -p /var/www/klampis.com/assets
+        mkdir -p /var/www/klampis.com/assets/javascript
+        mkdir -p /var/www/klampis.com/private
+
+2. Pindah ke folder ****
     
