@@ -158,10 +158,12 @@ Maka yang harus dilakukan Udin adalah:
 `service apache2 restart`
 5. Pindah ke folder **/var/www** dan buat folder baru dengan nama **klampis.com**
 6. Buat file **index.php** dengan isi file
+
         <?php
             echo "Hello ini klampis.com";
         ?>
     
+    ![](/WebServer/gambar/18.PNG)
     
 
 
