@@ -32,7 +32,9 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 ## F. Apache Basic
 Webserver Apache memiliki folder untuk konfigurasi yang berada di **/etc/apache2**
 
+![](/WebServer/gambar/5.PNG)
 
+Pada folder **/etc/apache2** terdapat berbagai file dan folder untuk konfigurasi
     
     
     
