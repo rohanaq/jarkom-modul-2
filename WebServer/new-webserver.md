@@ -135,8 +135,11 @@ Maka yang harus dilakukan Udin adalah:
 
 1. Buka folder **/etc/apache2/sites-available** dan copy file     **000-default.conf** menjadi **klampis.com.conf**
 
+    ![](/WebServer/gambar/15.PNG)
+    
+2. Buka file **klampis.com.com**, kemudian
 
-
+    2.1. Uncomment **ServerName** dan ganti **www.example.com** menjadi **klampis.com**
 
     
     
