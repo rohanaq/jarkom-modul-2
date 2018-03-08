@@ -140,6 +140,7 @@ Maka yang harus dilakukan Udin adalah:
 2. Buka file **klampis.com.com**, kemudian
 
     2.1. Uncomment **ServerName** dan ganti **www.example.com** menjadi **klampis.com**.
+    
     2.2. Tambahkan
     
         ServerAlias www,klampis.com
