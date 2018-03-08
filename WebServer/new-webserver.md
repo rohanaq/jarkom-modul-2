@@ -23,6 +23,12 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
     
     ![](/WebServer/gambar/3.PNG)
 
-2. 
+2. Test apakah **php** sudah terinstall dengan menjalankan perintah
+
+    `php -v`
+    
+    ![](/WebServer/gambar/4.PNG)
+    
+    
     
     
