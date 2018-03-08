@@ -143,7 +143,7 @@ Maka yang harus dilakukan Udin adalah:
     
     2.2. Tambahkan
     
-        ServerAlias www,klampis.com
+        ServerAlias www.klampis.com
     agar dapat mengakses **www.klampis.com**
          
     2.3. Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/klampis.com**
