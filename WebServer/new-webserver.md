@@ -79,5 +79,18 @@ Penting untuk diketahui:
 
 5. Buka browser dan masukkan alamat **http://[IP Pucang]/index.php**
 
+    ![](/WebServer/gambar/8.PNG)
+    
+    * **Catatan**:
+        1. Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install libapache2-mod-php7.0 dengan menjalankan perintah 
+        
+        `apt-get install libapache2-mod-php7.0`
+        
+        dan restart apache dengan perintah
+        
+        `service apache2 restart`
+        
+        
+
     
     
