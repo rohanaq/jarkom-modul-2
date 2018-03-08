@@ -71,6 +71,7 @@ Penting untuk diketahui:
     
         DocumentRoot /var/www/html
     
-    
+4. Buka folder tempat website pada file konfigurasi default yaitu **/var/www/html**
+
     
     
