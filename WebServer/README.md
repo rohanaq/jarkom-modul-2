@@ -7,7 +7,7 @@ Install Web Server Apache pada PUCANG yang sebelumnya sudah diupdate dengan meng
 ![Pucang1](images/01.png)
 
 ### 2.2 Instalasi PHP pada PUCANG
-Supaya web server dapat menjalankan perintah PHP, maka kita perlu menginstall PHP pada PUCANG dengan mengetikkan __apt-get install php__
+Supaya web server dapat menjalankan perintah PHP, maka kita perlu menginstall PHP pada PUCANG dengan mengetikkan __apt-get install php5__ atau __apt-get install php__
 
 ![Pucang2](images/02.png)
 
@@ -24,25 +24,33 @@ Setelah selesai membuat file __ini.php__, untuk mencoba membukanya akses dengan 
 
 Untuk membuat sebuah halaman atau website, kita dapat menambahkannya pada direktori __/var/www/html__. Langkah-langkahnya sama seperti saat membuat halaman __ini.php__.
 
-Sekarang bayangkan ketika kita ingin mengakses sebuah halaman web kita harus mengetikkan alamat IPnya terlebih dahulu. Ribet kan? Maka kita akan membuatnya menjadi mudah, silahkan lakukan konfigurasi sehingga ketika kita mengakses __pucang.com__ akan diarahkan ke halaman web yang sudah kita buat. 
+Sekarang bayangkan ketika kita ingin mengakses sebuah halaman web kita harus mengetikkan alamat IPnya terlebih dahulu. Ribet kan? Maka kita akan membuatnya menjadi mudah, silahkan lakukan konfigurasi sehingga ketika kita mengakses __klampis.com__ akan diarahkan ke halaman web yang sudah kita buat. Dengan cara mengarahkan nameserver klampis.com ke IP PUCANG. Jika lupa caranya, silahkan buka lagi modul sebelumnya yang membahas tentang [DNS](https://github.com/rohanaq/jarkom-modul2/tree/master/DNS).
 
+Tambah nameserver dengan ip KLAMPIS pada PC kita pada OS Linux menggunakan 
+```
+sudo nano /etc/resolv.conf
+```
+![Pucang23](images/23.png)
+
+Lalu buat file jarkom.php pada /var/www/html pada PUCANG. Ketika diakses hasilnya seperti ini.
+```
+echo "<?php echo 'Semangat JARKOM 2018'; ?>" > /var/www/html/jarkom.php
+```
 ![Pucang4](images/04.png)
 
-Jika lupa caranya, silahkan buka lagi modul sebelumnya yang membahas tentang [DNS](https://github.com/rohanaq/jarkom2/tree/master/DNS).
-
 ### 2.3 Mengubah Direktori Default
-Webserver akan memproses file sesuai URL yang diminta oleh client. Sebagai contoh, ketika client mengakses `http://pucang.com:8080/index.php`.
+Webserver akan memproses file sesuai URL yang diminta oleh client. Sebagai contoh, ketika client mengakses `http://klampis.com:8080/index.php`.
 
 Sebagai | Contoh
 ------------ | -------------
-fullpath URL | `http://pucang.com:8080/index.php`
-hostname | `pucang.com`
+fullpath URL | `http://klampis.com:8080/index.php`
+hostname | `klampis.com`
 port | `8080`
 URL | `/index.php`
 
-Secara _default_, apache2 menggunakan __/var/www/html__ sebagai direktori default. Ketika mengakses `http://pucang.com/ini.php`, sebenarnya webserver sedang mengakses file __/var/www/html/ini.php__.
+Secara _default_, apache2 menggunakan __/var/www/html__ sebagai direktori default. Ketika mengakses `http://klampis.com/ini.php`, sebenarnya webserver sedang mengakses file __/var/www/html/ini.php__.
 
-Dalam kasus tertentu kita ingin mengganti default direktori menjadi direktori lain. Sebagai contoh, apabila direktori default dari apache2 diganti menjadi __/home/rohanaq/mysite__, maka ketika mengakses `http://pucang.com/pasar/index.php`, webserver akan mengakses file __/home/rohanaq/mysite/pasar/index.php__.
+Dalam kasus tertentu kita ingin mengganti default direktori menjadi direktori lain. Sebagai contoh, apabila direktori default dari apache2 diganti menjadi __/home/rohanaq/mysite__, maka ketika mengakses `http://klampis.com/pasar/index.php`, webserver akan mengakses file __/home/rohanaq/mysite/pasar/index.php__.
 
 
 Default direktori pada apache2 ditandai dengan _syntax_ `DocumentRoot`. Contohnya
@@ -113,7 +121,7 @@ Lalu untuk menjalankannya ketikkan `a2ensite default2.conf` dan kemudian restart
 ![Pucang9](images/09.png)
 
 ### 2.5 Alias Directory
-Alias directory adalah membuat direktori lebih mudah diakses tetapi tetap di bawah DocumentRoot. Silahkan masuk ke dalam __/etc/apache2__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
+Alias directory adalah membuat direktori lebih mudah diakses tetapi tetap di bawah DocumentRoot. Silahkan masuk ke dalam __/etc/apache2/sites-available__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
 
 ![Pucang10](images/10.png)
 
@@ -134,7 +142,7 @@ Lalu apa perbedaannya ketika kita mengakses __/test/jarkom__?
 ![Pucang12](images/12.png)
 
 ### 2.6 Directory Listing
-Silahkan masuk ke dalam __/etc/apache2__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
+Silahkan masuk ke dalam __/etc/apache2/sites-available__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
 
 ![Pucang13](images/13.png)
 
@@ -153,7 +161,7 @@ Setelah itu restart apache2 dan coba akses kembali website masing-masing maka ki
 ### 2.7 Allow dan Deny
 Dalam web server dibutuhkan adanya proteksi dan penjagaan terhadap web server agar tetap aman. Dalam web server, kita bisa membatasi hak akses siapa saja yang boleh mengakses web server tersebut.
 
-Silahkan masuk ke dalam __/etc/apache2__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
+Silahkan masuk ke dalam __/etc/apache2/sites-available__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
 
 ![Pucang17](images/17.png)
 
