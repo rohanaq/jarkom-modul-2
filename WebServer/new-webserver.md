@@ -152,7 +152,7 @@ Maka yang harus dilakukan Udin adalah:
 3. Aktifkan konfigurasi **klampis.com.conf** dengan menjalankan
  `a2ensite klampis.com`
  
- ![](/WebServer/gambar/17.PNG)
+     ![](/WebServer/gambar/17.PNG)
  
 4. Restart apache dengan menjalankan
 `service apache2 restart`
