@@ -82,7 +82,7 @@ Penting untuk diketahui:
     ![](/WebServer/gambar/8.PNG)
     
     * **Catatan**:
-        1. Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install libapache2-mod-php7.0 dengan menjalankan perintah 
+        Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install libapache2-mod-php7.0 dengan menjalankan perintah 
         
         `apt-get install libapache2-mod-php7.0`
         
