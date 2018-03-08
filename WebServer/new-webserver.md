@@ -133,7 +133,7 @@ Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat web
 
 Maka yang harus dilakukan Udin adalah:
 
-    1. Buka folder **/etc/apache2/sites-available** dan copy file     **000-default.conf** menjadi **klampis.com.conf**
+1. Buka folder **/etc/apache2/sites-available** dan copy file     **000-default.conf** menjadi **klampis.com.conf**
 
 
 
