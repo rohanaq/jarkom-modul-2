@@ -107,9 +107,11 @@ Penting untuk diketahui:
 
     `a2ensite`
 
-dan ketik nama **file konfigurasi tanpa .conf**
-
+    dan ketik nama **file konfigurasi tanpa .conf**
+    
     ![](/WebServer/gambar/12.PNG)
+    
+    
 
 
 
