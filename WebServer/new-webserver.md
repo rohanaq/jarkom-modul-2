@@ -207,6 +207,10 @@ Maka yang harus dilakukan Udin adalah:
 2. Simpan dan restart apache.
 3. Buka Browser dan akses **http://klampis.com/download**
 
+
+    ![](/WebServer/gambar/21.PNG)
+
+
 **Keterangan**:
   1. Untuk mengatur folder pada sebuah web, menggunakan
   
@@ -217,3 +221,21 @@ Contoh untuk mengatur /var/www/klampis.com/download
     <Directory /var/www/klampis.com/download>
         
     </Directory>
+
+#### H.2.2 Mematikan Directory Listing
+
+1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+    
+        <Directory /var/www/klampis.com/assets>
+            Options -Indexes #Untuk mematikan directory listing
+        </Directory>
+    
+    agar folder **assets** tidak menampilkan isi folder.
+    
+    ![](/WebServer/gambar/22.PNG)
+    
+2. Simpan dan restart apache.
+3. Buka Browser dan akses **http://klampis.com/assets**
+
+  
+
