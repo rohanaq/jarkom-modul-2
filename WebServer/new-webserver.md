@@ -147,6 +147,9 @@ Maka yang harus dilakukan Udin adalah:
          
     2.3. Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/klampis.com**
     
+    ![](/WebServer/gambar/16.PNG)
+    
+    
 
     
     
