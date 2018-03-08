@@ -46,49 +46,50 @@ Penting untuk diketahui:
 
 ## G. Konfigurasi Apache
 ### 1. Penggunaan Sederhana
-    1. Buka folder **/etc/apache2/sites-available**
+1. Buka folder **/etc/apache2/sites-available**
+
+    ![](/WebServer/gambar/6.PNG)
     
-        ![](/WebServer/gambar/6.PNG)
+    Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file,
+    a. **000-default.conf** adalah file konfigurasi website default apache untuk http.
+    b. **default-ssl.conf** adalah file konfigurasi website default apache untuk https.
+
+2. Buka file **000-default.conf**
+
+    ![](/WebServer/gambar/7.PNG)
+3. Pada file **000-default.conf** berisi contoh konfigurasi,
+
+    a. port berapa yang digunakan.
+    
+        <VirtualHost *:80> # Menggunakan port 80
         
-        Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file,
-        a. **000-default.conf** adalah file konfigurasi website default apache untuk http.
-        b. **default-ssl.conf** adalah file konfigurasi website default apache untuk https.
+    b. domain
     
-    2. Buka file **000-default.conf**
-    
-        ![](/WebServer/gambar/7.PNG)
-    3. Pada file **000-default.conf** berisi contoh konfigurasi,
-    
-        a. port berapa yang digunakan.
+        # ServerName www.example.com
         
-            <VirtualHost *:80> # Menggunakan port 80
-            
-        b. domain
-        
-            # ServerName www.example.com
-            
-        c. folder tempat website
-        
-            DocumentRoot /var/www/html
-         
-    4. Buka folder tempat website pada file konfigurasi default yaitu **/var/www/html** dan buat file **index.php** yang berisi
+    c. folder tempat website
     
-            <?php
-                phpinfo();
-            ?>
+        DocumentRoot /var/www/html
+     
+4. Buka folder tempat website pada file konfigurasi default yaitu **/var/www/html** dan buat file **index.php** yang berisi
+
+        <?php
+            phpinfo();
+        ?>
+
+5. Buka browser dan masukkan alamat **http://[IP Pucang]/index.php**
+
+    ![](/WebServer/gambar/8.PNG)
     
-    5. Buka browser dan masukkan alamat **http://[IP Pucang]/index.php**
-    
-        ![](/WebServer/gambar/8.PNG)
+    * **Catatan**:
+        Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install **libapache2-mod-php7.0** dengan menjalankan perintah 
         
-        * **Catatan**:
-            Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install **libapache2-mod-php7.0** dengan menjalankan perintah 
-            
-            `apt-get install libapache2-mod-php7.0`
-            
-            dan restart apache dengan perintah
-            
-            `service apache2 restart`
+        `apt-get install libapache2-mod-php7.0`
+        
+        dan restart apache dengan perintah
+        
+        `service apache2 restart`
+        
 2. 
         
 
