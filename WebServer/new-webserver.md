@@ -21,4 +21,8 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 1. Buka uml **Pucang** dan jalankan perintah
     `apt-get install php`
     
+    ![](/WebServer/gambar/3.PNG)
+
+2. 
+    
     
