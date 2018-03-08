@@ -16,5 +16,9 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 2. Buka browser laptop/komputer masing-masing dan buka web **IP Pucang Masing-Masing Kelompok** sampai muncul halaman Apache
 
     ![](/WebServer/gambar/2.PNG)
+
+## E. Instalasi PHP
+1. Buka uml **Pucang** dan jalankan perintah
+    `apt-get install php`
     
     
