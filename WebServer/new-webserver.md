@@ -28,6 +28,11 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
     `php -v`
     
     ![](/WebServer/gambar/4.PNG)
+
+## F. Apache Basic
+Webserver Apache memiliki folder untuk konfigurasi yang berada di **/etc/apache2**
+
+
     
     
     
