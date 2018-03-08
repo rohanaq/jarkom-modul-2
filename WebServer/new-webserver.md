@@ -181,7 +181,7 @@ Di dalam folder **/var/www/klampis.com** terdapat folder **download**, **private
 
 Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **klampis.com**, Nia ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Nia tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
 
-Maka yang harus dilakukan udin adalah:
+Maka yang harus dilakukan Udin adalah:
 
 1. Buat folder **download**, **private** ,**assets** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
     
@@ -190,10 +190,12 @@ Maka yang harus dilakukan udin adalah:
         mkdir -p /var/www/klampis.com/assets/javascript
         mkdir -p /var/www/klampis.com/private
 
-2. Pindah ke folder **/etc/apache2/sites-available** dan buka file **klampis.com** dan tambahkan
+2. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
     
         <Directory /var/www/klampis.com/download>
             Options +Indexes
         </Directory>
     
     agar folder **download** menampilkan isi folder.
+    
+    ![](/WebServer/gambar/20.PNG)
