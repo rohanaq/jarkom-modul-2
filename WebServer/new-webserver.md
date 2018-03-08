@@ -168,7 +168,7 @@ Maka yang harus dilakukan Udin adalah:
 7. Ganti DNS laptop/komputer sesuai **IP Klampis** masing-masing.
 8. Buka browser dan akses **klampis.com**
 
-
+    ![](/WebServer/gambar/19.PNG)
 
     
     
