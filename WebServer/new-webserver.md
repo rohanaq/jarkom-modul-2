@@ -97,6 +97,12 @@ Penting untuk diketahui:
     
 2. Buka file **default-8080.conf**, kemudian ubah ubah port yang digunakan yang awalnya **80 **menjadi **8080 **dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
 
+    ![](/WebServer/gambar/10.PNG)
+
+3. Tambahkan port 8080 pada file **ports.conf**
+
+
+
 
 
 
