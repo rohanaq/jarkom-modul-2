@@ -130,6 +130,10 @@ Penting untuk diketahui:
 ## H. Mari Berimajinasi
 ### H.1. Setting Domain Pada Apache
 Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **klampis.com**. Dia memiliki **teman **yang bernama Udin kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
+Maka yang harus dilakukan Udin adalah:
+
+    1. Buka folder **/etc/apache2/sites-available** dan copy file     **000-default.conf** menjadi **klampis.com.conf**
+
 
 
 
