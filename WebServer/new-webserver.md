@@ -77,7 +77,7 @@ Penting untuk diketahui:
             phpinfo();
         ?>
 
-5. Buka browser dan masukkan alamat **http://[IP Pucang]/index.php**
+5. Buka browser dan akses alamat **http://[IP Pucang]/index.php**
 
     ![](/WebServer/gambar/8.PNG)
     
@@ -123,7 +123,9 @@ Penting untuk diketahui:
     
     ![](/WebServer/gambar/13.PNG)
         
-8. 
+8. Buka browser dan akses alamat http://[IP Pucang]:8080
+
+
 
 
 
