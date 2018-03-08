@@ -44,7 +44,7 @@ Penting untuk diketahui:
 5. **mods-available** adalah folder tempat modul-modul apache2 yang tersedia.
 6. **mods-enabled** adalah folder tempat modul-modul apache2 yang tersedia dan sudah aktif.
 
-## G. Konfigurasi Apache
+## G. Konfigurasi Apache Sederhana
 ### G.1. Penggunaan Sederhana
 1. Buka folder **/etc/apache2/sites-available**
 
@@ -126,7 +126,6 @@ Penting untuk diketahui:
 8. Buka browser dan akses alamat http://[IP Pucang]:8080
 
     ![](/WebServer/gambar/14.PNG)
-    
     
 
 
