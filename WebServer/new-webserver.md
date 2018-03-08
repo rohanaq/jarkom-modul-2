@@ -116,11 +116,10 @@ Penting untuk diketahui:
 5. Restart apache menggunakan perintah **service apache2 restart**
 6. Pindah ke folder **/var/www** dan buat folder baru dengan nama **web-8080**
 7. Masuk ke folder **web-8080** dan buat file **index.php** yang berisi
-    
-    <?php
-        echo "Hello ini port 8080";
-    ?>
-    
+        <?php
+            echo "Hello ini port 8080";
+        ?>
+        
 
 
 
