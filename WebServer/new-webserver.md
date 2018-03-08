@@ -77,7 +77,7 @@ Penting untuk diketahui:
             phpinfo();
         ?>
 
-
+5. Buka browser dan masukkan alamat **http://[IP Pucang]/index.php**
 
     
     
