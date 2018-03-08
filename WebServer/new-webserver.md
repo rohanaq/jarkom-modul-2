@@ -128,8 +128,8 @@ Penting untuk diketahui:
     ![](/WebServer/gambar/14.PNG)
 
 ## H. Mari Berimajinasi
-### H.1. Setting Domain Pada Apache2
-Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **klampis.com** 
+### H.1. Setting Domain Pada Apache
+Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **klampis.com**. Dia memiliki teman yang bernama Udin kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
 
 
 
