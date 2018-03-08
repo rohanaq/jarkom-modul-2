@@ -58,10 +58,13 @@ Penting untuk diketahui:
 
     ![](/WebServer/gambar/7.PNG)
 3. Pada file **000-default.conf** berisi contoh konfigurasi,
+
     a. port berapa yang digunakan.
-        `<VirtualHost *:80> # Menggunakan port 80
+        `<VirtualHost *:80> # Menggunakan port 80`
+        
     b. domain
         `# ServerName www.example.com`
+        
     c. folder tempat website
         `DocumentRoot /var/www/html`
     
