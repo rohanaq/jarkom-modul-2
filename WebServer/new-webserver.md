@@ -112,7 +112,8 @@ Penting untuk diketahui:
     ![](/WebServer/gambar/12.PNG)
     
     kemudian tekan enter.
-    
+
+5. Restart apache menggunakan perintah **service apache2 restart**
     
 
 
