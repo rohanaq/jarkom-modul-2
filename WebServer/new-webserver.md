@@ -70,8 +70,13 @@ Penting untuk diketahui:
     c. folder tempat website
     
         DocumentRoot /var/www/html
-    
-4. Buka folder tempat website pada file konfigurasi default yaitu **/var/www/html**
+     
+4. Buka folder tempat website pada file konfigurasi default yaitu **/var/www/html** dan buat file **index.php** yang berisi
+
+        <?php
+            phpinfo();
+        ?>
+
 
 
     
