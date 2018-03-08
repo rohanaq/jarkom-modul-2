@@ -8,4 +8,9 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
 ## D. Instalasi Apache
 1. Buka uml **Pucang** dan jalankan perintah
+
     `apt-get install apache2 `
+    
+    ![](/WebServer/gambar/1.PNG)
+    
+    
