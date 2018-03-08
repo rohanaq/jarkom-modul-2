@@ -56,6 +56,7 @@ Penting untuk diketahui:
 
 2. Buka file **000-default.conf**
 
+    ![](/WebServer/gambar/7.PNG)
 
     
     
