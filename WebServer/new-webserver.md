@@ -192,7 +192,7 @@ Maka yang harus dilakukan Udin adalah:
         mkdir -p /var/www/klampis.com/assets/javascript
         mkdir -p /var/www/klampis.com/private
 
-#### H.2.1 Enable Directory Listing
+#### H.2.1 Mengaktifkan Directory Listing
 
 1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
     
