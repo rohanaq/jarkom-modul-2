@@ -101,7 +101,15 @@ Penting untuk diketahui:
 
 3. Tambahkan port 8080 pada file **ports.conf**
 
+    ![](/WebServer/gambar/11.PNG)
 
+4. Untuk mengaktifkan konfigurasi **default-8080.conf** jalankan perintah
+
+    `a2ensite`
+
+dan ketik nama **file konfigurasi tanpa .conf**
+
+    ![](/WebServer/gambar/12.PNG)
 
 
 
