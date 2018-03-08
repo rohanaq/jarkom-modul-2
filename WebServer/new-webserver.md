@@ -190,7 +190,9 @@ Maka yang harus dilakukan Udin adalah:
         mkdir -p /var/www/klampis.com/assets/javascript
         mkdir -p /var/www/klampis.com/private
 
-2. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+#### H.2.1 Enable Directory Listing
+
+1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
     
         <Directory /var/www/klampis.com/download>
             Options +Indexes
@@ -199,3 +201,7 @@ Maka yang harus dilakukan Udin adalah:
     agar folder **download** menampilkan isi folder.
     
     ![](/WebServer/gambar/20.PNG)
+    
+2. Simpan dan restart apache.
+3. Buka Browser dan akses **http://klampis.com/download**
+
