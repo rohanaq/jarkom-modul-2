@@ -53,7 +53,9 @@ Penting untuk diketahui:
     Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file,
     a. **000-default.conf** adalah file konfigurasi website default apache untuk http.
     b. **default-ssl.conf** adalah file konfigurasi website default apache untuk https.
-    
+
+2. Buka file **000-default.conf**
+
 
     
     
