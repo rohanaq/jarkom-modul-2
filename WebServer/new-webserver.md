@@ -237,5 +237,6 @@ Contoh untuk mengatur /var/www/klampis.com/download
 2. Simpan dan restart apache.
 3. Buka Browser dan akses **http://klampis.com/assets**
 
+    ![](/WebServer/gambar/23.PNG)
   
 
