@@ -190,5 +190,10 @@ Maka yang harus dilakukan udin adalah:
         mkdir -p /var/www/klampis.com/assets/javascript
         mkdir -p /var/www/klampis.com/private
 
-2. Pindah ke folder ****
+2. Pindah ke folder **/etc/apache2/sites-available** dan buka file **klampis.com** dan tambahkan
     
+        <Directory /var/www/klampis.com/download>
+            Options +Indexes
+        </Directory>
+    
+    agar folder **download** menampilkan isi folder.
