@@ -44,6 +44,16 @@ Penting untuk diketahui:
 5. **mods-available** adalah folder tempat modul-modul apache2 yang tersedia.
 6. **mods-enabled** adalah folder tempat modul-modul apache2 yang tersedia dan sudah aktif.
 
+## G. Konfigurasi Apache
+### 1. Penggunaan Sederhana
+1. Buka folder **/etc/apache2/sites-available**
+
+    ![](/WebServer/gambar/6.PNG)
+    
+    Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file,
+    a. **000-default.conf** adalah file konfigurasi website default apache untuk http.
+    b. **default-ssl.conf** adalah file konfigurasi website default apache untuk https.
+    
 
     
     
