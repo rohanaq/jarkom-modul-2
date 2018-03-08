@@ -197,7 +197,7 @@ Maka yang harus dilakukan Udin adalah:
 1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
     
         <Directory /var/www/klampis.com/download>
-            Options +Indexes
+            Options +Indexes #Untuk mengaktifkan directory listing
         </Directory>
     
     agar folder **download** menampilkan isi folder.
@@ -207,3 +207,13 @@ Maka yang harus dilakukan Udin adalah:
 2. Simpan dan restart apache.
 3. Buka Browser dan akses **http://klampis.com/download**
 
+**Keterangan**:
+  1. Untuk mengatur folder pada sebuah web, menggunakan
+  
+  `<Directory /x> ... </Directory>`
+  
+Contoh untuk mengatur /var/www/klampis.com/download
+    
+    <Directory /var/www/klampis.com/download>
+        
+    </Directory>
