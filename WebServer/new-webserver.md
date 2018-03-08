@@ -94,5 +94,6 @@ Penting untuk diketahui:
 1. Pindah ke folder **/etc/apache2/sites-available** dan copy file **000-default.conf** menjadi file **default-8080.conf**.
 
     ![](/WebServer/gambar/9.PNG)
+2. Buka file **default-8080.conf** dan ubah port yang digunakan yang awalnya 80 menjadi 8080.
     
     
