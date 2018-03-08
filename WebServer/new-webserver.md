@@ -91,7 +91,6 @@ Penting untuk diketahui:
         `service apache2 restart`
         
 ### G.2. Membuat Konfigurasi Website Menggunakan Port 8080
-        
-
+1. Pindah ke folder **/etc/apache2/sites-available** dan copy file **000-default.conf** menjadi file **default-8080.conf**.
     
     
