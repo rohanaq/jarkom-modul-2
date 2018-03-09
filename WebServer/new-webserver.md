@@ -304,3 +304,6 @@ Keterangan
         
             echo "ini halaman About Us"
         ?>
+
+3. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+
