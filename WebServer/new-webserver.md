@@ -274,3 +274,8 @@ Setelah dipikir-pikir ternyata **http://[IP Klampis]/index.php** ternyata kurang
 
 Maka yang dilkaukan Udin adalah
 
+1. Menjalankan perintah `a2enmod` dan menuliskan **rewrite** untuk mengaktikan module rewrite.
+
+    ![](/WebServer/gambar/27.PNG)
+
+2. Restart apache
