@@ -296,16 +296,18 @@ Maka yang dilakukan adalah
 ![](/WebServer/gambar/28.PNG)
 
 Keterangan
+
     * RewriteEngine On = Untuk flag bahwa menggunakan module rewrite
     * RewriteCond %{SCRIPT_FILENAME} !-d = aturan tidak akan jalan ketika yang diakses adalah folder (d)
     * RewriteRule ^([^.]+)$ $1.php [NC,L] = $1 adalah parameter input yang akan dicari oleh webserver
-
 2. Buat file aboutus.php dengan isi
     
         <?php
         
             echo "ini halaman About Us"
         ?>
+
+    ![](/WebServer/gambar/29.PNG)
 
 3. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
 
