@@ -264,14 +264,14 @@ Maka yang dilakukan Udin adalah
 `touch app.js`
     ![](/WebServer/gambar/25.PNG)
 
-4. Buka browser dan akses **http://[IP Klampis]/assets/js**
+4. Buka browser dan akses **http://klampis.com/assets/js**
 
     ![](/WebServer/gambar/26.PNG)
 
 ### H.4. Module Rewrite
 
 ### H.4.1. Mengaktifkan Module Rewrite
-Setelah dipikir-pikir ternyata **http://[IP Klampis]/index.php** ternyata kurang cantik untuk penulisan url. Maka Udin berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
+Setelah dipikir-pikir ternyata **http://klampis.com/index.php** ternyata kurang cantik untuk penulisan url. Maka Udin berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
 
 Maka yang dilakukan Udin adalah
 
@@ -284,7 +284,7 @@ Maka yang dilakukan Udin adalah
 ### H.4.2. Membuat file .htaccess
 
 Biasanya semua konfigurasi terhadap sebuah website diatur pada file di folder **/etc/apache2/sites-available**. Namun terkadang ada sebuah kasus bahwa kita tidak memiliki hak akses root untuk edit file konfigurasi yang berada di folder **/etc/apache2/sites-available** atau kita tidak ingin user lain untuk mengedit file konfigurasi yang berada di folder **/etc/apache2/sites-available**. 
-Untuk mengatasi masalah tersebut kita dapat membuat file **.htaccess** pada folder dimana kita ingin atur. Untuk contoh kasus diatas kita ingin mengatur mod rewrite dari **http://[IP Klampis]** agar saat mengakses file php tanpa ekstensi file. 
+Untuk mengatasi masalah tersebut kita dapat membuat file **.htaccess** pada folder dimana kita ingin atur. Untuk contoh kasus diatas kita ingin mengatur mod rewrite dari **http://klampis.com** agar saat mengakses file php tanpa ekstensi file. 
 
 Maka yang dilakukan adalah 
 Step 1. Pindah ke folder **/var/www/klampis.com** dan buat file **.htaccess** dengan isi file
@@ -313,4 +313,19 @@ Step 2. Buat file aboutus.php dengan isi
    ![](/WebServer/gambar/29.PNG)
 
 Step 3. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+
+    <Directory /var/www/klampis.com>
+        AllowOverride All
+    </Directory>
+
+![](/WebServer/gambar/30.PNG)
+
+Keterangan : 
+`AllowOverride All` ditambahkan agar konfigurasi **.htaccess** dapat berjalan.
+
+Step 4. Restart apache
+
+Step 5. Buka browser dan akses **http://klampis.com/aboutus**
+
+![](/WebServer/gambar/31.PNG)
 
