@@ -273,7 +273,7 @@ Maka yang dilakukan Udin adalah
 ### H.4.1. Mengaktifkan Module Rewrite
 Setelah dipikir-pikir ternyata **http://[IP Klampis]/index.php** ternyata kurang cantik untuk penulisan url. Maka Udin berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
 
-Maka yang dilkaukan Udin adalah
+Maka yang dilakukan Udin adalah
 
 1. Menjalankan perintah `a2enmod` dan menuliskan **rewrite** untuk mengaktikan module rewrite.
 
@@ -284,4 +284,6 @@ Maka yang dilkaukan Udin adalah
 ### H.4.2. Membuat file .htaccess
 
 Biasanya semua konfigurasi terhadap sebuah website diatur pada file di folder **/etc/apache2/sites-available**. Namun terkadang ada sebuah kasus bahwa kita tidak memiliki hak akses root untuk edit file konfigurasi yang berada di folder **/etc/apache2/sites-available** atau kita tidak ingin user lain untuk mengedit file konfigurasi yang berada di folder **/etc/apache2/sites-available**. 
-Untuk mengatasi masalah tersebut kita dapat membuat file **.htaccess** pada folder dimana kita ingin mengatur. Untuk contoh kasus diatas kita 
+Untuk mengatasi masalah tersebut kita dapat membuat file **.htaccess** pada folder dimana kita ingin atur. Untuk contoh kasus diatas kita ingin mengatur mod rewrite dari **http://[IP Klampis]** agar saat mengakses file php tanpa ekstensi file. 
+
+Maka yang dilakukan adalah 
