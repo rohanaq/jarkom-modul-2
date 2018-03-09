@@ -363,6 +363,11 @@ Step 3. Buka browser dan akses **http://klampis.com/data**
 Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
 
 
+![](/WebServer/gambar/34.png)
+
+Gambar diatas ketika pengguna **memiliki ip nid 10.151.252.0/22**
+
+
 
 
 
