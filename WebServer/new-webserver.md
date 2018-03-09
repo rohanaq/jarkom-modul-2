@@ -248,5 +248,11 @@ Karena dirasa **http://[IP Klampis]/assets/javascript** terlalu panjang url-nya,
 Maka yang dilakukan Udin adalah
 1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
 
-
-
+    Alias "/assets/js" "/var/www/klampis.com/assets/javascript"
+    
+    <Directory /var/www/klampis.com/assets/javascript>
+        Require all granted
+        Options +Indexes
+    </Directory>
+    
+    
