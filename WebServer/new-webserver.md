@@ -186,8 +186,9 @@ Karena folder **download** terdapat file-file yang bisa didownload oleh pengunju
 
 Maka yang harus dilakukan Udin adalah:
 
-1. Buat folder **download**, **private** ,**assets** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
-    
+1. Buat folder **download**, **private** ,**assets**, **data** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
+
+        mkdir -p /var/www/klampis.com/data
         mkdir -p /var/www/klampis.com/download
         mkdir -p /var/www/klampis.com/download/lagu
         mkdir -p /var/www/klampis.com/assets
