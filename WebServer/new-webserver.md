@@ -333,5 +333,8 @@ Pada web **http://klampis.com** terdapat path **/data** yang tidak boleh dibuka 
 Maka yang dilakukan Udin adalah
 1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
 
+    <Directory /var/www/klampis.com/data>
+        
+    </Directory>
 
  
