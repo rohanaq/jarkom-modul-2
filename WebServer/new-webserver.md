@@ -267,3 +267,10 @@ Maka yang dilakukan Udin adalah
 4. Buka browser dan akses **http://[IP Klampis]/assets/js**
 
     ![](/WebServer/gambar/26.PNG)
+
+### H.4 Module Rewrite
+
+Setelah dipikir-pikir ternyata **http://[IP Klampis]/index.php** ternyata kurang cantik untuk penulisan url. Maka Udin berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
+
+Maka yang dilkaukan Udin adalah
+
