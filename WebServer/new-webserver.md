@@ -246,7 +246,9 @@ Contoh untuk mengatur /var/www/klampis.com/download
 Karena dirasa **http://[IP Klampis]/assets/javascript** terlalu panjang url-nya, maka Udin mencoba membuat directory alias menjadi **http://[IP Klampis]/assets/js**
 
 Maka yang dilakukan Udin adalah
+
 1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+
 
     Alias "/assets/js" "/var/www/klampis.com/assets/javascript"
     
@@ -254,5 +256,11 @@ Maka yang dilakukan Udin adalah
         Require all granted
         Options +Indexes
     </Directory>
-    
-    
+
+ 
+ ![](/WebServer/gambar/24.PNG)
+2. Restart apache2
+3. Pindah ke folder **/var/www/klampis.com/assets/javascript** dan buat file **app.js** dengan perintah
+
+    touch app.js
+   
