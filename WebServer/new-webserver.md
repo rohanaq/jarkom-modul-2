@@ -328,13 +328,26 @@ Step 5. Buka browser dan akses **http://klampis.com/aboutus**
 
 ### H.5 Otorisasi
 
-Pada web **http://klampis.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Nia ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip 10.151.252.0/255.255.252.0.
+Pada web **http://klampis.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Nia ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
 
 Maka yang dilakukan Udin adalah
 1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
 
     <Directory /var/www/klampis.com/data>
-        
+        Options +Indexes
+        Order deny,allow
+        Deny from all
+        Allow from 10.151.252.0/255.255.252.0
     </Directory>
+
+Keterangan:
+* `Order deny,allow` merupakan urutan hak akses. Terdapat dua jenis tipe order yaitu:
+
+    1. deny,allow : Bagian *Deny* harus dideclare terlebih dahulu sebelum _Allow_
+    2. allow, deny : Bagian *Allow* harus dideclare terlebih dahulu sebelum _Deny_
+
+* `Deny from all` berarti semua pengguna ditolak
+
+
 
  
