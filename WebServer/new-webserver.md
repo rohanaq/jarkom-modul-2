@@ -290,5 +290,10 @@ Maka yang dilakukan adalah
 1. Pindah ke folder **/var/www/klampis.com** dan buat file **.htaccess** dengan isi file
 
     RewriteEngine On
-    RewriteCond %{SCRIPT_FILENAME} !-d
+    RewriteCond %{SCRIPT_FILENAME} !-d #Aturan tidak akan jalan ketika yang diakses adalah folder
     RewriteRule ^([^.]+)$ $1.php [NC,L]
+
+Keterangan
+    * RewriteEngine On = Untuk flag bahwa menggunakan module rewrite
+    * RewriteCond %{SCRIPT_FILENAME} !-d = aturan tidak akan jalan ketika yang diakses adalah folder (d)
+    * RewriteRule ^([^.]+)$ $1.php [NC,L] = $1 adalah parameter input yang akan dicari oleh webserver
