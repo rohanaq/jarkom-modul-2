@@ -245,3 +245,8 @@ Contoh untuk mengatur /var/www/klampis.com/download
 ### H.3 Directory Alias
 Karena dirasa **http://[IP Klampis]/assets/javascript** terlalu panjang url-nya, maka Udin mencoba membuat directory alias menjadi **http://[IP Klampis]/assets/js**
 
+Maka yang dilakukan Udin adalah
+1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+
+
+
