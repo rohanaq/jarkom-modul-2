@@ -297,3 +297,10 @@ Keterangan
     * RewriteEngine On = Untuk flag bahwa menggunakan module rewrite
     * RewriteCond %{SCRIPT_FILENAME} !-d = aturan tidak akan jalan ketika yang diakses adalah folder (d)
     * RewriteRule ^([^.]+)$ $1.php [NC,L] = $1 adalah parameter input yang akan dicari oleh webserver
+
+2. Buat file aboutus.php dengan isi
+    
+        <?php
+        
+            echo "ini halaman About Us"
+        ?>
