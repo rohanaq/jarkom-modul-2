@@ -1,5 +1,13 @@
 # Web Server
 
+## A. Persyaratan Tambahan Mengikuti Sesilab
+1. Record A dan PTR pada klampis.com mengarah ke IP Pucang
+
+## B. Penting Untuk Dibaca
+1. Pastikan Semua UML bisa connect ke internet baik dapat melakukan koneksi keluar maupun dapat ping dari luar (Khusus DMZ).
+2. Pastikan Pucang dan Klampis sudah memiliki memory 256M
+
+
 ## C. Dasar Teori
 ### 1. Web Server
 Web Server adalah perangkat yang menyediakan layanan akses kepada pengguna melalui protokol HTTP atau HTTPS melalui aplikasi web.
