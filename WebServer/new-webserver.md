@@ -263,3 +263,5 @@ Maka yang dilakukan Udin adalah
     touch app.js
    
 ![](/WebServer/gambar/25.PNG)
+4. Buka browser dan akses **http://[IP Klampis]/assets/js**
+![](/WebServer/gambar/26.PNG)
