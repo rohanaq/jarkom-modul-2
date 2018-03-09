@@ -341,6 +341,7 @@ Step 1. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **k
         Allow from 10.151.252.0/255.255.252.0
     </Directory>
 
+![](/WebServer/gambar/32.PNG)
 
 Keterangan:
 
@@ -360,6 +361,7 @@ Step 3. Buka browser dan akses **http://klampis.com/data**
 ![](/WebServer/gambar/33.PNG)
 
 Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
+
 
 
 
