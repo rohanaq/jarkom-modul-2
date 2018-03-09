@@ -327,3 +327,5 @@ Step 5. Buka browser dan akses **http://klampis.com/aboutus**
 ![](/WebServer/gambar/31.PNG)
 
 ### H.5 Otorisasi
+
+Pada web **http://klampis.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Nia ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip 10.151.252.0/255.255.252.0.
