@@ -357,6 +357,10 @@ Keterangan:
 Step 2. Restart apache
 Step 3. Buka browser dan akses **http://klampis.com/data**
 
+![](/WebServer/gambar/33.PNG)
+
+Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
+
 
 
 
