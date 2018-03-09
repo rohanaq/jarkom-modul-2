@@ -292,6 +292,8 @@ Maka yang dilakukan adalah
     RewriteEngine On
     RewriteCond %{SCRIPT_FILENAME} !-d #Aturan tidak akan jalan ketika yang diakses adalah folder
     RewriteRule ^([^.]+)$ $1.php [NC,L]
+    
+![](/WebServer/gambar/28.PNG)
 
 Keterangan
     * RewriteEngine On = Untuk flag bahwa menggunakan module rewrite
