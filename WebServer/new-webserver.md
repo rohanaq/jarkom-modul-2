@@ -300,6 +300,7 @@ Keterangan
     * RewriteEngine On = Untuk flag bahwa menggunakan module rewrite
     * RewriteCond %{SCRIPT_FILENAME} !-d = aturan tidak akan jalan ketika yang diakses adalah folder (d)
     * RewriteRule ^([^.]+)$ $1.php [NC,L] = $1 adalah parameter input yang akan dicari oleh webserver
+    * Info cek [Klik Disini](https://httpd.apache.org/docs/2.4/rewrite/flags.html)
     
 Step 2. Buat file aboutus.php dengan isi
 
