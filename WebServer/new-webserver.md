@@ -242,4 +242,6 @@ Contoh untuk mengatur /var/www/klampis.com/download
 
     ![](/WebServer/gambar/23.PNG)
   
+### H.3 Directory Alias
+
 
