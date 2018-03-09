@@ -287,7 +287,7 @@ Biasanya semua konfigurasi terhadap sebuah website diatur pada file di folder **
 Untuk mengatasi masalah tersebut kita dapat membuat file **.htaccess** pada folder dimana kita ingin atur. Untuk contoh kasus diatas kita ingin mengatur mod rewrite dari **http://[IP Klampis]** agar saat mengakses file php tanpa ekstensi file. 
 
 Maka yang dilakukan adalah 
-1. Pindah ke folder **/var/www/klampis.com** dan buat file **.htaccess** dengan isi file
+Step 1. Pindah ke folder **/var/www/klampis.com** dan buat file **.htaccess** dengan isi file
 
     RewriteEngine On
     RewriteCond %{SCRIPT_FILENAME} !-d #Aturan tidak akan jalan ketika yang diakses adalah folder
@@ -300,14 +300,16 @@ Keterangan
     * RewriteEngine On = Untuk flag bahwa menggunakan module rewrite
     * RewriteCond %{SCRIPT_FILENAME} !-d = aturan tidak akan jalan ketika yang diakses adalah folder (d)
     * RewriteRule ^([^.]+)$ $1.php [NC,L] = $1 adalah parameter input yang akan dicari oleh webserver
-2. Buat file aboutus.php dengan isi
     
+Step 2. Buat file aboutus.php dengan isi
+
+
         <?php
         
             echo "ini halaman About Us"
         ?>
+    
+   ![](/WebServer/gambar/29.PNG)
 
-    ![](/WebServer/gambar/29.PNG)
-
-3. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+Step 3. Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
 
