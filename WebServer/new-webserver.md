@@ -193,8 +193,6 @@ Maka yang harus dilakukan Udin adalah:
         mkdir -p /var/www/klampis.com/download/lagu
         mkdir -p /var/www/klampis.com/assets
         mkdir -p /var/www/klampis.com/assets/javascript
-        mkdir -p /var/www/klampis.com/private-digest
-        mkdir -p /var/www/klampis.com/private-basic
 
 #### H.2.1 Mengaktifkan Directory Listing
 
