@@ -211,7 +211,6 @@ Maka yang harus dilakukan Udin adalah:
 2. Simpan dan restart apache.
 3. Buka Browser dan akses **http://klampis.com/download**
 
-
     ![](/WebServer/gambar/21.PNG)
 
 
