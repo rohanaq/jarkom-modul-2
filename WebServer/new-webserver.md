@@ -243,5 +243,5 @@ Contoh untuk mengatur /var/www/klampis.com/download
     ![](/WebServer/gambar/23.PNG)
   
 ### H.3 Directory Alias
-
+Karena dirasa **http://[IP Klampis]/assets/javascript** terlalu panjang url-nya, maka Udin mencoba membuat directory alias menjadi **http://[IP Klampis]/assets/js**
 
