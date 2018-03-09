@@ -6,6 +6,7 @@
 ## B. Penting Untuk Dibaca
 1. Pastikan Semua UML bisa connect ke internet baik dapat melakukan koneksi keluar maupun dapat ping dari luar (Khusus DMZ).
 2. Pastikan Pucang dan Klampis sudah memiliki memory 256M
+3. Ketika mengalami kendala/error** cek syntax dan samakan seperti modul** terlebih dahulu **sebelum **angkat tangan dan berkata **"Mas/Mbak ini kok gak bisa ya?"**
 
 
 ## C. Dasar Teori
