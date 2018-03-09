@@ -259,8 +259,7 @@ Maka yang dilakukan Udin adalah
         
  ![](/WebServer/gambar/24.PNG)       
 2. Restart apache2
-3. Pindah ke folder **/var/www/klampis.com/assets/javascript** dan buat file **app.js** dengan perintah
-`touch app.js`
+3. Pindah ke folder **/var/www/klampis.com/assets/javascript** dan buat file **app.js** dengan perintah `touch app.js`
 ![](/WebServer/gambar/25.PNG)
 
 4. Buka browser dan akses **http://[IP Klampis]/assets/js**
