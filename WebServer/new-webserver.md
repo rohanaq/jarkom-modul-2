@@ -146,7 +146,7 @@ Maka yang harus dilakukan Udin adalah:
 
     ![](/WebServer/gambar/15.PNG)
     
-2. Buka file **klampis.com.com**, kemudian
+2. Buka file **klampis.com.conf**, kemudian
 
     2.1. Uncomment **ServerName** dan ganti **www.example.com** menjadi **klampis.com**.
     
@@ -313,7 +313,7 @@ Step 2. Buat file aboutus.php dengan isi
 
         <?php
         
-            echo "ini halaman About Us"
+            echo "ini halaman About Us";
         ?>
     
    ![](/WebServer/gambar/29.PNG)
