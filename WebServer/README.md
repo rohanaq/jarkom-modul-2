@@ -1,244 +1,423 @@
-# 2. Web Server
+# Web Server
+
+## A. Persyaratan Tambahan Mengikuti Sesilab
+1. Record A dan PTR pada klampis.com mengarah ke IP Pucang
+
+## B. Penting Untuk Dibaca
+1. Pastikan Semua UML bisa connect ke internet baik dapat melakukan koneksi keluar maupun dapat ping dari luar (Khusus DMZ).
+2. Pastikan Pucang dan Klampis sudah memiliki memory 256M
+3. Ketika mengalami kendala/error **cek syntax dan samakan seperti modul** terlebih dahulu **sebelum** angkat tangan dan berkata **"Mas/Mbak ini kok gak bisa ya?"**
+
+
+## C. Dasar Teori
+
+### 1. Web Server
 Web Server adalah perangkat yang menyediakan layanan akses kepada pengguna melalui protokol HTTP atau HTTPS melalui aplikasi web.
 
-### 2.1 Instalasi apache2
-Install Web Server Apache pada PUCANG yang sebelumnya sudah diupdate dengan mengetikkan __apt-get install apache2__. Setelah proses instalasi selesai, coba akses __IP PUCANG TIAP KELOMPOK__ pada browser maka akan muncul seperti gambar di bawah:
+### 2. Apache Web Server
+Apache adalah sebuah nama web server yang bertanggung jawab pada request-response HTTP dan logging informasi secara detail
 
-![Pucang1](images/01.png)
+## D. Instalasi Apache
 
-### 2.2 Instalasi PHP pada PUCANG
-Supaya web server dapat menjalankan perintah PHP, maka kita perlu menginstall PHP pada PUCANG dengan mengetikkan __apt-get install php5__ atau __apt-get install php__
+**STEP 1** - Buka uml **Pucang** dan jalankan perintah
 
-![Pucang2](images/02.png)
+    apt-get install apache2
 
-Setelah proses instalasi selesai, untuk mengetahui apakah instalasi PHP berhasil atau tidak, silahkan membuat file PHP yang diletakkan di __/var/www/html__
+![](/WebServer/gambar/1.PNG)
+    
+**STEP 2** - Buka browser laptop/komputer masing-masing dan buka web **IP Pucang Masing-Masing Kelompok** sampai muncul halaman Apache
 
-Jalankan perintah untuk membuat file __ini.php__:
-```bash
-echo "<?php phpinfo(); ?>" > /var/www/html/ini.php
-```
+![](/WebServer/gambar/2.PNG)
 
-Setelah selesai membuat file __ini.php__, untuk mencoba membukanya akses dengan `http://IP_PUCANG_TIAP_KELOMPOK/ini.php` pada browser laptop masing-masing maka akan muncul seperti gambar di bawah:
+## E. Instalasi PHP
 
-![Pucang3](images/03.png)
+**STEP 1** - Buka uml **Pucang** dan jalankan perintah
 
-Untuk membuat sebuah halaman atau website, kita dapat menambahkannya pada direktori __/var/www/html__. Langkah-langkahnya sama seperti saat membuat halaman __ini.php__.
+    apt-get install php
+    
+![](/WebServer/gambar/3.PNG)
 
-Sekarang bayangkan ketika kita ingin mengakses sebuah halaman web kita harus mengetikkan alamat IPnya terlebih dahulu. Ribet kan? Maka kita akan membuatnya menjadi mudah, silahkan lakukan konfigurasi sehingga ketika kita mengakses __klampis.com__ akan diarahkan ke halaman web yang sudah kita buat. Dengan cara mengarahkan nameserver klampis.com ke IP PUCANG. Jika lupa caranya, silahkan buka lagi modul sebelumnya yang membahas tentang [DNS](https://github.com/rohanaq/jarkom-modul-2/tree/master/DNS).
+**STEP 2** - Test apakah **php** sudah terinstall dengan menjalankan perintah
 
-Tambah nameserver dengan ip KLAMPIS pada PC kita pada OS Linux menggunakan 
-```
-sudo nano /etc/resolv.conf
-```
-![Pucang23](images/23.png)
+    php -v
+    
+![](/WebServer/gambar/4.PNG)
 
-Lalu buat file jarkom.php pada /var/www/html pada PUCANG. Ketika diakses hasilnya seperti ini.
-```
-echo "<?php echo 'Semangat JARKOM 2018'; ?>" > /var/www/html/jarkom.php
-```
-![Pucang4](images/04.png)
+## F. Mengenal Apache
 
-### 2.3 Mengubah Direktori Default
-Webserver akan memproses file sesuai URL yang diminta oleh client. Sebagai contoh, ketika client mengakses `http://klampis.com:8080/index.php`.
+Webserver Apache memiliki folder untuk konfigurasi yang berada di **/etc/apache2**
 
-Sebagai | Contoh
+![](/WebServer/gambar/5.PNG)
+
+Pada folder **/etc/apache2** terdapat berbagai file dan folder untuk konfigurasi
+
+Penting untuk diketahui:
+* ***Tentang File*** :
+
+Nama File | Pengertian
 ------------ | -------------
-fullpath URL | `http://klampis.com:8080/index.php`
-hostname | `klampis.com`
-port | `8080`
-URL | `/index.php`
+**apache2.conf** | file konfigurasi utama apache2.
+**ports.conf** | file konfigurasi port yang digunakan untuk webserver.
+**sites-available** | folder tempat konfigurasi website (virtual host) yang tersedia.
+**sites-enabled** | folder tempat konfigurasi website (virtual host) yang tersedia dan sudah aktif.
+**mods-available** | folder tempat modul-modul apache2 yang tersedia.
+**mods-enabled** | folder tempat modul-modul apache2 yang tersedia dan sudah aktif.
 
-Secara _default_, apache2 menggunakan __/var/www/html__ sebagai direktori default. Ketika mengakses `http://klampis.com/ini.php`, sebenarnya webserver sedang mengakses file __/var/www/html/ini.php__.
+* ***Tentang Syntax***
 
-Dalam kasus tertentu kita ingin mengganti default direktori menjadi direktori lain. Sebagai contoh, apabila direktori default dari apache2 diganti menjadi __/home/rohanaq/mysite__, maka ketika mengakses `http://klampis.com/pasar/index.php`, webserver akan mengakses file __/home/rohanaq/mysite/pasar/index.php__.
-
-
-Default direktori pada apache2 ditandai dengan _syntax_ `DocumentRoot`. Contohnya
-```
-    DocumentRoot /var/www/html
-```
-
-Sekarang, coba ubah direktori default menjadi __/var/www/__, seperti dibawah ini:
-
-![Pucang6](images/06.png)
-
-Setelah itu, coba buatlah file __coba.php__ pada direktori __/var/www__ dengan perintah
-```
-echo "<?php echo 'Hello, ini coba.php'; ?>" > /var/www/coba.php
-```
-
-Setelah itu restart apache2 dengan perintah `service apache2 restart` dan coba akses kembali halaman __coba.php__ pada browser kalian.
-
-### 2.4 Konfigurasi VirtualHost
-Sekarang kita akan mengkonfigurasi __VirtualHost__ untuk bisa mengakses web server. Pada PUCANG lakukan copy file terhadap file konfigurasi bawaan dari apache2. Setelah menyalin file konfigurasi bukalah dengan perintah __nano__
-```bash
-cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/default2.conf
-nano sites-available/default2.conf
-```
-
-Lalu silahkan ganti port pada __VirtualHost__ menjadi __8080__, dan ubah __DocumentRoot__ menjadi __/var/www/8080__ dan tambahkan sintaks seperti di bawah ini:
-```
-<VirtualHost *:8080>
-```
-
-```
-ServerAdmin webmaster@localhost
-DocumentRoot /var/www/8080
-
-<Directory /var/www/8080>
-AllowOverride All
-</Directory>
-```
-
-![Pucang7](images/07.png)
-
-Lalu tambahkan port 8080 dengan mengedit file __ports.conf__ yang ada pada __/etc/apache2__. Tambahkan dengan sintaks `listen 8080`
-
-![Pucang8](images/08.png)
-
-Kemudian pada folder __/var/www__ buatlah folder 8080 dan setelah itu buatlah file index.php pada folder tersebut
-```
-cd /var/www
-mkdir 8080
-nano 8080/index.php
-```
-
-Lalu pada file index.php tersebut isikan tulisan seperti di bawah ini:
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JARKOM 2018</title>
-</head>
-<body>
-    <h3>INI PORT 8080</h3>
-</body>
-</html>
-```
-
-Lalu untuk menjalankannya ketikkan `a2ensite default2.conf` dan kemudian restart apache2 dengan perintah `service apache2 restart`. Setelah itu pada browser silahkan akses website kalian dengan menggunakan __IP PUCANG TIAP KELOMPOK__ atau dengan DNS yang sudah dibuat, lalu tambahkan port 8080 pada akhir penulisannya. Contoh -> __10.151.73.235:8080__ atau __pucang.com:8080__. Maka akan muncul seperti gambar di bawah:
-
-![Pucang9](images/09.png)
-
-__Keterangan [Klik Disini](#30-keterangan)__
-### 2.5 Alias Directory
-Alias directory adalah membuat direktori lebih mudah diakses tetapi tetap di bawah DocumentRoot. Silahkan masuk ke dalam __/etc/apache2/sites-available__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
-
-![Pucang10](images/10.png)
-
-Kemudian restart apache2 dengan perintah `service apache2 restart`. Setelah itu buatlah direktori __/var/www/asset/javascript/__ dengan mengetikkan
-```
-mkdir /var/www/asset
-mkdir /var/www/asset/javascript
-```
-
-Kemudian pada direktori __/var/www/alias/test/jarkom__ buatlah sebuah file bernama __coba.js__.
-```
-touch /var/www/asset/javascript/coba.js
-```
-
-Sekarang coba buka pada browser __IP PUCANG TIAP KELOMPOK/asset/js__ atau __klampis.com/asset/js__ (sesuai dengan DNS yang sudah dibuat masing-masing kelompok)
-
-![Pucang11](images/11.png)
-
-Lalu apa perbedaannya ketika kita mengakses __/asset/javascript__?
-![Pucang12](images/12.png)
-
-### 2.6 Directory Listing
-Silahkan masuk ke dalam __/etc/apache2/sites-available__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
-
-![Pucang13](images/13.png)
-
-Kemudian coba akses website masing-masing maka akan muncul gambar seperti ini:
-
-![Pucang14](images/14.png)
-
-Sekarang coba buat directory download dengan mengetikkan
-```
-mkdir /var/www/download
-```
-
-Lalu buat file blabla.tar.gz dengan mengetikkan
-```
-touch blabla.tar.gz
-```
-
-Lalu coba akses klampis.com/download
-![Pucang14](images/24.png)
-
-Lalu bagaimana cara agar kita dapat melihat isi dari direktori download tersebut? Buka kembali __default2.conf__ dan ganti seperti gambar di bawah:
-
-![Pucang15](images/15.png)
-
-Setelah itu restart apache2 dan coba akses kembali website masing-masing maka kita dapat melihat isi file dari direktori seperti gambar di bawah:
-
-![Pucang16](images/16.png)
-
-### 2.7 Allow dan Deny
-Dalam web server dibutuhkan adanya proteksi dan penjagaan terhadap web server agar tetap aman. Dalam web server, kita bisa membatasi hak akses siapa saja yang boleh mengakses web server tersebut.
-
-Silahkan masuk ke dalam __/etc/apache2/sites-available__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
-
-![Pucang17](images/17.png)
-
-Restart apache2 kemudian coba akses website masing-masing maka direktori __html__ akan menghilang:
-
-![Pucang18](images/18.png)
-
-### 2.8 Basic Authentication
-Basic Authentication digunakan untuk mebatasi akses terhadap suatu halaman dengan memberikan suatu autentikasi untuk user-user tertentu dengan password yang sudah ditentukan.
-
-Silahkan masuk ke dalam __/etc/apache2/sites-available__ kemudian buka file __default2.conf__ yang sebelumnya sudah dikonfigurasi untuk poin sebelumnya. Edit file tersebut dan tambahkan seperti gambar di bawah ini:
-
-![Pucang19](images/19.png)
-
-Kemudian buat folder __/var/www/private__ dengan perintah `mkdir /var/www/private` dan buatlah file index.html di dalamnya. Pada file cobaindex.html isikan apa saja, sebagai contoh:
-```html
-<html>
-<head>
-    <title>JARKOM 2018</title>
-</head>
-<body>
-    <h3>Basic Authentication</h3>
-</body>
-</html>
-```
-
-Setelah itu ketikkan sintaks berikut:
-```
-htpasswd -c /var/www/private/.htpasswd basicauth
-```
-
-__Keterangan__:
-* __htpasswd__
-Untuk menambahkan autentikasi basic untuk sebuah user
-* __/var/www/private/.htpasswd__
-File yang menyimpan data user dan password
-* __basicauth__
-Nama user
-* __DirectoryIndex__
-Digunakan untuk menentukan file mana yang akan menjadi index pada directory
-
-Kemudian akan muncul permintaan password untuk user __basicauth__, isi permintaan password tersebut sesuai dengan keinginan kalian.
-
-Untuk mencobanya, akses pada browser kalian dengan mengetikkan __IP PUCANG TIAP KELOMPOK/private__ atau __klampis.com/private__ (sesuai dengan DNS yang sudah dibuat masing-masing kelompok)
-
-![Pucang20](images/20.png)
-
-Masukkan user dan password yang sudah dibuat sebelumnya maka halaman cobaindex.html akan ditampilkan:
-![Pucang21](images/21.png)
-
-Jika user dan password tidak dimasukkan maka akan muncul halaman __401 Unauthorized__ seperti gambar di bawah:
-
-![Pucang22](images/22.png)
-
-### 2.9 Digest Authentication
-
-
-### 3.0 Keterangan
-Catatan
 Syntax | Arti
 ------------ | -------------
 a2ensite | Untuk memasukkan atau ENABLE config yang telah dibuat
 a2dissite | Untuk menonaktifkan atau DISABLE config yang telah dibuat
-a2enmod | Untuk ENABLE spesifik modul  ke dalam konfigurasi apache2
+a2enmod | Untuk ENABLE spesifik modul ke dalam konfigurasi apache2
+a2dismod | Untuk DISABLE spesifik modul ke dalam konfigurasi apache2
+
+## G. Konfigurasi Apache Sederhana
+### G.1. Penggunaan Sederhana
+
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available**
+
+![](/WebServer/gambar/6.PNG)
+    
+Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file.
+
+- **000-default.conf** adalah file konfigurasi website default apache untuk http.
+
+- **default-ssl.conf** adalah file konfigurasi website default apache untuk https.
+
+**STEP 2** - Buka file **000-default.conf**
+
+![](/WebServer/gambar/7.PNG)
+
+**STEP 3** - Pada file **000-default.conf** berisi contoh konfigurasi,
+
+a. Port berapa yang digunakan.
+    
+    <VirtualHost *:80> # Menggunakan port 80
+        
+b. Domain
+    
+    # ServerName www.example.com
+        
+c. Folder tempat website
+    
+    DocumentRoot /var/www/html
+     
+**STEP 4** - Pindah ke folder tempat website pada file konfigurasi default yaitu **/var/www/html** dan buat file **index.php** yang berisi
+
+    <?php
+        phpinfo();
+    ?>
+
+**STEP 5** - Buka browser dan akses alamat **http://[IP Pucang]/index.php**
+
+![](/WebServer/gambar/8.PNG)
+    
+* **Catatan**: <br>Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install **libapache2-mod-php7.0** dengan menjalankan perintah 
+        
+    `apt-get install libapache2-mod-php7.0`
+    
+    dan restart apache dengan perintah
+    
+    `service apache2 restart`
+        
+### G.2. Membuat Konfigurasi Website Menggunakan Port 8080
+
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **000-default.conf** menjadi file **default-8080.conf**.
+
+![](/WebServer/gambar/9.PNG)
+    
+**STEP 2** - Buka file **default-8080.conf**, kemudian ubah ubah port yang digunakan yang awalnya **80 **menjadi **8080 **dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
+
+![](/WebServer/gambar/10.PNG)
+
+**STEP 3** - Tambahkan **port 8080** pada file **ports.conf**
+
+![](/WebServer/gambar/11.PNG)
+
+**STEP 4** - Untuk mengaktifkan konfigurasi **default-8080.conf** jalankan perintah
+`a2ensite` dan ketik nama **file konfigurasi tanpa .conf**
+    
+![](/WebServer/gambar/12.PNG)
+    
+kemudian tekan enter.
+
+Atau bisa ketikkan langsung `a2ensite (namafile)`
+
+**STEP 5** - Restart apache menggunakan perintah `service apache2 restart`
+
+**STEP 6** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **web-8080**
+
+**STEP 7** - Masuk ke folder **web-8080** dan buat file **index.php** yang berisi
+    
+    <?php
+        echo "Hello ini port 8080";
+    ?>
+    
+![](/WebServer/gambar/13.PNG)
+        
+**STEP 8** - Buka browser dan akses alamat http://[IP Pucang]:8080
+
+![](/WebServer/gambar/14.PNG)
+
+## H. Mari Berimajinasi
+### H.1. Setting Domain Pada Apache
+Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **klampis.com**. Dia memiliki **teman** yang bernama Udin kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
+
+Maka yang harus dilakukan Udin untuk menyenangkan hati Nia adalah:
+
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **000-default.conf** menjadi **klampis.com.conf**
+
+![](/WebServer/gambar/15.PNG)
+    
+**STEP 2** - Buka file **klampis.com.conf**, kemudian
+    
+***2.1*** - Uncomment **ServerName** dan ganti **www.example.com** menjadi **klampis.com**.
+
+***2.2*** - Tambahkan
+
+    ServerAlias www.klampis.com
+agar dapat mengakses **www.klampis.com**
+         
+***2.3*** - Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/klampis.com**
+    
+![](/WebServer/gambar/16.PNG)
+    
+**STEP 3** - Aktifkan konfigurasi **klampis.com.conf** dengan menjalankan `a2ensite klampis.com`
+ 
+![](/WebServer/gambar/17.PNG)
+ 
+**STEP 4** - Restart apache dengan menjalankan `service apache2 restart`
+
+**STEP 5** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **klampis.com**
+
+**STEP 6** - Buat file **index.php** dengan isi file
+
+    <?php
+        echo "Hello ini klampis.com";
+    ?>
+
+![](/WebServer/gambar/18.PNG)
+
+**STEP 7** - Ganti DNS laptop/komputer sesuai **IP Klampis** masing-masing.
+
+**STEP 8** - Buka browser dan akses **klampis.com**
+
+![](/WebServer/gambar/19.PNG)
+
+### H.2. Directory Listing
+
+Di dalam folder **/var/www/klampis.com** terdapat folder sebagai berikut
+
+        /var/www/klampis.com
+                            /download
+                                    /lagu
+                            /assets
+                                    /javascript
+                            /private-digest
+                            /private-basic
+
+Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **klampis.com**, Nia ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Nia tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
+
+Karena udin sangat suka kepada Nia.
+
+Maka yang harus dilakukan Udin adalah:
+
+**STEP 1** - Buat folder **download**, **private** ,**assets**, **data** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
+
+        mkdir -p /var/www/klampis.com/data
+        mkdir -p /var/www/klampis.com/download
+        mkdir -p /var/www/klampis.com/download/lagu
+        mkdir -p /var/www/klampis.com/assets
+        mkdir -p /var/www/klampis.com/assets/javascript
+
+**STEP 2** - Mengaktifkan Directory Listing
+
+***2.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+    
+    <Directory /var/www/klampis.com/download>
+        Options +Indexes #Untuk mengaktifkan directory listing
+    </Directory>
+    
+agar folder **download** menampilkan isi folder.
+    
+![](/WebServer/gambar/20.PNG)
+    
+***2.2*** - Simpan dan restart apache `service apache2 restart`
+
+***2.3*** - Buka Browser dan akses **http://klampis.com/download**
+
+![](/WebServer/gambar/21.PNG)
+
+
+**Keterangan**:
+  1. Untuk mengatur folder pada sebuah web, menggunakan
+  
+  `<Directory /x> ... </Directory>`
+  
+Contoh untuk mengatur /var/www/klampis.com/download
+    
+    <Directory /var/www/klampis.com/download>
+        
+    </Directory>
+
+**STEP 3** - Mematikan Directory Listing
+
+***3.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+    
+    <Directory /var/www/klampis.com/assets>
+        Options -Indexes #Untuk mematikan directory listing
+    </Directory>
+
+agar folder **assets** tidak menampilkan isi folder.
+
+![](/WebServer/gambar/22.PNG)
+    
+***3.2*** - Simpan dan restart apache `service apache2 restart`
+
+***3.3*** - Buka Browser dan akses **http://klampis.com/assets**
+
+![](/WebServer/gambar/23.PNG)
+  
+### H.3 Directory Alias
+
+Karena dirasa **http://[IP Klampis]/assets/javascript** terlalu panjang url-nya, maka Udin mencoba membuat directory alias menjadi **http://[IP Klampis]/assets/js** agar Nia tidak capek mengetik.
+
+Maka yang dilakukan Udin adalah
+
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+
+    Alias "/assets/js" "/var/www/klampis.com/assets/javascript"
+            
+    <Directory /var/www/klampis.com/assets/javascript>
+        Require all granted # Mengizinkan akses ke semua pengguna
+        Options +Indexes
+    </Directory>
+
+![](/WebServer/gambar/24.PNG)
+        
+**STEP 2** - Restart apache2 `service apache2 restart`
+
+**STEP 3** - Pindah ke folder **/var/www/klampis.com/assets/javascript** dan buat file **app.js** dengan perintah `touch app.js`
+
+![](/WebServer/gambar/25.PNG)
+
+**STEP 4** - Buka browser dan akses **http://klampis.com/assets/js**
+
+![](/WebServer/gambar/26.PNG)
+
+### H.4. Module Rewrite
+
+* ### Mengaktifkan Module Rewrite
+
+Setelah dipikir-pikir ternyata **http://klampis.com/index.php** ternyata kurang cantik untuk penulisan url. Maka Udin berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
+
+Maka yang dilakukan Udin adalah
+
+**STEP 1** - Menjalankan perintah `a2enmod` dan menuliskan **rewrite** untuk mengaktikan module rewrite.
+
+![](/WebServer/gambar/27.PNG)
+
+**STEP 2** - Restart apache `service apache2 restart`
+
+* ### Membuat file .htaccess
+
+Biasanya semua konfigurasi terhadap sebuah website diatur pada file di folder **/etc/apache2/sites-available**. Namun terkadang ada sebuah kasus bahwa kita tidak memiliki hak akses root untuk edit file konfigurasi yang berada di folder **/etc/apache2/sites-available** atau kita tidak ingin user lain untuk mengedit file konfigurasi yang berada di folder **/etc/apache2/sites-available**.
+
+Untuk mengatasi masalah tersebut kita dapat membuat file **.htaccess** pada folder dimana kita ingin atur.
+
+Contoh kasus diatas kita ingin mengatur mod rewrite dari **http://klampis.com** agar saat mengakses file php tanpa ekstensi file. 
+
+Maka yang dilakukan adalah
+
+**STEP 1** - Pindah ke folder **/var/www/klampis.com** dan buat file **.htaccess** dengan isi file
+
+    RewriteEngine On
+    RewriteCond %{SCRIPT_FILENAME} !-d #Aturan tidak akan jalan ketika yang diakses adalah folder
+    RewriteRule ^([^.]+)$ $1.php [NC,L]
+    
+![](/WebServer/gambar/28.PNG)
+
+**Keterangan** :
+
+    * RewriteEngine On = Untuk flag bahwa menggunakan module rewrite
+    * RewriteCond %{SCRIPT_FILENAME} !-d = aturan tidak akan jalan ketika yang diakses adalah folder (d)
+    * RewriteRule ^([^.]+)$ $1.php [NC,L] = $1 adalah parameter input yang akan dicari oleh webserver
+    * Info cek [Klik Disini](https://httpd.apache.org/docs/2.4/rewrite/flags.html)
+    
+**STEP 2** - Buat file aboutus.php dengan isi
+
+    <?php
+        echo "ini halaman About Us";
+    ?>
+    
+![](/WebServer/gambar/29.PNG)
+
+**STEP 3** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+
+    <Directory /var/www/klampis.com>
+        AllowOverride All
+    </Directory>
+
+![](/WebServer/gambar/30.PNG)
+
+**Keterangan** :
+
+* `AllowOverride All` ditambahkan agar konfigurasi **.htaccess** dapat berjalan.
+
+**STEP 4** - Restart apache `service apache2 restart`
+
+**STEP 5** - Buka browser dan akses **http://klampis.com/aboutus**
+
+![](/WebServer/gambar/31.PNG)
+
+### H.5 Otorisasi
+
+Pada web **http://klampis.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Nia ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
+
+Maka yang dilakukan Udin agar Nia tetap aman adalah
+
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+
+    <Directory /var/www/klampis.com/data>
+        Options +Indexes
+        Order deny,allow
+        Deny from all
+        Allow from 10.151.252.0/255.255.252.0
+    </Directory>
+
+![](/WebServer/gambar/32.PNG)
+
+**Keterangan** :
+
+* `Order deny,allow` merupakan urutan hak akses. Terdapat dua jenis tipe order yaitu:
+
+1. deny,allow : Bagian *Deny* harus dideclare terlebih dahulu sebelum _Allow_
+2. allow, deny : Bagian *Allow* harus dideclare terlebih dahulu sebelum _Deny_
+
+* `Deny from all` berarti semua pengguna ditolak
+
+* `Allow from 10.151.252.0/255.255.252.0` berarti apabila pengguna memiliki ip nid 10.151.252.0/22 diperbolehkan mengakses halaman.
+
+* Info lebih lanjut [Klik Disini](https://httpd.apache.org/docs/2.4/mod/mod_access_compat.html)
+
+**STEP 2** - Restart apache `service apache2 restart`
+
+**STEP 3** - Buka browser dan akses **http://klampis.com/data**
+
+![](/WebServer/gambar/33.PNG)
+
+Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
+
+
+![](/WebServer/gambar/34.png)
+
+Gambar diatas ketika pengguna **memiliki ip nid 10.151.252.0/22**
+
+## SOAL LATIHAN
+[Klik Disini]()
+
+<br>
+
+## <center>MODUL DNS DAN WEB SERVER SELESAI</center>
+## <center>Selamat Menunggu Soal Shift :)</center>
