@@ -415,7 +415,7 @@ Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
 Gambar diatas ketika pengguna **memiliki ip nid 10.151.252.0/22**
 
 ## SOAL LATIHAN
-[Klik Disini]()
+[Klik Disini](https://github.com/rohanaq/jarkom-modul-2/blob/master/WebServer/Soal%20Latihan%20Web%20Server.md)
 
 <br>
 
