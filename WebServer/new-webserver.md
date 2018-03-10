@@ -38,7 +38,7 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
 **STEP 2** - Test apakah **php** sudah terinstall dengan menjalankan perintah
 
-    `php -v`
+    php -v
     
 ![](/WebServer/gambar/4.PNG)
 
@@ -143,8 +143,10 @@ kemudian tekan enter.
 
 Atau bisa ketikkan langsung `a2ensite (namafile)`
 
-**STEP 5** - Restart apache menggunakan perintah **service apache2 restart**
+**STEP 5** - Restart apache menggunakan perintah `service apache2 restart`
+
 **STEP 6** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **web-8080**
+
 **STEP 7** - Masuk ke folder **web-8080** dan buat file **index.php** yang berisi
     
     <?php
@@ -411,3 +413,7 @@ Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
 
 Gambar diatas ketika pengguna **memiliki ip nid 10.151.252.0/22**
 
+<br>
+
+## <center>MODUL DNS DAN WEB SERVER SELESAI</center>
+## <center>Selamat Menunggu Soal Shift :)</center>
