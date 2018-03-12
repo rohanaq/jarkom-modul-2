@@ -63,9 +63,9 @@ Nama File | Pengertian
 **mods-available** | folder tempat modul-modul apache2 yang tersedia.
 **mods-enabled** | folder tempat modul-modul apache2 yang tersedia dan sudah aktif.
 
-* ***Tentang Syntax***
+* ***Tentang Command***
 
-Syntax | Arti
+Command | Arti
 ------------ | -------------
 a2ensite | Untuk memasukkan atau ENABLE config yang telah dibuat
 a2dissite | Untuk menonaktifkan atau DISABLE config yang telah dibuat
@@ -210,12 +210,11 @@ agar dapat mengakses **www.klampis.com**
 Di dalam folder **/var/www/klampis.com** terdapat folder sebagai berikut
 
         /var/www/klampis.com
+                            /data
                             /download
                                     /lagu
                             /assets
                                     /javascript
-                            /private-digest
-                            /private-basic
 
 Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **klampis.com**, Nia ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Nia tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
 
