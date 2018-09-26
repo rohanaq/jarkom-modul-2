@@ -7,70 +7,215 @@
 6. Ketika point 4 dan 5 tidak ditaati **resiko tanggung sendiri!!!**
 
 # 1. DNS (Domain Name System)
-DNS (_Domain Name System_) adalah sistem penamaan untuk semua device(smartphone, computer, atau
-network) yang terhubung dengan internet. DNS Server berfungsi menerjemahkan nama domain menjadi alamat IP.
 
-![DNS](images/DNS.jpg)
 
-### 1.1 Instalasi bind
-Yang akan dijadikan DNS Server adalah KLAMPIS. Maka install bind pada KLAMPIS. Sebelum itu, pastikan sudah menjalankan perintah **apt-get update**.
+
+------
+
+
+
+## 1.1 Teori
+
+### 1.1.A Pengertian
+
+DNS (_Domain Name System_) adalah sistem penamaan untuk semua device (smartphone, computer, atau
+network) yang terhubung dengan internet. DNS Server berfungsi menerjemahkan nama domain menjadi alamat IP. DNS dibuat guna untuk menggantikan sistem penggunaan file host yang dirasa tidak efisien.
+
+### 1.1.B Cara Kerja
+
+![DNS](gambar/1.jpg)
+
+Client akan meminta alamt IP dari suatu domain ke DNS server. Jika pada DNS server data alamat IP dari DNS server tersebut ada maka akan di return alamat IP nya kembali menuju client. Jika DNS server tersebut tidak memiliki alamat IP dari domain tersebut maka dia akan bertanya kepada DNS server yang lain sampai alamat domain itu ditemukan.
+
+### 1.1.C Aplikasi DNS Server
+
+Untuk praktikum jarkom kita menggunakan aplikasi BIND9 sebagai DNS server, karena BIND(Berkley Internet Naming Daemon) adalah DNS server yang paling banyak digunakan dan juga memiliki fitur-fitur yang cukup lengkap.
+
+### 1.1.D List DNS Record
+| Tipe          | Deskripsi                     |
+| ------------- |:-----------------------------|
+| A             | Memetakan nama domain ke alamat IP (IPv4) dari komputer hosting domain|
+| AAAA          | AAAA record hampir mirip A record, tapi mengarahkan domain ke alamat Ipv6|
+| CNAME         | Alias ​​dari satu nama ke nama lain: pencarian DNS akan dilanjutkan dengan mencoba lagi pencarian dengan nama baru|
+| NS            | Delegasikan zona DNS untuk menggunakan authoritative name servers yang diberikan|
+| PTR           | Digunakan untuk Reverse DNS (Domain Name System) lookup|
+| SOA           | Mengacu server DNS yang mengediakan otorisasi informasi tentang sebuah domain Internet|
+| TXT           | Mengijinkan administrator untuk memasukan data acak ke dalam catatan DNS, catatan ini juga digunakan di spesifikasi Sender Policy Framework|
+
+### 1.1.E SOA (Start of Authority)
+
+Adalah informasi yang dimiliki oleh suatu DNS zone.
+
+| Nama          | Deskripsi                     |
+| ------------- |:-----------------------------|
+| Serial        | Jumlah revisi dari file zona ini. Kenaikan nomor ini setiap kali file zone diubah sehingga perubahannya akan didistribusikan ke server DNS sekunder manapun|
+| Refresh       | Jumlah waktu dalam detik bahwa nameserver sekunder harus menunggu untuk memeriksa salinan baru dari zona DNS dari nameserver utama domain. Jika file zona telah berubah maka server DNS sekunder akan memperbarui salinan zona tersebut agar sesuai dengan zona server DNS utama|
+| Retry         | Jumlah waktu dalam hitungan detik bahwa nameserver utama domain (atau server) harus menunggu jika upaya refresh oleh nameserver sekunder gagal sebelum mencoba refresh zona domain dengan nameserver sekunder itu lagi|
+| Expire        | Jumlah waktu dalam hitungan detik bahwa nameserver sekunder (atau server) akan menahan zona sebelum tidak lagi mempunyai otoritas|
+| Minimum       | Jumlah waktu dalam hitungan detik bahwa catatan sumber daya domain valid. Ini juga dikenal sebagai TTL minimum, dan dapat diganti oleh TTL catatan sumber daya individu|
+| TTL           | (waktu untuk tinggal) - Jumlah detik nama domain di-cache secara lokal sebelum kadaluarsa dan kembali ke nameserver otoritatif untuk informasi terbaru|
+
+
+
+------
+
+
+
+## 1.2 Praktik
+
+### 1.2.A Buat Topologi Berikut
+
+![Topologi](gambar/2.PNG)
+
+Referensi 
+
+[Modul Pengenalan UML](https://github.com/rohanaq/Modul-Pengenalan-UML "Modul Pengenalan UML")
+
+### 1.2.A Instalasi bind
+
+- Buka *KATSU* dan update package lists dengan menjalankan command:
+
+	```
+	apt-get update
+	```
 
 ![Klampis1](image/1.PNG)
 
-Kemudian ketikkan **apt-get install bind9** pada KLAMPIS
+- Setalah melakukan update silahkan install aplikasi bind9 pada *KATSU* dengan perintah:
+
+	```
+	apt-get install bind9 -y
+	```
 
 ![Klampis2](image/2.PNG)
 
-### 1.2 Pembuatan Domain
-Untuk membuat domain klampis.com, lakukan perintah **nano /etc/bind/named.conf.local**. Isikan seperti berikut:
+### 1.2.B Pembuatan Domain
+Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
+
+- Lakukan perintah pada *KATSU*. Isikan seperti berikut:
+
+  ```
+   nano /etc/bind/named.conf.local
+  ```
+
+- Isikan configurasi domain jarkomtc.com sesuai dengan syntax berikut:
+
+  ```
+  zone "jarkomtc.com" {
+  	type master;
+  	file "/etc/bind/jarkom/jarkomtc.com";
+  };
+  ```
 
 ![Klampis3](image/3.PNG)
 
-Buat folder **klampis** di dalam **/etc/bind** 
+- Buat folder **jarkom** di dalam **/etc/bind**
+
+  ```
+  mkdir /etc/bind/jarkom
+  ```
+
 
 ![Klampis4](image/4.PNG)
 
-Copykan file **db.local** ke dalam folder klampis yang baru saja dibuat dan ubah namanya menjadi **klampis.com**
+- Copykan file **db.local** pada path **/etc/bind** ke dalam folder **jarkom** yang baru saja dibuat dan ubah namanya menjadi **jarkomtc.com**
+
+  ```
+  cp /etc/bind/db.local /etc/bind/jarkom/jarkomtc.com
+  ```
 
 ![Klampis5](image/5.PNG)
 
-Kemudian buka file **klampis/klampis.com** dan edit seperti berikut dengan IP KLAMPIS masing-masing kelompok:
+- Kemudian buka file **jarkomtc.com** dan edit seperti gambar berikut dengan IP *KATSU* masing-masing kelompok:
+
+  ```
+  nano /etc/bind/jarkom/jarkomtc.com
+  ```
 
 ![Klampis6](image/6.PNG)
 
-__PENTING !!: Keterangan [Klik Disini](#21-keterangan)__
+- Restart bind9 dengan perintah 
 
-Restart bind9 dengan perintah **service bind9 restart** atau menggunakan perintah **named -g** untuk restart dan debugging.
+  ```
+  service bind9 restart
+  
+  ATAU
+  
+  named -g //Bisa digunakan untuk restart sekaligus debugging
+  ```
 
-### 1.3 Setting nameserver pada client
-Pada NGAGEL dan NGINDEN arahkan nameserver menuju IP KLAMPIS dengan mengedit file _resolv.conf_ dengan mengetikkan perintah **nano /etc/resolv.conf**
+
+
+### 1.2.C Setting nameserver pada client
+
+Domain yang kita buat tidak akan langsung dikenali oleh client oleh sebab itu kita harus merubah settingan nameserver yang ada pada client kita.
+
+- Pada client *SOTO* dan *KARI* arahkan nameserver menuju IP *KATSU* dengan mengedit file _resolv.conf_ dengan mengetikkan perintah 
+
+	```
+	nano /etc/resolv.conf
+	```
 
 ![Klampis7](image/7.PNG)
 
-Untuk mencoba koneksi DNS, lakukan ping domain klampis.com dengan melakukan **ping klampis.com** pada NGAGEL dan NGINDEN
+- Untuk mencoba koneksi DNS, lakukan ping domain **jarkomtc.com** dengan melakukan  perintah berikut pada client *SOTO* dan *KARI*
+
+  ```
+  ping jarkomtc.com
+  ```
 
 ![Klampis8](image/8.PNG)
 
-### 1.4 Reverse DNS (Record PTR)
-Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya. Edit file **/etc/bind/named.conf.local** pada KLAMPIS
+### 1.2.D Reverse DNS (Record PTR)
+Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan string domain **jarkomtc.com** kedalam alamat IP agar dapat dibuka, maka Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya.
+
+- Edit file **/etc/bind/named.conf.local** pada KLAMPIS
+
+  ```
+  nano /etc/bind/named.conf.local
+  ```
+
+- Lalu tambahkan konfigurasi berikut ke dalam file **named.conf.local**
+
+  ```
+  zone "74.151.10.in-addr.arpa {
+      type master;
+      file "/etc/bind/jarkom/74.151.10.in-addr.arpa";
+  };
+  ```
 
 ![Klampis9](image/9.PNG)
 
-Copy file db.local ke folder klampis dan ubah namanya menjadi **79.151.10.in-addr.arpa**
+- Copykan file **db.local** pada path **/etc/bind** ke dalam folder **jarkom** yang baru saja dibuat dan ubah namanya menjadi **74.151.10.in-addr.arpa**
 
-**Keterangan _79.151.10_ adalah 3 digit pertama IP Klampis yang dibalik urutan penulisannya**
+  ```
+  cp /etc/bind/db.local /etc/bind/jarkom/74.151.10.in-addr.arpa
+  ```
+
+  *Keterangan 74.151.10 adalah 3 byte pertama IP KATSU yang dibalik urutan penulisannya*
 
 ![Klampis10](image/10.PNG)
 
-Edit file **79.151.10.in-addr.arpa**
+- Edit file **74.151.10.in-addr.arpa** menjadi seperti gambar di bawah ini
+
 
 ![Klampis11](image/11.PNG)
 
-Kemudian restart bind9 dengan perintah **service bind9 restart**
+- Kemudian restart bind9 dengan perintah 
 
-Untuk mengecek lakukan perintah **host -t PTR IP**
+  ```
+  service bind9 restart
+  ```
+
+- Untuk mengecek apakah konfigurasi sudah benar atau belum, lakukan perintah 
+
+  ```
+  host -t PTR "IP KATSU"
+  ```
 
 ![Klampis12](image/12.PNG)
+
+
 
 ### 1.5 Record CNAME
 Record CNAME adalah sebuah record yang membuat alias name dan mengarahkan domain ke alamat/domain yang lain.
@@ -180,27 +325,10 @@ allow-query{any;};
 
 Harusnya jika nameserver pada /etc/resolv.conf diubah menjadi IP KLAMPIS maka akan diforward ke IP DNS google yaitu 8.8.8.8 dan bisa mendapatkan koneksi.
 
-### 2.0 List DNS Record
-| Tipe          | Deskripsi                     |
-| ------------- |:-----------------------------|
-| A             | Memetakan nama domain ke alamat IP (IPv4) dari komputer hosting domain|
-| AAAA          | AAAA record hampir mirip A record, tapi mengarahkan domain ke alamat Ipv6|
-| CNAME         | Alias ​​dari satu nama ke nama lain: pencarian DNS akan dilanjutkan dengan mencoba lagi pencarian dengan nama baru|
-| NS            | Delegasikan zona DNS untuk menggunakan authoritative name servers yang diberikan|
-| PTR           | Digunakan untuk Reverse DNS (Domain Name System) lookup|
-| SOA           | Mengacu server DNS yang mengediakan otorisasi informasi tentang sebuah domain Internet|
-| TXT           | Mengijinkan administrator untuk memasukan data acak ke dalam catatan DNS, catatan ini juga digunakan di spesifikasi Sender Policy Framework|
+
 
 ### 2.1 Keterangan
-- #### SOA (Start of Authority)
-| Nama          | Deskripsi                     |
-| ------------- |:-----------------------------|
-| Serial        | Jumlah revisi dari file zona ini. Kenaikan nomor ini setiap kali file zone diubah sehingga perubahannya akan didistribusikan ke server DNS sekunder manapun|
-| Refresh       | Jumlah waktu dalam detik bahwa nameserver sekunder harus menunggu untuk memeriksa salinan baru dari zona DNS dari nameserver utama domain. Jika file zona telah berubah maka server DNS sekunder akan memperbarui salinan zona tersebut agar sesuai dengan zona server DNS utama|
-| Retry         | Jumlah waktu dalam hitungan detik bahwa nameserver utama domain (atau server) harus menunggu jika upaya refresh oleh nameserver sekunder gagal sebelum mencoba refresh zona domain dengan nameserver sekunder itu lagi|
-| Expire        | Jumlah waktu dalam hitungan detik bahwa nameserver sekunder (atau server) akan menahan zona sebelum tidak lagi mempunyai otoritas|
-| Minimum       | Jumlah waktu dalam hitungan detik bahwa catatan sumber daya domain valid. Ini juga dikenal sebagai TTL minimum, dan dapat diganti oleh TTL catatan sumber daya individu|
-| TTL           | (waktu untuk tinggal) - Jumlah detik nama domain di-cache secara lokal sebelum kadaluarsa dan kembali ke nameserver otoritatif untuk informasi terbaru|
+
 
 - #### Penulisan Serial
 1. Ditulis dengan format YYYYMMDDXX
