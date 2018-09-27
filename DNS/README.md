@@ -8,12 +8,6 @@
 
 # 1. DNS (Domain Name System)
 
-
-
-------
-
-
-
 ## 1.1 Teori
 
 ### 1.1.A Pengertian
@@ -166,7 +160,10 @@ Domain yang kita buat tidak akan langsung dikenali oleh client oleh sebab itu ki
 
 ![Klampis8](image/8.PNG)
 
+
+
 ### 1.2.D Reverse DNS (Record PTR)
+
 Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan string domain **jarkomtc.com** kedalam alamat IP agar dapat dibuka, maka Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya.
 
 - Edit file **/etc/bind/named.conf.local** pada KLAMPIS
@@ -217,34 +214,106 @@ Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan stri
 
 
 
-### 1.5 Record CNAME
+### 1.2.E Record CNAME
 Record CNAME adalah sebuah record yang membuat alias name dan mengarahkan domain ke alamat/domain yang lain.
 
-Buka file klampis.com pada KLAMPIS dan tambahkan syntax berikut:
+Langkah-langkah membuat record CNAME:
+
+- Buka file **jarkomtc.com** pada server *KATSU* dan tambahkan konfigurasi seperti pada gambar berikut:
+
 
 ![Klampis13](image/13.PNG)
 
-Kemudian restart bind9 dengan perintah **service bind9 restart**
 
-Lalu cek dengan melakukan **host -t CNAME www.klampis.com** atau **ping www.klampis.com** akan mengarah ke host dengan IP KLAMPIS.
+
+- Kemudian restart bind9 dengan perintah
+
+  ```
+  service bind9 restart
+  ```
+
+- Lalu cek dengan melakukan **host -t CNAME www.jarkomtc.com** atau **ping www.jarkomtc.com**. Hasilnya harus mengarah ke host dengan IP *KATSU*.
+
 
 ![Klampis14](image/14.PNG)
 
 
-### 1.6 Membuat DNS Slave
-DNS Slave adalah DNS cadangan yang akan diakses jika server DNS utama mengalami kegagalan. Lakukan **apt-get update** kemudian install bind9 di PUCANG dengan perintah **apt-get install bind9**
 
-Edit file **/etc/bind/named.conf.local** pada KLAMPIS dan tambahkan syntax berikut:
+### 1.2.F Membuat DNS Slave
 
-![Klampis16](image/15.PNG)
+DNS Slave adalah DNS cadangan yang akan diakses jika server DNS utama mengalami kegagalan. Kita akan menjadikan server *PIZZA* sebagai DNS slave dan server *KATSU* sebagai DNS masternya.
 
-Kemudian buka file **/etc/bind/named.conf.local** pada PUCANG dan tambahkan syntax berikut:
+#### I. Konfigurasi Pada Server KATSU
+
+- Edit file **/etc/bind/named.conf.local** dan sesuaikan dengan syntax berikut
+
+  ```
+  zone "jarkomtc.com" {
+      type master;
+      notify yes;
+      also-notify { "IP PIZZA" }; // Masukan IP PIZZA tanpa tanda petik
+      allow-transfer { "IP PIZZA" }; // Masukan IP PIZZA tanpa tanda petik
+      file "/etc/bind/jarkom/jarkomtc.com";
+  };
+  ```
+
+  ![Klampis16](image/15.PNG)
+
+
+
+- Lakukan restart bind9
+
+  ```
+  service bind9 restart
+  ```
+
+
+
+#### II. Konfigurasi Pada Server PIZZA
+
+- Buka *PIZZA* dan update package lists dengan menjalankan command:
+
+  ```
+  apt-get update
+  ```
+
+- Setalah melakukan update silahkan install aplikasi bind9 pada *PIZZA* dengan perintah:
+
+  ```
+  apt-get install bind9 -y
+  ```
+
+- Kemudian buka file **/etc/bind/named.conf.local** pada PIZZA dan tambahkan syntax berikut:
+
+  ```
+  zone "jarkomtc.com" {
+      type slave;
+      masters { "IP KATSU" }; // Masukan IP KATSU tanpa tanda petik
+      file "/var/lib/bind/jarkomtc.com";
+  }
+  ```
 
 ![Klampis17](image/16.PNG)
 
-Restart **service bind9 restart**
+- Lakukan restart bind9
 
-Apabila terjadi kegagalan pada DNS Server KLAMPIS, maka DNS Server akan dialihkan ke Server PUCANG. Ubah nameserver client yang tersambung dengan KLAMPIS (NGINDEN dan NGAGEL) dengan mengedit file **etc/resolv.conf** menjadi IP PUCANG
+  ```
+  service bind9 restart
+  ```
+
+
+
+#### III. Testing
+
+- Pada server *KATSU* silahkan matikan service bind9
+
+  ```
+  service bind9 stop
+  ```
+
+- Pada client *SOTO* pastikan pengaturan nameserver mengarah ke *KATSU*
+
+- Lakukan ping ke jarkomtc.com pada client *SOTO*. Jika ping berhasil maka konfigurasi DNS slave telah berhasil
 
 ![Klampis18](image/17.PNG)
 
@@ -327,22 +396,39 @@ Harusnya jika nameserver pada /etc/resolv.conf diubah menjadi IP KLAMPIS maka ak
 
 
 
-### 2.1 Keterangan
+### 2.1 Keterangan Configurasi Zone file
+
+1. #### Penulisan Serial
+
+   Ditulis dengan format YYYYMMDDXX. Serial di increment setiap melakukan perubahan pada file zone.
+
+   ```
+   YYYY adalah tahun
+   MM adalah bulan
+   DD adalah tanggal
+   XX adalah counter
+   ```
+
+   Contoh:
+
+   ![Klampis26](image/28.PNG)
+
+2. #### Penggunaan Titik
+
+   ![Klampis20](image/20.PNG)
+
+   Pada salah satu contoh di atas, dapat kita amati pada kolom keempat terdapat record yang menggunakan titik pada akhir kata dan ada yang tidak. Penggunaan titik berfungsi sebagai penentu FQDN (Fully-Qualified Domain Name) suatu domain.
+
+   Contohnya jika "**jarkomtc.com.**" di akhiri dengan titik maka akan dianggap sebagai FQDN dan akan dibaca sebagai "**jarkomtc.com**" , sedangkan ns1 di atas tidak menggunakan titik sehingga dia tidak terbaca sebagai FQDN. Maka ns1 akan di tambahkan di depan terhadap nilai $ORIGIN sehinga ns1 akan terbaca sebagai "**ns1.jarkomtc.com**" . Nilai $ORIGIN diambil dari penamaan zone yang terdapat pada  */etc/bind/named.conf.local*.
+
+3. #### Penulisan Name Server (NS) record
+
+   Salah satu aturan penulisan NS record adalah dia harus menuju A record., bukan CNAME. 
 
 
-- #### Penulisan Serial
-1. Ditulis dengan format YYYYMMDDXX
-```
-YYYY adalah tahun
-MM adalah bulan
-DD adalah tanggal
-XX adalah counter
-```
-Contoh :
-
-![Klampis26](image/28.PNG)
 
 ## Latihan
+
 1. Buatlah domain mawho.com dan www.mawho.com (CNAME mawho.com). Apa yang terjadi jika melakukan ping mawho.com dengan ping www.mawho.com? Mengapa hal itu terjadi?
 2. Buatlah sebuah subdomain pada domain mawho.com dengan nama abc.mawho.com
 
