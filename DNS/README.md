@@ -230,7 +230,7 @@ Langkah-langkah membuat record CNAME:
 - Buka file **jarkomtc.com** pada server *KATSU* dan tambahkan konfigurasi seperti pada gambar berikut:
 
 
-![Klampis13](image/13.PNG)
+![Klampis13](gambar/15.png)
 
 
 
@@ -243,7 +243,7 @@ Langkah-langkah membuat record CNAME:
 - Lalu cek dengan melakukan **host -t CNAME www.jarkomtc.com** atau **ping www.jarkomtc.com**. Hasilnya harus mengarah ke host dengan IP *KATSU*.
 
 
-![Klampis14](image/14.PNG)
+![Klampis14](gambar/16.png)
 
 
 
