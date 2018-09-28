@@ -1,10 +1,16 @@
 # **PENTING UNTUK DIBACA**
-1. Pastikan UML KLAMPIS dan PUCANG Memory yang sebelumnya **96 diganti 256** pada file topologi.sh.
-2. Jalankan **iptables -t nat .....** agar NGINDEN dan NGAGEL bisa terhubung ke internet.
+1. Pastikan UML *KATSU* dan *PIZZA* Memory yang sebelumnya **96 diganti 256** pada file topologi.sh.
+
+2. Jalankan **iptables** agar client *SOTO* dan *KARI* bisa terhubung ke internet.
+
 3. Ketika ingin mengakses internet pastikan sudah mengexport proxy terlebih dahulu. **syntaxnya cek modul pengenalan UML** .
+
 4. Jangan melakukan apapun sebelum asisten memberikan perintah.
+
 5. Ikuti apa yang asisten arahkan.
+
 6. Ketika point 4 dan 5 tidak ditaati **resiko tanggung sendiri!!!**
+
 
 # 1. DNS (Domain Name System)
 
@@ -75,7 +81,7 @@ Referensi
 	apt-get update
 	```
 
-![Klampis1](gambar/3.png)
+![1](gambar/3.png)
 
 - Setalah melakukan update silahkan install aplikasi bind9 pada *KATSU* dengan perintah:
 
@@ -83,7 +89,7 @@ Referensi
 	apt-get install bind9 -y
 	```
 
-![Klampis2](gambar/4.png)
+![2](gambar/4.png)
 
 ### 1.2.B Pembuatan Domain
 Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
@@ -103,7 +109,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
   };
   ```
 
-![Klampis3](gambar/5.png)
+![3](gambar/5.png)
 
 - Buat folder **jarkom** di dalam **/etc/bind**
 
@@ -112,7 +118,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
   ```
 
 
-![Klampis4](gambar/6.png)
+![4](gambar/6.png)
 
 - Copykan file **db.local** pada path **/etc/bind** ke dalam folder **jarkom** yang baru saja dibuat dan ubah namanya menjadi **jarkomtc.com**
 
@@ -120,7 +126,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
   cp /etc/bind/db.local /etc/bind/jarkom/jarkomtc.com
   ```
 
-![Klampis5](gambar/7.png)
+![5](gambar/7.png)
 
 - Kemudian buka file **jarkomtc.com** dan edit seperti gambar berikut dengan IP *KATSU* masing-masing kelompok:
 
@@ -128,7 +134,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
   nano /etc/bind/jarkom/jarkomtc.com
   ```
 
-![Klampis6](gambar/8.png)
+![6](gambar/8.png)
 
 - Restart bind9 dengan perintah 
 
@@ -152,7 +158,7 @@ Domain yang kita buat tidak akan langsung dikenali oleh client oleh sebab itu ki
 	nano /etc/resolv.conf
 	```
 
-![Klampis7](gambar/9.png)
+![7](gambar/9.png)
 
 - Untuk mencoba koneksi DNS, lakukan ping domain **jarkomtc.com** dengan melakukan  perintah berikut pada client *SOTO* dan *KARI*
 
@@ -160,7 +166,7 @@ Domain yang kita buat tidak akan langsung dikenali oleh client oleh sebab itu ki
   ping jarkomtc.com
   ```
 
-![Klampis8](gambar/10.png)
+![8](gambar/10.png)
 
 
 
@@ -183,7 +189,7 @@ Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan stri
   };
   ```
 
-![Klampis9](gambar/11.png)
+![9](gambar/11.png)
 
 - Copykan file **db.local** pada path **/etc/bind** ke dalam folder **jarkom** yang baru saja dibuat dan ubah namanya menjadi **83.151.10.in-addr.arpa**
 
@@ -193,12 +199,12 @@ Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan stri
 
   *Keterangan 83.151.10 adalah 3 byte pertama IP KATSU yang dibalik urutan penulisannya*
 
-![Klampis10](gambar/12.png)
+![10](gambar/12.png)
 
 - Edit file **83.151.10.in-addr.arpa** menjadi seperti gambar di bawah ini
 
 
-![Klampis11](gambar/13.png)
+![11](gambar/13.png)
 
 - Kemudian restart bind9 dengan perintah 
 
@@ -218,7 +224,7 @@ Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan stri
   host -t PTR "IP KATSU"
   ```
 
-![Klampis12](gambar/14.png)
+![12](gambar/14.png)
 
 
 
@@ -230,7 +236,7 @@ Langkah-langkah membuat record CNAME:
 - Buka file **jarkomtc.com** pada server *KATSU* dan tambahkan konfigurasi seperti pada gambar berikut:
 
 
-![Klampis13](gambar/15.png)
+![13](gambar/15.png)
 
 
 
@@ -243,7 +249,7 @@ Langkah-langkah membuat record CNAME:
 - Lalu cek dengan melakukan **host -t CNAME www.jarkomtc.com** atau **ping www.jarkomtc.com**. Hasilnya harus mengarah ke host dengan IP *KATSU*.
 
 
-![Klampis14](gambar/16.png)
+![14](gambar/16.png)
 
 
 
@@ -259,13 +265,13 @@ DNS Slave adalah DNS cadangan yang akan diakses jika server DNS utama mengalami 
   zone "jarkomtc.com" {
       type master;
       notify yes;
-      also-notify { "IP PIZZA" }; // Masukan IP PIZZA tanpa tanda petik
-      allow-transfer { "IP PIZZA" }; // Masukan IP PIZZA tanpa tanda petik
+      also-notify { "IP PIZZA"; }; // Masukan IP PIZZA tanpa tanda petik
+      allow-transfer { "IP PIZZA"; }; // Masukan IP PIZZA tanpa tanda petik
       file "/etc/bind/jarkom/jarkomtc.com";
   };
   ```
 
-  ![Klampis16](image/15.PNG)
+  ![16](gambar/17.png)
 
 
 
@@ -296,12 +302,12 @@ DNS Slave adalah DNS cadangan yang akan diakses jika server DNS utama mengalami 
   ```
   zone "jarkomtc.com" {
       type slave;
-      masters { "IP KATSU" }; // Masukan IP KATSU tanpa tanda petik
+      masters { "IP KATSU"; }; // Masukan IP KATSU tanpa tanda petik
       file "/var/lib/bind/jarkomtc.com";
-  }
+  };
   ```
 
-![Klampis17](image/16.PNG)
+![17](gambar/18.png)
 
 - Lakukan restart bind9
 
@@ -319,11 +325,14 @@ DNS Slave adalah DNS cadangan yang akan diakses jika server DNS utama mengalami 
   service bind9 stop
   ```
 
-- Pada client *SOTO* pastikan pengaturan nameserver mengarah ke *KATSU*
+- Pada client *SOTO* pastikan pengaturan nameserver mengarah ke IP *KATSU* dan IP *PIZZA*
+
+  ![18](gambar/19.png)
 
 - Lakukan ping ke jarkomtc.com pada client *SOTO*. Jika ping berhasil maka konfigurasi DNS slave telah berhasil
 
-![Klampis18](image/17.PNG)
+
+![19.5](gambar/20.png)
 
 
 
@@ -339,7 +348,7 @@ Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu
 
 - Tambahkan konfigurasi seperti pada gambar ke dalam file **jarkomtc.com**.
 
-![Klampis19](image/18.PNG)
+![19](image/18.PNG)
 
 - Restart service bind  
 
@@ -357,7 +366,7 @@ Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu
   host -t A nako.jarkomtc.com
   ```
 
-  ![Klampis19](image/19.PNG)
+  ![19](image/19.PNG)
 
 
 ### 1.2.H Delegasi Subdomain
@@ -372,7 +381,7 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
   ```
 
 
-![Klampis20](image/20.PNG)
+![20](image/20.PNG)
 
 - Kemudian edit file **/etc/bind/named.conf.options** pada *KATSU*.
 
@@ -387,12 +396,12 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
   ```
 
 
-![Klampis21](image/21.PNG)
+![21](image/21.PNG)
 
 - Kemudian edit file **/etc/bind/named.conf.local** menjadi seperti gambar di bawah:
 
   ```
-  zone "klampis.com" {
+  zone ".com" {
       type master;
       file "/etc/bind/jarkom/jarkomtc.com";
       allow-transfer { "IP PIZZA" }; // Masukan IP PIZZA tanpa tanda petik
@@ -400,7 +409,7 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
   ```
 
 
-![Klampis22](image/22.PNG)
+![22](image/22.PNG)
 
 - Setelah itu restart bind9
 
@@ -422,11 +431,11 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
   allow-query{any;};
   ```
 
-![Klampis23](image/23.PNG)
+![23](image/23.PNG)
 
 - Lalu edit file **/etc/bind/named.conf.local** menjadi seperti gambar di bawah:
 
-![Klampis24](image/24.PNG)
+![24](image/24.PNG)
 
 - Kemudian buat direktori dengan nama **delegasi** 
 
@@ -438,11 +447,11 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
   ```
 
 
-![Klampis25](image/25.PNG)
+![25](image/25.PNG)
 
 - Kemudian edit file **if.jarkomtc.com** menjadi seperti dibawah ini
 
-![Klampis25](image/26.PNG)
+![25](image/26.PNG)
 
 - Restart bind9
 
@@ -454,7 +463,7 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
 
 - Lakukan ping ke domain **if.jarkomtc.com** dan **integra.if.jarkomtc.com** dari client *SOTO*
 
-![Klampis26](image/27.PNG)
+![26](image/27.PNG)
 
 ### 1.2.I DNS Forwarder
 
@@ -479,7 +488,7 @@ forwarders {
 allow-query{any;};
 ```
 
-![Klampis30](image/30.PNG)
+![30](image/30.PNG)
 
 - Harusnya jika nameserver pada file **/etc/resolv.conf** di client diubah menjadi IP KATSU maka akan di forward ke IP DNS google yaitu 8.8.8.8 dan bisa mendapatkan koneksi.
 
@@ -500,11 +509,11 @@ allow-query{any;};
 
    Contoh:
 
-   ![Klampis26](image/28.PNG)
+   ![26](image/28.PNG)
 
 2. #### Penggunaan Titik
 
-   ![Klampis20](image/20.PNG)
+   ![20](image/20.PNG)
 
    Pada salah satu contoh di atas, dapat kita amati pada kolom keempat terdapat record yang menggunakan titik pada akhir kata dan ada yang tidak. Penggunaan titik berfungsi sebagai penentu FQDN (Fully-Qualified Domain Name) suatu domain.
 
