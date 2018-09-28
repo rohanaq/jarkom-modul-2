@@ -55,6 +55,8 @@ Adalah informasi yang dimiliki oleh suatu DNS zone.
 
 
 
+
+
 ## 1.2 Praktik
 
 ### 1.2.A Buat Topologi Berikut
@@ -92,7 +94,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
    nano /etc/bind/named.conf.local
   ```
 
-- Isikan configurasi domain jarkomtc.com sesuai dengan syntax berikut:
+- Isikan configurasi domain **jarkomtc.com** sesuai dengan syntax berikut:
 
   ```
   zone "jarkomtc.com" {
@@ -166,7 +168,7 @@ Domain yang kita buat tidak akan langsung dikenali oleh client oleh sebab itu ki
 
 Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan string domain **jarkomtc.com** kedalam alamat IP agar dapat dibuka, maka Reverse DNS atau Record PTR digunakan untuk menerjemahkan alamat IP ke alamat domain yang sudah diterjemahkan sebelumnya.
 
-- Edit file **/etc/bind/named.conf.local** pada KLAMPIS
+- Edit file **/etc/bind/named.conf.local** pada *KATSU*
 
   ```
   nano /etc/bind/named.conf.local
@@ -175,28 +177,28 @@ Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan stri
 - Lalu tambahkan konfigurasi berikut ke dalam file **named.conf.local**
 
   ```
-  zone "74.151.10.in-addr.arpa {
+  zone "83.151.10.in-addr.arpa" {
       type master;
-      file "/etc/bind/jarkom/74.151.10.in-addr.arpa";
+      file "/etc/bind/jarkom/83.151.10.in-addr.arpa";
   };
   ```
 
-![Klampis9](image/9.PNG)
+![Klampis9](gambar/11.png)
 
-- Copykan file **db.local** pada path **/etc/bind** ke dalam folder **jarkom** yang baru saja dibuat dan ubah namanya menjadi **74.151.10.in-addr.arpa**
+- Copykan file **db.local** pada path **/etc/bind** ke dalam folder **jarkom** yang baru saja dibuat dan ubah namanya menjadi **83.151.10.in-addr.arpa**
 
   ```
-  cp /etc/bind/db.local /etc/bind/jarkom/74.151.10.in-addr.arpa
+  cp /etc/bind/db.local /etc/bind/jarkom/83.151.10.in-addr.arpa
   ```
 
-  *Keterangan 74.151.10 adalah 3 byte pertama IP KATSU yang dibalik urutan penulisannya*
+  *Keterangan 83.151.10 adalah 3 byte pertama IP KATSU yang dibalik urutan penulisannya*
 
-![Klampis10](image/10.PNG)
+![Klampis10](gambar/12.png)
 
-- Edit file **74.151.10.in-addr.arpa** menjadi seperti gambar di bawah ini
+- Edit file **83.151.10.in-addr.arpa** menjadi seperti gambar di bawah ini
 
 
-![Klampis11](image/11.PNG)
+![Klampis11](gambar/13.png)
 
 - Kemudian restart bind9 dengan perintah 
 
@@ -204,13 +206,19 @@ Jika pada pembuatan domain sebelumnya DNS server kita bekerja menerjemahkan stri
   service bind9 restart
   ```
 
-- Untuk mengecek apakah konfigurasi sudah benar atau belum, lakukan perintah 
+- Untuk mengecek apakah konfigurasi sudah benar atau belum, lakukan perintah berikut pada client *SOTO* 
 
   ```
+  // Install package dnsutils
+  // Pastikan nameserver telah dikembalikan ke settingan awal
+  apt-get update
+  apt-get install dnsutils
+  
+  //Kembalikan nameserver agar tersambung dengan KATSU
   host -t PTR "IP KATSU"
   ```
 
-![Klampis12](image/12.PNG)
+![Klampis12](gambar/14.png)
 
 
 
