@@ -73,7 +73,7 @@ Referensi
 	apt-get update
 	```
 
-![Klampis1](image/1.PNG)
+![Klampis1](gambar/3.png)
 
 - Setalah melakukan update silahkan install aplikasi bind9 pada *KATSU* dengan perintah:
 
@@ -81,7 +81,7 @@ Referensi
 	apt-get install bind9 -y
 	```
 
-![Klampis2](image/2.PNG)
+![Klampis2](gambar/4.png)
 
 ### 1.2.B Pembuatan Domain
 Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
@@ -101,7 +101,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
   };
   ```
 
-![Klampis3](image/3.PNG)
+![Klampis3](gambar/5.png)
 
 - Buat folder **jarkom** di dalam **/etc/bind**
 
@@ -110,7 +110,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
   ```
 
 
-![Klampis4](image/4.PNG)
+![Klampis4](gambar/6.png)
 
 - Copykan file **db.local** pada path **/etc/bind** ke dalam folder **jarkom** yang baru saja dibuat dan ubah namanya menjadi **jarkomtc.com**
 
@@ -118,7 +118,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
   cp /etc/bind/db.local /etc/bind/jarkom/jarkomtc.com
   ```
 
-![Klampis5](image/5.PNG)
+![Klampis5](gambar/7.png)
 
 - Kemudian buka file **jarkomtc.com** dan edit seperti gambar berikut dengan IP *KATSU* masing-masing kelompok:
 
@@ -126,7 +126,7 @@ Pada sesilab ini kita akan membuat domain **jarkomtc.com**.
   nano /etc/bind/jarkom/jarkomtc.com
   ```
 
-![Klampis6](image/6.PNG)
+![Klampis6](gambar/8.png)
 
 - Restart bind9 dengan perintah 
 
@@ -150,7 +150,7 @@ Domain yang kita buat tidak akan langsung dikenali oleh client oleh sebab itu ki
 	nano /etc/resolv.conf
 	```
 
-![Klampis7](image/7.PNG)
+![Klampis7](gambar/9.png)
 
 - Untuk mencoba koneksi DNS, lakukan ping domain **jarkomtc.com** dengan melakukan  perintah berikut pada client *SOTO* dan *KARI*
 
@@ -158,7 +158,7 @@ Domain yang kita buat tidak akan langsung dikenali oleh client oleh sebab itu ki
   ping jarkomtc.com
   ```
 
-![Klampis8](image/8.PNG)
+![Klampis8](gambar/10.png)
 
 
 
@@ -317,86 +317,167 @@ DNS Slave adalah DNS cadangan yang akan diakses jika server DNS utama mengalami 
 
 ![Klampis18](image/17.PNG)
 
-### 1.7 Membuat Subdomain
-Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu ke suatu alamat fisik di sebuah situs contohnya: **klampis.com** merupakan sebuah domain induk. Sedangkan **test.klampis.com** merupakan sebuah subdomain.
 
-Edit file **/etc/bind/klampis/klampis.com** lalu tambahkan subdomain untuk klampis.com yang mengarah ke IP KLAMPIS.
+
+### 1.2.G Membuat Subdomain
+
+Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu ke suatu alamat fisik di sebuah situs contohnya: **jarkomtc.com** merupakan sebuah domain induk. Sedangkan **nako.jarkomtc.com** merupakan sebuah subdomain.
+
+- Edit file **/etc/bind/jarkom/jarkomtc.com** lalu tambahkan subdomain untuk **jarkomtc.com** yang mengarah ke IP *KATSU*.
+
+  ```
+  nano /etc/bind/jarkom/jarkomtc.com
+  ```
+
+- Tambahkan konfigurasi seperti pada gambar ke dalam file **jarkomtc.com**.
 
 ![Klampis19](image/18.PNG)
 
-Restart **service bind9 restart**
+- Restart service bind  
 
-Coba ping ke subdomain dengan perintah **ping cloud.klampis.com" atau **host -t A cloud.klampis.com**
+  ```
+  service bind9 restart
+  ```
 
-![Klampis19](image/19.PNG)
+- Coba ping ke subdomain dengan perintah berikut dari client *SOTO*
+
+  ```
+  ping nako.jarkomtc.com
+  
+  ATAU
+  
+  host -t A nako.jarkomtc.com
+  ```
+
+  ![Klampis19](image/19.PNG)
 
 
-### 1.8 Delegasi Subdomain
+### 1.2.H Delegasi Subdomain
 Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS baru.
 
-Pada KLAMPIS, edit file **/etc/bind/klampis/klampis.com** dan ubah menjadi seperti di bawah ini sesuai dengan pembagian IP KLAMPIS kelompok masing-masing.
+#### I. Konfigurasi Pada Server *KATSU*
+
+- Pada *KATSU*, edit file **/etc/bind/jarkom/jarkomtc.com** dan ubah menjadi seperti di bawah ini sesuai dengan pembagian IP *KATSU* kelompok masing-masing.
+
+  ```
+  nano /etc/jarkom/jarkomtc.com
+  ```
+
 
 ![Klampis20](image/20.PNG)
 
-Kemudian comment **dnssec-validation auto;** dan tambahkan baris berikut pada **/etc/bind/named.conf.options**
+- Kemudian edit file **/etc/bind/named.conf.options** pada *KATSU*.
+
+  ```
+  nano /etc/bind/named.conf.options
+  ```
+
+- Kemudian comment **dnssec-validation auto;** dan tambahkan baris berikut pada **/etc/bind/named.conf.options**
+
+  ```
+  allow-query{any;};
+  ```
+
 
 ![Klampis21](image/21.PNG)
 
-Kemudian edit file **/etc/bind/named.conf.local** menjadi seperti gambar di bawah:
+- Kemudian edit file **/etc/bind/named.conf.local** menjadi seperti gambar di bawah:
+
+  ```
+  zone "klampis.com" {
+      type master;
+      file "/etc/bind/jarkom/jarkomtc.com";
+      allow-transfer { "IP PIZZA" }; // Masukan IP PIZZA tanpa tanda petik
+  };
+  ```
+
 
 ![Klampis22](image/22.PNG)
 
-Setelah itu restart dengan menjalankan **service bind9 restart**
+- Setelah itu restart bind9
 
-Pada PUCANG, comment **dnssec-validation auto;** dan tambahkan baris berikut pada **/etc/bind/named.conf.options**
+  ```
+  service bind9 restart
+  ```
+
+#### II. Konfigurasi Pada Server *PIZZA*
+
+- Pada PIZZA edit file **/etc/bind/named.conf.options**
+
+  ```
+  nano /etc/bind/named.conf.options
+  ```
+
+- Kemudian comment **dnssec-validation auto;** dan tambahkan baris berikut pada **/etc/bind/named.conf.options**
+
+  ```
+  allow-query{any;};
+  ```
 
 ![Klampis23](image/23.PNG)
 
-Masuk direktori /etc/bind **cd /etc/bind/** Kemudian edit file **named.conf.local** menjadi seperti gambar di bawah:
+- Lalu edit file **/etc/bind/named.conf.local** menjadi seperti gambar di bawah:
 
 ![Klampis24](image/24.PNG)
 
-Kemudian buat direktori dengan nama pucang **mkdir pucang** dan copy db.local ke direktori pucang dan edit namanya menjadi pucang.klampis.com **cp db.local pucang/pucang.klampis.com**
+- Kemudian buat direktori dengan nama **delegasi** 
+
+- Copy **db.local** ke direktori pucang dan edit namanya menjadi **if.jarkomtc.com** 
+
+  ```
+  mkdir delegasi
+  cp /etc/bind/db.local /etc/bind/delegasi/if.jarkomtc.com
+  ```
+
 
 ![Klampis25](image/25.PNG)
 
-Kemudian pada **/etc/bind/pucang/pucang.klampis.com** ubah dan tambahkan record NS dan A untuk domain **pucang.klampis.com** dan satu lagi record A untuk subdomain www.pucang.klampis.com yang mengarah ke PUCANG (sesuaikan dengan IP masing-masing)
+- Kemudian edit file **if.jarkomtc.com** menjadi seperti dibawah ini
 
-![Klampis25](image/26.PNG)DISCLAIMER
+![Klampis25](image/26.PNG)
 
-Restart dengan menjalankan **service bind9 restart**
+- Restart bind9
 
-Setelah mendelegasikan zone pucang.klampis.com menuju **PUCANG**, kita dapat mengakses subdomain (daerah.pucang.klampis.com) yang ada pada pucang.klampis.com dengan menggunakan nameserver **KLAMPIS** maupun **PUCANG** dengan cara **ping daerah.pucang.klampis.com** pada client (**NGAGEL** dan **NGINDEN**)
+  ```
+  service bind9 restart
+  ```
+
+#### III. Testing
+
+- Lakukan ping ke domain **if.jarkomtc.com** dan **integra.if.jarkomtc.com** dari client *SOTO*
 
 ![Klampis26](image/27.PNG)
 
-### 1.9 DNS Forwarder
+### 1.2.I DNS Forwarder
 
 DNS Forwarder digunakan untuk mengarahkan DNS Server ke IP yang ingin dituju.
 
-Edit file di /etc/bind/named.conf.option
-Uncomment pada bagian ini
+- Edit file **/etc/bind/named.conf.options** pada server *KATSU*
+- Uncomment pada bagian ini
+
 ```
 forwarders {
     8.8.8.8;
 };
 ```
-Comment pada bagian ini
+- Comment pada bagian ini
+
 ```
 // dnssec-validation auto;
 ```
-Dan tambahkan
+- Dan tambahkan
+
 ```
 allow-query{any;};
 ```
 
 ![Klampis30](image/30.PNG)
 
-Harusnya jika nameserver pada /etc/resolv.conf diubah menjadi IP KLAMPIS maka akan diforward ke IP DNS google yaitu 8.8.8.8 dan bisa mendapatkan koneksi.
+- Harusnya jika nameserver pada file **/etc/resolv.conf** di client diubah menjadi IP KATSU maka akan di forward ke IP DNS google yaitu 8.8.8.8 dan bisa mendapatkan koneksi.
 
 
 
-### 2.1 Keterangan Configurasi Zone file
+### 1.3 Keterangan Configurasi Zone file
 
 1. #### Penulisan Serial
 
@@ -429,8 +510,8 @@ Harusnya jika nameserver pada /etc/resolv.conf diubah menjadi IP KLAMPIS maka ak
 
 ## Latihan
 
-1. Buatlah domain mawho.com dan www.mawho.com (CNAME mawho.com). Apa yang terjadi jika melakukan ping mawho.com dengan ping www.mawho.com? Mengapa hal itu terjadi?
-2. Buatlah sebuah subdomain pada domain mawho.com dengan nama abc.mawho.com
+1. Buatlah domain **whisper.gf** dan **www.whisper.gf** (CNAME **whisper.gf**). Apa yang terjadi jika melakukan ping **whisper.gf** dengan ping **www.whisper.gf**? Mengapa hal itu terjadi?
+2. Buatlah sebuah subdomain pada domain **whisper.gf** dengan nama **love.whisper.gf** setelah itu buatlah subdomain dari subdomain **moon.night.love.whisper.gf**!
 
 ## References
 * https://computer.howstuffworks.com/dns.htm
