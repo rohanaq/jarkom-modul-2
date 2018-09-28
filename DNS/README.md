@@ -348,7 +348,7 @@ Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu
 
 - Tambahkan konfigurasi seperti pada gambar ke dalam file **jarkomtc.com**.
 
-![19](image/18.PNG)
+![19](gambar/21.png)
 
 - Restart service bind  
 
@@ -366,10 +366,12 @@ Subdomain adalah bagian dari sebuah nama domain induk. Subdomain umumnya mengacu
   host -t A nako.jarkomtc.com
   ```
 
-  ![19](image/19.PNG)
+  ![19](gambar/22.png)
+
 
 
 ### 1.2.H Delegasi Subdomain
+
 Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS baru.
 
 #### I. Konfigurasi Pada Server *KATSU*
@@ -377,11 +379,10 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
 - Pada *KATSU*, edit file **/etc/bind/jarkom/jarkomtc.com** dan ubah menjadi seperti di bawah ini sesuai dengan pembagian IP *KATSU* kelompok masing-masing.
 
   ```
-  nano /etc/jarkom/jarkomtc.com
+  nano /etc/bind/jarkom/jarkomtc.com
   ```
 
-
-![20](image/20.PNG)
+![21](gambar/25.png)
 
 - Kemudian edit file **/etc/bind/named.conf.options** pada *KATSU*.
 
@@ -396,20 +397,20 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
   ```
 
 
-![21](image/21.PNG)
+![21](gambar/26.png)
 
 - Kemudian edit file **/etc/bind/named.conf.local** menjadi seperti gambar di bawah:
 
   ```
-  zone ".com" {
+  zone "jarkomtc.com" {
       type master;
       file "/etc/bind/jarkom/jarkomtc.com";
-      allow-transfer { "IP PIZZA" }; // Masukan IP PIZZA tanpa tanda petik
+      allow-transfer { "IP PIZZA"; }; // Masukan IP PIZZA tanpa tanda petik
   };
   ```
 
 
-![22](image/22.PNG)
+![22](gambar/27.png)
 
 - Setelah itu restart bind9
 
@@ -419,7 +420,7 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
 
 #### II. Konfigurasi Pada Server *PIZZA*
 
-- Pada PIZZA edit file **/etc/bind/named.conf.options**
+- Pada *PIZZA* edit file **/etc/bind/named.conf.options**
 
   ```
   nano /etc/bind/named.conf.options
@@ -431,27 +432,24 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
   allow-query{any;};
   ```
 
-![23](image/23.PNG)
+![23](gambar/28.png)
 
 - Lalu edit file **/etc/bind/named.conf.local** menjadi seperti gambar di bawah:
 
-![24](image/24.PNG)
+![24](gambar/29.png)
 
 - Kemudian buat direktori dengan nama **delegasi** 
 
 - Copy **db.local** ke direktori pucang dan edit namanya menjadi **if.jarkomtc.com** 
 
   ```
-  mkdir delegasi
+  mkdir /etc/bind/delegasi
   cp /etc/bind/db.local /etc/bind/delegasi/if.jarkomtc.com
   ```
 
-
-![25](image/25.PNG)
-
 - Kemudian edit file **if.jarkomtc.com** menjadi seperti dibawah ini
 
-![25](image/26.PNG)
+![25](gambar/30.png)
 
 - Restart bind9
 
@@ -463,7 +461,9 @@ Delegasi subdomain adalah pemberian wewenang atas sebuah subdomain kepada DNS ba
 
 - Lakukan ping ke domain **if.jarkomtc.com** dan **integra.if.jarkomtc.com** dari client *SOTO*
 
-![26](image/27.PNG)
+![26](gambar/31.png)
+
+
 
 ### 1.2.I DNS Forwarder
 
@@ -488,7 +488,7 @@ forwarders {
 allow-query{any;};
 ```
 
-![30](image/30.PNG)
+![30](gambar/32.png)
 
 - Harusnya jika nameserver pada file **/etc/resolv.conf** di client diubah menjadi IP KATSU maka akan di forward ke IP DNS google yaitu 8.8.8.8 dan bisa mendapatkan koneksi.
 
@@ -509,11 +509,11 @@ allow-query{any;};
 
    Contoh:
 
-   ![26](image/28.PNG)
+   ![26](gambar/13.png)
 
 2. #### Penggunaan Titik
 
-   ![20](image/20.PNG)
+   ![20](gambar/25.png)
 
    Pada salah satu contoh di atas, dapat kita amati pada kolom keempat terdapat record yang menggunakan titik pada akhir kata dan ada yang tidak. Penggunaan titik berfungsi sebagai penentu FQDN (Fully-Qualified Domain Name) suatu domain.
 
