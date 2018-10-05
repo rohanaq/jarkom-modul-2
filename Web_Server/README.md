@@ -31,9 +31,9 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
 ## E. Instalasi PHP
 
-**STEP 1** - Buka uml **Pucang** dan jalankan perintah
+**STEP 1** - Buka uml **Pizza** dan jalankan perintah
 
-    apt-get install php
+    apt-get install php5
     
 ![](/Web_Server/gambar/3.jpg)
 
@@ -111,7 +111,7 @@ c. Folder tempat website
 
 **STEP 5** - Buka browser dan akses alamat **http://[IP Pizza]/index.php**
 
-![](/WebServer/gambar/4.jpg)
+![](/Web_Server/gambar/4.jpg)
     
 * **Catatan**: <br>Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install **libapache2-mod-php7.0** dengan menjalankan perintah 
         
@@ -125,20 +125,21 @@ c. Folder tempat website
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **000-default.conf** menjadi file **default-8080.conf**.
 
-![](/WebServer/gambar/9.PNG)
+![](/Web_Server/gambar/9.jpg)
     
 **STEP 2** - Buka file **default-8080.conf**, kemudian ubah ubah port yang digunakan yang awalnya **80 **menjadi **8080 **dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
 
-![](/WebServer/gambar/10.PNG)
+![](/Web_Server/gambar/10.jpg)
 
 **STEP 3** - Tambahkan **port 8080** pada file **ports.conf**
 
-![](/WebServer/gambar/11.PNG)
+![](/Web_Server/gambar/11.jpg)
+![](/Web_Server/gambar/12.jpg)
 
 **STEP 4** - Untuk mengaktifkan konfigurasi **default-8080.conf** jalankan perintah
 `a2ensite` dan ketik nama **file konfigurasi tanpa .conf**
     
-![](/WebServer/gambar/12.PNG)
+![](/Web_Server/gambar/13.jpg)
     
 kemudian tekan enter.
 
@@ -148,13 +149,15 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
 
 **STEP 6** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **web-8080**
 
+![](/Web_Server/gambar/14.jpg)
+
 **STEP 7** - Masuk ke folder **web-8080** dan buat file **index.php** yang berisi
     
     <?php
         echo "Hello ini port 8080";
     ?>
     
-![](/WebServer/gambar/13.PNG)
+![](/Web_Server/gambar/15.jpg)
         
 **STEP 8** - Buka browser dan akses alamat http://[IP Pucang]:8080
 
