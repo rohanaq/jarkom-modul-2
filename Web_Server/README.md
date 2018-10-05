@@ -165,41 +165,41 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
 
 ## H. Mari Berimajinasi
 ### H.1. Setting Domain Pada Apache
-Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **klampis.com**. Dia memiliki **teman** yang bernama Udin kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
+Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **jarkomtc.com**. Dia memiliki **teman** yang bernama Udin kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
 
 Maka yang harus dilakukan Udin untuk menyenangkan hati Nia adalah:
 
-**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **klampis.com.conf**
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **jarkomtc.com.conf**
 
 ![](/Web_Server/gambar/17.jpg)
     
-**STEP 2** - Buka file **klampis.com.conf**, kemudian
+**STEP 2** - Buka file **jarkomtc.com.conf**, kemudian
     
-***2.1*** - Uncomment **ServerName** dan ganti **www.example.com** menjadi **klampis.com**.
+***2.1*** - Uncomment **ServerName** dan ganti **www.example.com** menjadi **jarkomtc.com**.
 
 ***2.2*** - Tambahkan
 
-    ServerAlias www.klampis.com
-agar dapat mengakses **www.klampis.com**
+    ServerAlias www.jarkomtc.com
+agar dapat mengakses **www.jarkomtc.com**
          
-***2.3*** - Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/klampis.com**
+***2.3*** - Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/jarkomtc.com**
     
 ![](/Web_Server/gambar/18.jpg)
     
-**STEP 3** - Aktifkan konfigurasi **klampis.com.conf** dengan menjalankan `a2ensite klampis.com`
+**STEP 3** - Aktifkan konfigurasi **jarkomtc.com.conf** dengan menjalankan `a2ensite jarkomtc.com`
  
 ![](/Web_Server/gambar/19.jpg)
  
 **STEP 4** - Restart apache dengan menjalankan `service apache2 restart`
 
-**STEP 5** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **klampis.com**
+**STEP 5** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **jarkomtc.com**
 
 ![](/Web_Server/gambar/20.jpg)
 
 **STEP 6** - Buat file **index.php** dengan isi file
 
     <?php
-        echo "Hello ini klampis.com";
+        echo "Hello ini jarkomtc.com";
     ?>
 
 ![](/Web_Server/gambar/21.jpg)
@@ -208,41 +208,41 @@ agar dapat mengakses **www.klampis.com**
 
 ![](/Web_Server/gambar/22.jpg)
 
-**STEP 8** - Buka browser dan akses **klampis.com**
+**STEP 8** - Buka browser dan akses **jarkomtc.com**
 
 ![](/Web_Server/gambar/23.jpg)
 
 ### H.2. Directory Listing
 
-Di dalam folder **/var/www/klampis.com** terdapat folder sebagai berikut
+Di dalam folder **/var/www/jarkomtc.com** terdapat folder sebagai berikut
 
-        /var/www/klampis.com
+        /var/www/jarkomtc.com
                             /data
                             /download
                                     /lagu
                             /assets
                                     /javascript
 
-Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **klampis.com**, Nia ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Nia tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
+Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **jarkomtc.com**, Nia ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Nia tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
 
 Karena udin sangat suka kepada Nia.
 
 Maka yang harus dilakukan Udin adalah:
 
-**STEP 1** - Buat folder **download**, **data**,**assets**, **download/lagu** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
+**STEP 1** - Buat folder **download**, **data**,**assets**, **download/lagu** dan **assets/javascript** pada **/var/www/jarkomtc.com** dengan menjalankan perintah berikut
 
-        mkdir /var/www/klampis.com/data
-        mkdir /var/www/klampis.com/download
-        mkdir /var/www/klampis.com/download/lagu
-        mkdir /var/www/klampis.com/assets
-        mkdir /var/www/klampis.com/assets/javascript
+        mkdir /var/www/jarkomtc.com/data
+        mkdir /var/www/jarkomtc.com/download
+        mkdir /var/www/jarkomtc.com/download/lagu
+        mkdir /var/www/jarkomtc.com/assets
+        mkdir /var/www/jarkomtc.com/assets/javascript
 
 ![](/Web_Server/gambar/24.jpg)
 **STEP 2** - Mengaktifkan Directory Listing
 
-***2.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+***2.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
     
-    <Directory /var/www/klampis.com/download>
+    <Directory /var/www/jarkomtc.com/download>
         Options +Indexes #Untuk mengaktifkan directory listing
     </Directory>
     
@@ -252,7 +252,7 @@ agar folder **download** menampilkan isi folder.
     
 ***2.2*** - Simpan dan restart apache `service apache2 restart`
 
-***2.3*** - Buka Browser dan akses **http://klampis.com/download**
+***2.3*** - Buka Browser dan akses **http://jarkomtc.com/download**
 
 
 
@@ -262,17 +262,17 @@ agar folder **download** menampilkan isi folder.
   
   `<Directory /x> ... </Directory>`
   
-Contoh untuk mengatur /var/www/klampis.com/download
+Contoh untuk mengatur /var/www/jarkomtc.com/download
     
-    <Directory /var/www/klampis.com/download>
+    <Directory /var/www/jarkomtc.com/download>
         
     </Directory>
 
 **STEP 3** - Mematikan Directory Listing
 
-***3.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+***3.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
     
-    <Directory /var/www/klampis.com/assets>
+    <Directory /var/www/jarkomtc.com/assets>
         Options -Indexes #Untuk mematikan directory listing
     </Directory>
 
@@ -282,7 +282,7 @@ agar folder **assets** tidak menampilkan isi folder.
     
 ***3.2*** - Simpan dan restart apache `service apache2 restart`
 
-***3.3*** - Buka Browser dan akses **http://klampis.com/assets**
+***3.3*** - Buka Browser dan akses **http://jarkomtc.com/assets**
 
   
 ### H.3 Directory Alias
@@ -291,11 +291,11 @@ Karena dirasa **http://[IP Klampis]/assets/javascript** terlalu panjang url-nya,
 
 Maka yang dilakukan Udin adalah
 
-**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
-    Alias "/assets/js" "/var/www/klampis.com/assets/javascript"
+    Alias "/assets/js" "/var/www/jarkomtc.com/assets/javascript"
             
-    <Directory /var/www/klampis.com/assets/javascript>
+    <Directory /var/www/jarkomtc.com/assets/javascript>
         Require all granted # Mengizinkan akses ke semua pengguna
         Options +Indexes
     </Directory>
@@ -304,11 +304,11 @@ Maka yang dilakukan Udin adalah
         
 **STEP 2** - Restart apache2 `service apache2 restart`
 
-**STEP 3** - Pindah ke folder **/var/www/klampis.com/assets/javascript** dan buat file **app.js** dengan perintah `touch app.js`
+**STEP 3** - Pindah ke folder **/var/www/jarkomtc.com/assets/javascript** dan buat file **app.js** dengan perintah `touch app.js`
 
 **GAMBAR**
 
-**STEP 4** - Buka browser dan akses **http://klampis.com/assets/js**
+**STEP 4** - Buka browser dan akses **http://jarkomtc.com/assets/js**
 
 **GAMBAR**
 
@@ -316,7 +316,7 @@ Maka yang dilakukan Udin adalah
 
 * ### Mengaktifkan Module Rewrite
 
-Setelah dipikir-pikir ternyata **http://klampis.com/index.php** ternyata kurang cantik untuk penulisan url. Maka Udin berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
+Setelah dipikir-pikir ternyata **http://jarkomtc.com/index.php** ternyata kurang cantik untuk penulisan url. Maka Udin berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
 
 Maka yang dilakukan Udin adalah
 
@@ -330,11 +330,11 @@ Biasanya semua konfigurasi terhadap sebuah website diatur pada file di folder **
 
 Untuk mengatasi masalah tersebut kita dapat membuat file **.htaccess** pada folder dimana kita ingin atur.
 
-Contoh kasus diatas kita ingin mengatur mod rewrite dari **http://klampis.com** agar saat mengakses file php tanpa ekstensi file. 
+Contoh kasus diatas kita ingin mengatur mod rewrite dari **http://jarkomtc.com** agar saat mengakses file php tanpa ekstensi file. 
 
 Maka yang dilakukan adalah
 
-**STEP 1** - Pindah ke folder **/var/www/klampis.com** dan buat file **.htaccess** dengan isi file
+**STEP 1** - Pindah ke folder **/var/www/jarkomtc.com** dan buat file **.htaccess** dengan isi file
 
     <IfModule mod_rewrite.c>
         Options +FollowSymLinks -MultiViews
@@ -363,9 +363,9 @@ Maka yang dilakukan adalah
         echo "ini halaman About Us";
     ?>
     
-**STEP 3** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+**STEP 3** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
-    <Directory /var/www/klampis.com>
+    <Directory /var/www/jarkomtc.com>
         AllowOverride All
     </Directory>
 
@@ -377,19 +377,19 @@ Maka yang dilakukan adalah
 
 **STEP 4** - Restart apache `service apache2 restart`
 
-**STEP 5** - Buka browser dan akses **http://klampis.com/aboutus**
+**STEP 5** - Buka browser dan akses **http://jarkomtc.com/aboutus**
 
 ![](/Web_Server/gambar/34.jpg)
 
 ### H.5 Otorisasi
 
-Pada web **http://klampis.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Nia ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
+Pada web **http://jarkomtc.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Nia ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
 
 Maka yang dilakukan Udin agar Nia tetap aman adalah
 
-**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
-    <Directory /var/www/klampis.com/data>
+    <Directory /var/www/jarkomtc.com/data>
         Options +Indexes
         Order deny,allow
         Deny from all
@@ -413,7 +413,7 @@ Maka yang dilakukan Udin agar Nia tetap aman adalah
 
 **STEP 2** - Restart apache `service apache2 restart`
 
-**STEP 3** - Buka browser dan akses **http://klampis.com/data**
+**STEP 3** - Buka browser dan akses **http://jarkomtc.com/data**
 
 ![](/Web_Server/gambar/37.jpg)
 
