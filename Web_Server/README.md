@@ -23,31 +23,31 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
     apt-get install apache2
 
-![](/WebServer/gambar/1.PNG)
+![](/Web_Server/gambar/1.jpg)
     
 **STEP 2** - Buka browser laptop/komputer masing-masing dan buka web **IP Pucang Masing-Masing Kelompok** sampai muncul halaman Apache
 
-![](/WebServer/gambar/2.PNG)
+![](/Web_Server/gambar/2.jpg)
 
 ## E. Instalasi PHP
 
-**STEP 1** - Buka uml **Pucang** dan jalankan perintah
+**STEP 1** - Buka uml **Pizza** dan jalankan perintah
 
-    apt-get install php
+    apt-get install php5
     
-![](/WebServer/gambar/3.PNG)
+![](/Web_Server/gambar/3.jpg)
 
 **STEP 2** - Test apakah **php** sudah terinstall dengan menjalankan perintah
 
     php -v
     
-![](/WebServer/gambar/4.PNG)
+![](/Web_Server/gambar/32.jpg)
 
 ## F. Mengenal Apache
 
 Webserver Apache memiliki folder untuk konfigurasi yang berada di **/etc/apache2**
 
-![](/WebServer/gambar/5.PNG)
+![](/Web_Server/gambar/5.jpg)
 
 Pada folder **/etc/apache2** terdapat berbagai file dan folder untuk konfigurasi
 
@@ -77,7 +77,7 @@ a2dismod | Untuk DISABLE spesifik modul ke dalam konfigurasi apache2
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available**
 
-![](/WebServer/gambar/6.PNG)
+![](/Web_Server/gambar/7.jpg)
     
 Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file.
 
@@ -85,11 +85,11 @@ Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file.
 
 - **default-ssl.conf** adalah file konfigurasi website default apache untuk https.
 
-**STEP 2** - Buka file **000-default.conf**
+**STEP 2** - Buka file **default**
 
-![](/WebServer/gambar/7.PNG)
+![](/Web_Server/gambar/8.jpg)
 
-**STEP 3** - Pada file **000-default.conf** berisi contoh konfigurasi,
+**STEP 3** - Pada file **default** berisi contoh konfigurasi,
 
 a. Port berapa yang digunakan.
     
@@ -109,9 +109,9 @@ c. Folder tempat website
         phpinfo();
     ?>
 
-**STEP 5** - Buka browser dan akses alamat **http://[IP Pucang]/index.php**
+**STEP 5** - Buka browser dan akses alamat **http://[IP Pizza]/index.php**
 
-![](/WebServer/gambar/8.PNG)
+![](/Web_Server/gambar/4.jpg)
     
 * **Catatan**: <br>Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install **libapache2-mod-php7.0** dengan menjalankan perintah 
         
@@ -125,20 +125,21 @@ c. Folder tempat website
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **000-default.conf** menjadi file **default-8080.conf**.
 
-![](/WebServer/gambar/9.PNG)
+![](/Web_Server/gambar/9.jpg)
     
 **STEP 2** - Buka file **default-8080.conf**, kemudian ubah ubah port yang digunakan yang awalnya **80 **menjadi **8080 **dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
 
-![](/WebServer/gambar/10.PNG)
+![](/Web_Server/gambar/10.jpg)
 
 **STEP 3** - Tambahkan **port 8080** pada file **ports.conf**
 
-![](/WebServer/gambar/11.PNG)
+![](/Web_Server/gambar/11.jpg)
+![](/Web_Server/gambar/12.jpg)
 
 **STEP 4** - Untuk mengaktifkan konfigurasi **default-8080.conf** jalankan perintah
 `a2ensite` dan ketik nama **file konfigurasi tanpa .conf**
     
-![](/WebServer/gambar/12.PNG)
+![](/Web_Server/gambar/13.jpg)
     
 kemudian tekan enter.
 
@@ -148,17 +149,19 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
 
 **STEP 6** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **web-8080**
 
+![](/Web_Server/gambar/14.jpg)
+
 **STEP 7** - Masuk ke folder **web-8080** dan buat file **index.php** yang berisi
     
     <?php
         echo "Hello ini port 8080";
     ?>
     
-![](/WebServer/gambar/13.PNG)
+![](/Web_Server/gambar/15.jpg)
         
 **STEP 8** - Buka browser dan akses alamat http://[IP Pucang]:8080
 
-![](/WebServer/gambar/14.PNG)
+![](/Web_Server/gambar/16.jpg)
 
 ## H. Mari Berimajinasi
 ### H.1. Setting Domain Pada Apache
@@ -166,9 +169,9 @@ Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat web
 
 Maka yang harus dilakukan Udin untuk menyenangkan hati Nia adalah:
 
-**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **000-default.conf** menjadi **klampis.com.conf**
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **klampis.com.conf**
 
-![](/WebServer/gambar/15.PNG)
+![](/Web_Server/gambar/17.jpg)
     
 **STEP 2** - Buka file **klampis.com.conf**, kemudian
     
@@ -181,15 +184,17 @@ agar dapat mengakses **www.klampis.com**
          
 ***2.3*** - Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/klampis.com**
     
-![](/WebServer/gambar/16.PNG)
+![](/Web_Server/gambar/18.jpg)
     
 **STEP 3** - Aktifkan konfigurasi **klampis.com.conf** dengan menjalankan `a2ensite klampis.com`
  
-![](/WebServer/gambar/17.PNG)
+![](/Web_Server/gambar/19.jpg)
  
 **STEP 4** - Restart apache dengan menjalankan `service apache2 restart`
 
 **STEP 5** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **klampis.com**
+
+![](/Web_Server/gambar/20.jpg)
 
 **STEP 6** - Buat file **index.php** dengan isi file
 
@@ -197,13 +202,15 @@ agar dapat mengakses **www.klampis.com**
         echo "Hello ini klampis.com";
     ?>
 
-![](/WebServer/gambar/18.PNG)
+![](/Web_Server/gambar/21.jpg)
 
 **STEP 7** - Ganti DNS laptop/komputer sesuai **IP Klampis** masing-masing.
 
+![](/Web_Server/gambar/22.jpg)
+
 **STEP 8** - Buka browser dan akses **klampis.com**
 
-![](/WebServer/gambar/19.PNG)
+![](/Web_Server/gambar/23.jpg)
 
 ### H.2. Directory Listing
 
@@ -222,14 +229,15 @@ Karena udin sangat suka kepada Nia.
 
 Maka yang harus dilakukan Udin adalah:
 
-**STEP 1** - Buat folder **download**, **private** ,**assets**, **data** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
+**STEP 1** - Buat folder **download**, **data**,**assets**, **download/lagu** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
 
-        mkdir -p /var/www/klampis.com/data
-        mkdir -p /var/www/klampis.com/download
-        mkdir -p /var/www/klampis.com/download/lagu
-        mkdir -p /var/www/klampis.com/assets
-        mkdir -p /var/www/klampis.com/assets/javascript
+        mkdir /var/www/klampis.com/data
+        mkdir /var/www/klampis.com/download
+        mkdir /var/www/klampis.com/download/lagu
+        mkdir /var/www/klampis.com/assets
+        mkdir /var/www/klampis.com/assets/javascript
 
+![](/Web_Server/gambar/24.jpg)
 **STEP 2** - Mengaktifkan Directory Listing
 
 ***2.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
@@ -240,13 +248,13 @@ Maka yang harus dilakukan Udin adalah:
     
 agar folder **download** menampilkan isi folder.
     
-![](/WebServer/gambar/20.PNG)
+![](/Web_Server/gambar/25.jpg)
     
 ***2.2*** - Simpan dan restart apache `service apache2 restart`
 
 ***2.3*** - Buka Browser dan akses **http://klampis.com/download**
 
-![](/WebServer/gambar/21.PNG)
+
 
 
 **Keterangan**:
@@ -270,13 +278,12 @@ Contoh untuk mengatur /var/www/klampis.com/download
 
 agar folder **assets** tidak menampilkan isi folder.
 
-![](/WebServer/gambar/22.PNG)
+![](/Web_Server/gambar/26.jpg)
     
 ***3.2*** - Simpan dan restart apache `service apache2 restart`
 
 ***3.3*** - Buka Browser dan akses **http://klampis.com/assets**
 
-![](/WebServer/gambar/23.PNG)
   
 ### H.3 Directory Alias
 
@@ -293,17 +300,17 @@ Maka yang dilakukan Udin adalah
         Options +Indexes
     </Directory>
 
-![](/WebServer/gambar/24.PNG)
+![](/Web_Server/gambar/27.jpg)
         
 **STEP 2** - Restart apache2 `service apache2 restart`
 
 **STEP 3** - Pindah ke folder **/var/www/klampis.com/assets/javascript** dan buat file **app.js** dengan perintah `touch app.js`
 
-![](/WebServer/gambar/25.PNG)
+**GAMBAR**
 
 **STEP 4** - Buka browser dan akses **http://klampis.com/assets/js**
 
-![](/WebServer/gambar/26.PNG)
+**GAMBAR**
 
 ### H.4. Module Rewrite
 
