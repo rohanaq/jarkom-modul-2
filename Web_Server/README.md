@@ -161,7 +161,7 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
         
 **STEP 8** - Buka browser dan akses alamat http://[IP Pucang]:8080
 
-![](/WebServer/gambar/14.PNG)
+![](/Web_Server/gambar/16.jpg)
 
 ## H. Mari Berimajinasi
 ### H.1. Setting Domain Pada Apache
@@ -169,9 +169,9 @@ Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat web
 
 Maka yang harus dilakukan Udin untuk menyenangkan hati Nia adalah:
 
-**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **000-default.conf** menjadi **klampis.com.conf**
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **klampis.com.conf**
 
-![](/WebServer/gambar/15.PNG)
+![](/Web_Server/gambar/17.jpg)
     
 **STEP 2** - Buka file **klampis.com.conf**, kemudian
     
@@ -184,15 +184,17 @@ agar dapat mengakses **www.klampis.com**
          
 ***2.3*** - Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/klampis.com**
     
-![](/WebServer/gambar/16.PNG)
+![](/Web_Server/gambar/18.jpg)
     
 **STEP 3** - Aktifkan konfigurasi **klampis.com.conf** dengan menjalankan `a2ensite klampis.com`
  
-![](/WebServer/gambar/17.PNG)
+![](/Web_Server/gambar/19.jpg)
  
 **STEP 4** - Restart apache dengan menjalankan `service apache2 restart`
 
 **STEP 5** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **klampis.com**
+
+![](/Web_Server/gambar/20.jpg)
 
 **STEP 6** - Buat file **index.php** dengan isi file
 
@@ -200,13 +202,15 @@ agar dapat mengakses **www.klampis.com**
         echo "Hello ini klampis.com";
     ?>
 
-![](/WebServer/gambar/18.PNG)
+![](/Web_Server/gambar/21.jpg)
 
 **STEP 7** - Ganti DNS laptop/komputer sesuai **IP Klampis** masing-masing.
 
+![](/Web_Server/gambar/22.jpg)
+
 **STEP 8** - Buka browser dan akses **klampis.com**
 
-![](/WebServer/gambar/19.PNG)
+![](/Web_Server/gambar/23.jpg)
 
 ### H.2. Directory Listing
 
@@ -225,14 +229,15 @@ Karena udin sangat suka kepada Nia.
 
 Maka yang harus dilakukan Udin adalah:
 
-**STEP 1** - Buat folder **download**, **private** ,**assets**, **data** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
+**STEP 1** - Buat folder **download**, **data**,**assets**, **download/lagu** dan **assets/javascript** pada **/var/www/klampis.com** dengan menjalankan perintah berikut
 
-        mkdir -p /var/www/klampis.com/data
-        mkdir -p /var/www/klampis.com/download
-        mkdir -p /var/www/klampis.com/download/lagu
-        mkdir -p /var/www/klampis.com/assets
-        mkdir -p /var/www/klampis.com/assets/javascript
+        mkdir /var/www/klampis.com/data
+        mkdir /var/www/klampis.com/download
+        mkdir /var/www/klampis.com/download/lagu
+        mkdir /var/www/klampis.com/assets
+        mkdir /var/www/klampis.com/assets/javascript
 
+![](/Web_Server/gambar/24.jpg)
 **STEP 2** - Mengaktifkan Directory Listing
 
 ***2.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
@@ -243,13 +248,13 @@ Maka yang harus dilakukan Udin adalah:
     
 agar folder **download** menampilkan isi folder.
     
-![](/WebServer/gambar/20.PNG)
+![](/Web_Server/gambar/25.jpg)
     
 ***2.2*** - Simpan dan restart apache `service apache2 restart`
 
 ***2.3*** - Buka Browser dan akses **http://klampis.com/download**
 
-![](/WebServer/gambar/21.PNG)
+
 
 
 **Keterangan**:
@@ -273,13 +278,12 @@ Contoh untuk mengatur /var/www/klampis.com/download
 
 agar folder **assets** tidak menampilkan isi folder.
 
-![](/WebServer/gambar/22.PNG)
+![](/Web_Server/gambar/26.jpg)
     
 ***3.2*** - Simpan dan restart apache `service apache2 restart`
 
 ***3.3*** - Buka Browser dan akses **http://klampis.com/assets**
 
-![](/WebServer/gambar/23.PNG)
   
 ### H.3 Directory Alias
 
@@ -296,17 +300,17 @@ Maka yang dilakukan Udin adalah
         Options +Indexes
     </Directory>
 
-![](/WebServer/gambar/24.PNG)
+![](/Web_Server/gambar/27.jpg)
         
 **STEP 2** - Restart apache2 `service apache2 restart`
 
 **STEP 3** - Pindah ke folder **/var/www/klampis.com/assets/javascript** dan buat file **app.js** dengan perintah `touch app.js`
 
-![](/WebServer/gambar/25.PNG)
+**GAMBAR**
 
 **STEP 4** - Buka browser dan akses **http://klampis.com/assets/js**
 
-![](/WebServer/gambar/26.PNG)
+**GAMBAR**
 
 ### H.4. Module Rewrite
 
