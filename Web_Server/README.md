@@ -25,7 +25,7 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
 ![](/Web_Server/gambar/1.jpg)
     
-**STEP 2** - Buka browser laptop/komputer masing-masing dan buka web **IP Pucang Masing-Masing Kelompok** sampai muncul halaman Apache
+**STEP 2** - Buka browser laptop/komputer masing-masing dan buka web **IP Pizza Masing-Masing Kelompok** sampai muncul halaman Apache
 
 ![](/Web_Server/gambar/2.jpg)
 
