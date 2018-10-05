@@ -5,7 +5,7 @@
 
 ## B. Penting Untuk Dibaca
 1. Pastikan Semua UML bisa connect ke internet baik dapat melakukan koneksi keluar maupun dapat ping dari luar (Khusus DMZ).
-2. Pastikan Pizza dan Klampis sudah memiliki memory 256M
+2. Pastikan Pizza dan Katsu sudah memiliki memory 256M
 3. Ketika mengalami kendala/error **cek syntax dan samakan seperti modul** terlebih dahulu **sebelum** angkat tangan dan berkata **"Mas/Mbak ini kok gak bisa ya?"**
 
 
@@ -127,7 +127,7 @@ c. Folder tempat website
 
 ![](/Web_Server/gambar/9.jpg)
     
-**STEP 2** - Buka file **default-8080.conf**, kemudian ubah ubah port yang digunakan yang awalnya **80 **menjadi **8080 **dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
+**STEP 2** - Buka file **default-8080.conf**, kemudian ubah ubah port yang digunakan yang awalnya **80** menjadi **8080** dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
 
 ![](/Web_Server/gambar/10.jpg)
 
@@ -154,7 +154,7 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
 **STEP 7** - Masuk ke folder **web-8080** dan buat file **index.php** yang berisi
     
     <?php
-        echo "Hello ini port 8080";
+        echo "Halo ini port 8080 loo";
     ?>
     
 ![](/Web_Server/gambar/15.jpg)
@@ -165,9 +165,9 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
 
 ## H. Mari Berimajinasi
 ### H.1. Setting Domain Pada Apache
-Nia adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **jarkomtc.com**. Dia memiliki **teman** yang bernama Udin kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
+Azty adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **jarkomtc.com**. Dia memiliki **teman** yang bernama Timtam kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
 
-Maka yang harus dilakukan Udin untuk menyenangkan hati Nia adalah:
+Maka yang harus dilakukan Timtam untuk menyenangkan hati Azty adalah:
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **jarkomtc.com.conf**
 
@@ -199,12 +199,12 @@ agar dapat mengakses **www.jarkomtc.com**
 **STEP 6** - Buat file **index.php** dengan isi file
 
     <?php
-        echo "Hello ini jarkomtc.com";
+        echo "Semangat Jarkom TC";
     ?>
 
 ![](/Web_Server/gambar/21.jpg)
 
-**STEP 7** - Ganti DNS laptop/komputer sesuai **IP Klampis** masing-masing.
+**STEP 7** - Ganti DNS laptop/komputer sesuai **IP Katsu** masing-masing.
 
 ![](/Web_Server/gambar/22.jpg)
 
@@ -223,11 +223,11 @@ Di dalam folder **/var/www/jarkomtc.com** terdapat folder sebagai berikut
                             /assets
                                     /javascript
 
-Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **jarkomtc.com**, Nia ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Nia tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
+Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **jarkomtc.com**, Azty ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Azy tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
 
-Karena udin sangat suka kepada Nia.
+Karena Timtam sangat suka kepada Azty.
 
-Maka yang harus dilakukan Udin adalah:
+Maka yang harus dilakukan Timtam adalah:
 
 **STEP 1** - Buat folder **download**, **data**,**assets**, **download/lagu** dan **assets/javascript** pada **/var/www/jarkomtc.com** dengan menjalankan perintah berikut
 
@@ -287,9 +287,9 @@ agar folder **assets** tidak menampilkan isi folder.
   
 ### H.3 Directory Alias
 
-Karena dirasa **http://[IP Klampis]/assets/javascript** terlalu panjang url-nya, maka Udin mencoba membuat directory alias menjadi **http://[IP Klampis]/assets/js** agar Nia tidak capek mengetik.
+Karena dirasa **http://[IP Pizza]/assets/javascript** terlalu panjang url-nya, maka Timtam mencoba membuat directory alias menjadi **http://[IP Pizza]/assets/js** agar Azty tidak capek mengetik.
 
-Maka yang dilakukan Udin adalah
+Maka yang dilakukan Timtam adalah
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
@@ -306,19 +306,15 @@ Maka yang dilakukan Udin adalah
 
 **STEP 3** - Pindah ke folder **/var/www/jarkomtc.com/assets/javascript** dan buat file **app.js** dengan perintah `touch app.js`
 
-**GAMBAR**
-
 **STEP 4** - Buka browser dan akses **http://jarkomtc.com/assets/js**
-
-**GAMBAR**
 
 ### H.4. Module Rewrite
 
 * ### Mengaktifkan Module Rewrite
 
-Setelah dipikir-pikir ternyata **http://jarkomtc.com/index.php** ternyata kurang cantik untuk penulisan url. Maka Udin berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
+Setelah dipikir-pikir ternyata **http://jarkomtc.com/index.php** ternyata kurang cantik untuk penulisan url. Maka Timtam berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
 
-Maka yang dilakukan Udin adalah
+Maka yang dilakukan Timtam adalah
 
 **STEP 1** - Menjalankan perintah `a2enmod` dan menuliskan **rewrite** untuk mengaktikan module rewrite.
 
@@ -360,7 +356,7 @@ Maka yang dilakukan adalah
 **STEP 2** - Buat file aboutus.php dengan isi
 
     <?php
-        echo "ini halaman About Us";
+        echo "Terima Kasih telah mengunjungi about us";
     ?>
     
 **STEP 3** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
@@ -383,9 +379,9 @@ Maka yang dilakukan adalah
 
 ### H.5 Otorisasi
 
-Pada web **http://jarkomtc.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Nia ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
+Pada web **http://jarkomtc.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Azty ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
 
-Maka yang dilakukan Udin agar Nia tetap aman adalah
+Maka yang dilakukan Udin agar Azty tetap aman adalah
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
