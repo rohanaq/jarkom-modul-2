@@ -87,7 +87,7 @@ Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file.
 
 **STEP 2** - Buka file **default**
 
-![](/Web_Server/gambar/7.jpg)
+![](/Web_Server/gambar/8.jpg)
 
 **STEP 3** - Pada file **default** berisi contoh konfigurasi,
 
