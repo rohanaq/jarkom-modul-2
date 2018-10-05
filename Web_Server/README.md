@@ -322,11 +322,9 @@ Maka yang dilakukan Udin adalah
 
 **STEP 1** - Menjalankan perintah `a2enmod` dan menuliskan **rewrite** untuk mengaktikan module rewrite.
 
-![](/WebServer/gambar/27.PNG)
+![](/Web_Server/gambar/28.jpg)
 
 **STEP 2** - Restart apache `service apache2 restart`
-
-* ### Membuat file .htaccess
 
 Biasanya semua konfigurasi terhadap sebuah website diatur pada file di folder **/etc/apache2/sites-available**. Namun terkadang ada sebuah kasus bahwa kita tidak memiliki hak akses root untuk edit file konfigurasi yang berada di folder **/etc/apache2/sites-available** atau kita tidak ingin user lain untuk mengedit file konfigurasi yang berada di folder **/etc/apache2/sites-available**.
 
@@ -338,11 +336,18 @@ Maka yang dilakukan adalah
 
 **STEP 1** - Pindah ke folder **/var/www/klampis.com** dan buat file **.htaccess** dengan isi file
 
-    RewriteEngine On
-    RewriteCond %{SCRIPT_FILENAME} !-d #Aturan tidak akan jalan ketika yang diakses adalah folder
-    RewriteRule ^([^.]+)$ $1.php [NC,L]
-    
-![](/WebServer/gambar/28.PNG)
+    <IfModule mod_rewrite.c>
+        Options +FollowSymLinks -MultiViews
+        # Turn mod_rewrite on
+        RewriteEngine On
+        RewriteBase /
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^([^\.]+)$ $1.php [NC,L]
+    </IfModule>
+
+
+![](/Web_Server/gambar/33.jpg)
 
 **Keterangan** :
 
@@ -350,22 +355,21 @@ Maka yang dilakukan adalah
     * RewriteCond %{SCRIPT_FILENAME} !-d = aturan tidak akan jalan ketika yang diakses adalah folder (d)
     * RewriteRule ^([^.]+)$ $1.php [NC,L] = $1 adalah parameter input yang akan dicari oleh webserver
     * Info cek [Klik Disini](https://httpd.apache.org/docs/2.4/rewrite/flags.html)
-    
+
+
 **STEP 2** - Buat file aboutus.php dengan isi
 
     <?php
         echo "ini halaman About Us";
     ?>
     
-![](/WebServer/gambar/29.PNG)
-
 **STEP 3** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **klampis.com** dan tambahkan
 
     <Directory /var/www/klampis.com>
         AllowOverride All
     </Directory>
 
-![](/WebServer/gambar/30.PNG)
+![](/Web_Server/gambar/33.jpg)
 
 **Keterangan** :
 
@@ -375,7 +379,7 @@ Maka yang dilakukan adalah
 
 **STEP 5** - Buka browser dan akses **http://klampis.com/aboutus**
 
-![](/WebServer/gambar/31.PNG)
+![](/Web_Server/gambar/34.jpg)
 
 ### H.5 Otorisasi
 
@@ -392,7 +396,7 @@ Maka yang dilakukan Udin agar Nia tetap aman adalah
         Allow from 10.151.252.0/255.255.252.0
     </Directory>
 
-![](/WebServer/gambar/32.PNG)
+![](/Web_Server/gambar/35.jpg)
 
 **Keterangan** :
 
@@ -411,17 +415,13 @@ Maka yang dilakukan Udin agar Nia tetap aman adalah
 
 **STEP 3** - Buka browser dan akses **http://klampis.com/data**
 
-![](/WebServer/gambar/33.PNG)
+![](/Web_Server/gambar/36.jpg)
 
 Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
 
-
-![](/WebServer/gambar/34.png)
+![](/Web_Server/gambar/37.jpg)
 
 Gambar diatas ketika pengguna **memiliki ip nid 10.151.252.0/22**
-
-## SOAL LATIHAN
-[Klik Disini](https://github.com/rohanaq/jarkom-modul-2/blob/master/WebServer/Soal%20Latihan%20Web%20Server.md)
 
 <br>
 
