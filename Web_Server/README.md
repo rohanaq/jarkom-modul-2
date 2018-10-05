@@ -381,7 +381,7 @@ Maka yang dilakukan adalah
 
 Pada web **http://jarkomtc.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Azty ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
 
-Maka yang dilakukan Udin agar Azty tetap aman adalah
+Maka yang dilakukan Timtam agar Azty tetap aman adalah
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
