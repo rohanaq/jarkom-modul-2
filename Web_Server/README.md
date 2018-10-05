@@ -23,11 +23,11 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
     apt-get install apache2
 
-![](/WebServer/gambar/1.PNG)
+![](/Web_Server/gambar/1.jpg)
     
 **STEP 2** - Buka browser laptop/komputer masing-masing dan buka web **IP Pucang Masing-Masing Kelompok** sampai muncul halaman Apache
 
-![](/WebServer/gambar/2.PNG)
+![](/WebServer/gambar/2.jpg)
 
 ## E. Instalasi PHP
 
@@ -35,13 +35,13 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
     apt-get install php
     
-![](/WebServer/gambar/3.PNG)
+![](/WebServer/gambar/3.jpg)
 
 **STEP 2** - Test apakah **php** sudah terinstall dengan menjalankan perintah
 
     php -v
     
-![](/WebServer/gambar/4.PNG)
+![](/WebServer/gambar/32.jpg)
 
 ## F. Mengenal Apache
 
