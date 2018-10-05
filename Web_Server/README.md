@@ -415,11 +415,11 @@ Maka yang dilakukan Udin agar Nia tetap aman adalah
 
 **STEP 3** - Buka browser dan akses **http://klampis.com/data**
 
-![](/Web_Server/gambar/36.jpg)
+![](/Web_Server/gambar/37.jpg)
 
 Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
 
-![](/Web_Server/gambar/37.jpg)
+![](/Web_Server/gambar/36.jpg)
 
 Gambar diatas ketika pengguna **memiliki ip nid 10.151.252.0/22**
 
