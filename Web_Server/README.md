@@ -5,7 +5,7 @@
 
 ## B. Penting Untuk Dibaca
 1. Pastikan Semua UML bisa connect ke internet baik dapat melakukan koneksi keluar maupun dapat ping dari luar (Khusus DMZ).
-2. Pastikan Pucang dan Klampis sudah memiliki memory 256M
+2. Pastikan Pizza dan Klampis sudah memiliki memory 256M
 3. Ketika mengalami kendala/error **cek syntax dan samakan seperti modul** terlebih dahulu **sebelum** angkat tangan dan berkata **"Mas/Mbak ini kok gak bisa ya?"**
 
 
@@ -19,7 +19,7 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
 ## D. Instalasi Apache
 
-**STEP 1** - Buka uml **Pucang** dan jalankan perintah
+**STEP 1** - Buka uml **Pizza** dan jalankan perintah
 
     apt-get install apache2
 
@@ -159,7 +159,7 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
     
 ![](/Web_Server/gambar/15.jpg)
         
-**STEP 8** - Buka browser dan akses alamat http://[IP Pucang]:8080
+**STEP 8** - Buka browser dan akses alamat http://[IP Pizza]:8080
 
 ![](/Web_Server/gambar/16.jpg)
 
