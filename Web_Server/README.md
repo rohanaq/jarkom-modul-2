@@ -27,7 +27,7 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
     
 **STEP 2** - Buka browser laptop/komputer masing-masing dan buka web **IP Pucang Masing-Masing Kelompok** sampai muncul halaman Apache
 
-![](/WebServer/gambar/2.jpg)
+![](/Web_Server/gambar/2.jpg)
 
 ## E. Instalasi PHP
 
@@ -35,19 +35,19 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
     apt-get install php
     
-![](/WebServer/gambar/3.jpg)
+![](/Web_Server/gambar/3.jpg)
 
 **STEP 2** - Test apakah **php** sudah terinstall dengan menjalankan perintah
 
     php -v
     
-![](/WebServer/gambar/32.jpg)
+![](/Web_Server/gambar/32.jpg)
 
 ## F. Mengenal Apache
 
 Webserver Apache memiliki folder untuk konfigurasi yang berada di **/etc/apache2**
 
-![](/WebServer/gambar/5.PNG)
+![](/Web_Server/gambar/5.jpg)
 
 Pada folder **/etc/apache2** terdapat berbagai file dan folder untuk konfigurasi
 
@@ -77,7 +77,7 @@ a2dismod | Untuk DISABLE spesifik modul ke dalam konfigurasi apache2
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available**
 
-![](/WebServer/gambar/6.PNG)
+![](/Web_Server/gambar/7.jpg)
     
 Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file.
 
@@ -85,11 +85,11 @@ Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file.
 
 - **default-ssl.conf** adalah file konfigurasi website default apache untuk https.
 
-**STEP 2** - Buka file **000-default.conf**
+**STEP 2** - Buka file **default**
 
-![](/WebServer/gambar/7.PNG)
+![](/Web_Server/gambar/7.jpg)
 
-**STEP 3** - Pada file **000-default.conf** berisi contoh konfigurasi,
+**STEP 3** - Pada file **default** berisi contoh konfigurasi,
 
 a. Port berapa yang digunakan.
     
@@ -109,9 +109,9 @@ c. Folder tempat website
         phpinfo();
     ?>
 
-**STEP 5** - Buka browser dan akses alamat **http://[IP Pucang]/index.php**
+**STEP 5** - Buka browser dan akses alamat **http://[IP Pizza]/index.php**
 
-![](/WebServer/gambar/8.PNG)
+![](/WebServer/gambar/4.jpg)
     
 * **Catatan**: <br>Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install **libapache2-mod-php7.0** dengan menjalankan perintah 
         
