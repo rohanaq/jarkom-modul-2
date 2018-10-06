@@ -127,7 +127,7 @@ c. Folder tempat website
 
 ![](/Web_Server/gambar/9.jpg)
     
-**STEP 2** - Buka file **default-8080.conf**, kemudian ubah ubah port yang digunakan yang awalnya **80** menjadi **8080** dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
+**STEP 2** - Buka file **default-8080**, kemudian ubah ubah port yang digunakan yang awalnya **80** menjadi **8080** dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
 
 ![](/Web_Server/gambar/10.jpg)
 
@@ -136,7 +136,7 @@ c. Folder tempat website
 ![](/Web_Server/gambar/11.jpg)
 ![](/Web_Server/gambar/12.jpg)
 
-**STEP 4** - Untuk mengaktifkan konfigurasi **default-8080.conf** jalankan perintah
+**STEP 4** - Untuk mengaktifkan konfigurasi **default-8080** jalankan perintah
 `a2ensite` dan ketik nama **file konfigurasi tanpa .conf**
     
 ![](/Web_Server/gambar/13.jpg)
@@ -169,11 +169,11 @@ Nisa adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat we
 
 Maka yang harus dilakukan Adi untuk menyenangkan hati Nisa adalah:
 
-**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **jarkomtc.com.conf**
+**STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **jarkomtc.com**
 
 ![](/Web_Server/gambar/17.jpg)
     
-**STEP 2** - Buka file **jarkomtc.com.conf**, kemudian
+**STEP 2** - Buka file **jarkomtc.com**, kemudian
     
 ***2.1*** - Uncomment **ServerName** dan ganti **www.example.com** menjadi **jarkomtc.com**.
 
@@ -186,7 +186,7 @@ agar dapat mengakses **www.jarkomtc.com**
     
 ![](/Web_Server/gambar/18.jpg)
     
-**STEP 3** - Aktifkan konfigurasi **jarkomtc.com.conf** dengan menjalankan `a2ensite jarkomtc.com`
+**STEP 3** - Aktifkan konfigurasi **jarkomtc.com** dengan menjalankan `a2ensite jarkomtc.com`
  
 ![](/Web_Server/gambar/19.jpg)
  
