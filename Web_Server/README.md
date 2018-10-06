@@ -79,11 +79,11 @@ a2dismod | Untuk DISABLE spesifik modul ke dalam konfigurasi apache2
 
 ![](/Web_Server/gambar/7.jpg)
     
-Pada folder **/etc/apache2/sites-availabke** terdapat dua buah file.
+Pada folder **/etc/apache2/sites-available** terdapat dua buah file.
 
-- **000-default.conf** adalah file konfigurasi website default apache untuk http.
+- **default** adalah file konfigurasi website default apache untuk http.
 
-- **default-ssl.conf** adalah file konfigurasi website default apache untuk https.
+- **default-ssl** adalah file konfigurasi website default apache untuk https.
 
 **STEP 2** - Buka file **default**
 
