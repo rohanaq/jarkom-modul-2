@@ -165,9 +165,9 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
 
 ## H. Mari Berimajinasi
 ### H.1. Setting Domain Pada Apache
-Azty adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **jarkomtc.com**. Dia memiliki **teman** yang bernama Timtam kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
+Nisa adalah seorang mahasiswi Departemen Infomatika yang sedang ingin membuat website dengan domain **jarkomtc.com**. Dia memiliki **teman** yang bernama Adi kebetulan mempunyai server yang bisa digunakan untuk tempat host websitenya.
 
-Maka yang harus dilakukan Timtam untuk menyenangkan hati Azty adalah:
+Maka yang harus dilakukan Adi untuk menyenangkan hati Nisa adalah:
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **jarkomtc.com.conf**
 
@@ -223,11 +223,11 @@ Di dalam folder **/var/www/jarkomtc.com** terdapat folder sebagai berikut
                             /assets
                                     /javascript
 
-Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **jarkomtc.com**, Azty ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Azy tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
+Karena folder **download** terdapat file-file yang bisa didownload oleh pengunjung website **jarkomtc.com**, Nisa ingin folder tersebut dapat menampilkan list file yang ada. Tetapi untuk folder **assets**, Azy tidak ingin ada yang tahu apa isi folder tersebut ketika diakses oleh pengunjung websitenya.
 
-Karena Timtam sangat suka kepada Azty.
+Karena Adi sangat suka kepada Nisa.
 
-Maka yang harus dilakukan Timtam adalah:
+Maka yang harus dilakukan Adi adalah:
 
 **STEP 1** - Buat folder **download**, **data**,**assets**, **download/lagu** dan **assets/javascript** pada **/var/www/jarkomtc.com** dengan menjalankan perintah berikut
 
@@ -287,9 +287,9 @@ agar folder **assets** tidak menampilkan isi folder.
   
 ### H.3 Directory Alias
 
-Karena dirasa **http://[IP Pizza]/assets/javascript** terlalu panjang url-nya, maka Timtam mencoba membuat directory alias menjadi **http://[IP Pizza]/assets/js** agar Azty tidak capek mengetik.
+Karena dirasa **http://[IP Pizza]/assets/javascript** terlalu panjang url-nya, maka Adi mencoba membuat directory alias menjadi **http://[IP Pizza]/assets/js** agar Nisa tidak capek mengetik.
 
-Maka yang dilakukan Timtam adalah
+Maka yang dilakukan Adi adalah
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
@@ -312,9 +312,9 @@ Maka yang dilakukan Timtam adalah
 
 * ### Mengaktifkan Module Rewrite
 
-Setelah dipikir-pikir ternyata **http://jarkomtc.com/index.php** ternyata kurang cantik untuk penulisan url. Maka Timtam berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
+Setelah dipikir-pikir ternyata **http://jarkomtc.com/index.php** ternyata kurang cantik untuk penulisan url. Maka Adi berinisiatif untuk mengaktifkan module rewrite agar ketika mengakses file php tidak usah menambahkan ekstensi .php.
 
-Maka yang dilakukan Timtam adalah
+Maka yang dilakukan Adi adalah
 
 **STEP 1** - Menjalankan perintah `a2enmod` dan menuliskan **rewrite** untuk mengaktikan module rewrite.
 
@@ -379,9 +379,9 @@ Maka yang dilakukan adalah
 
 ### H.5 Otorisasi
 
-Pada web **http://jarkomtc.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Azty ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
+Pada web **http://jarkomtc.com** terdapat path **/data** yang tidak boleh dibuka sembarang orang. Nisa ingin **/data** hanya boleh di akses oleh pengguna yang memiliki ip **10.151.252.0/255.255.252.0**.
 
-Maka yang dilakukan Timtam agar Azty tetap aman adalah
+Maka yang dilakukan Adi agar Nisa tetap aman adalah
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
