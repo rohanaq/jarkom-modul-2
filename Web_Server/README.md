@@ -175,7 +175,7 @@ Maka yang harus dilakukan Adi untuk menyenangkan hati Nisa adalah:
     
 **STEP 2** - Buka file **jarkomtc.com**, kemudian
     
-***2.1*** - Uncomment **ServerName** dan ganti **www.example.com** menjadi **jarkomtc.com**.
+***2.1*** - Ubah **ServerName** menjadi **jarkomtc.com**.
 
 ***2.2*** - Tambahkan
 
