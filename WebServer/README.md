@@ -14,7 +14,15 @@
 ### 1. Web Server
 Web Server adalah perangkat yang menyediakan layanan akses kepada pengguna melalui protokol HTTP atau HTTPS melalui aplikasi web.
 
-### 2. Apache Web Server
+### 2. Load Balancing
+Load balancing adalah suatu mekanisme penyeimbangan beban yang bekerja dengan cara membagi beban pekerjaan. Load balancer adalah aplikasi atau alat yang bertugas untuk melakukan load balancing . Load balancer dapat meggunakan berbagai macam algoritma load balancing yang bertujuan untuk membagi beban pekerjaan seadil-adilnya. Minimal arsitektur load balancing adalah sebagai berikut:
+
+![loadbalancing](gambar/loadbalancing.png)
+
+## Kenapa dibutuhkan load balancing?
+Untuk menangani banyaknya pengguna yang mengakses layanan pada satu waktu dan menjaga layanan tetap tersedia setiap saat, dibutuhkan lebih dari satu komputer untuk memasang layanannya. Dengan layanan yang tersedia di banyak server, dibutuhkan mekanisme pembagian beban untuk memberikan beban yang seimbang pada setiap server. Dengan meletakkan layanan pada beberapa server dan pembagian beban yang optimal, setiap permintaan pengguna bisa ditangani dengan efisien.
+
+### 3. Apache Web Server
 Apache adalah sebuah nama web server yang bertanggung jawab pada request-response HTTP dan logging informasi secara detail
 
 ## D. Instalasi Apache
@@ -23,11 +31,11 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
     apt-get install apache2
 
-![](/Web_Server/gambar/1.jpg)
+![](gambar/1.jpg)
     
 **STEP 2** - Buka browser laptop/komputer masing-masing dan buka web **IP Pizza Masing-Masing Kelompok** sampai muncul halaman Apache
 
-![](/Web_Server/gambar/2.jpg)
+![](gambar/2.jpg)
 
 ## E. Instalasi PHP
 
@@ -35,19 +43,19 @@ Apache adalah sebuah nama web server yang bertanggung jawab pada request-respons
 
     apt-get install php5
     
-![](/Web_Server/gambar/3.jpg)
+![](gambar/3.jpg)
 
 **STEP 2** - Test apakah **php** sudah terinstall dengan menjalankan perintah
 
     php -v
     
-![](/Web_Server/gambar/32.jpg)
+![](gambar/32.jpg)
 
 ## F. Mengenal Apache
 
 Webserver Apache memiliki folder untuk konfigurasi yang berada di **/etc/apache2**
 
-![](/Web_Server/gambar/5.jpg)
+![](gambar/5.jpg)
 
 Pada folder **/etc/apache2** terdapat berbagai file dan folder untuk konfigurasi
 
@@ -77,7 +85,7 @@ a2dismod | Untuk DISABLE spesifik modul ke dalam konfigurasi apache2
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available**
 
-![](/Web_Server/gambar/7.jpg)
+![](gambar/7.jpg)
     
 Pada folder **/etc/apache2/sites-available** terdapat dua buah file.
 
@@ -87,7 +95,7 @@ Pada folder **/etc/apache2/sites-available** terdapat dua buah file.
 
 **STEP 2** - Buka file **default**
 
-![](/Web_Server/gambar/8.jpg)
+![](gambar/8.jpg)
 
 **STEP 3** - Pada file **default** berisi contoh konfigurasi,
 
@@ -111,7 +119,7 @@ c. Folder tempat website
 
 **STEP 5** - Buka browser dan akses alamat **http://[IP Pizza]/index.php**
 
-![](/Web_Server/gambar/4.jpg)
+![](gambar/4.jpg)
     
 * **Catatan**: <br>Apabila tampilan web tidak muncul seperti gambar diatas dan hanya muncul plain text isi file **index.php**, silahkan install **libapache2-mod-php7.0** dengan menjalankan perintah 
         
@@ -125,21 +133,21 @@ c. Folder tempat website
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi file **default-8080**.
 
-![](/Web_Server/gambar/9.jpg)
+![](gambar/9.jpg)
     
 **STEP 2** - Buka file **default-8080**, kemudian ubah ubah port yang digunakan yang awalnya **80** menjadi **8080** dan ubah tempat menaruh file/folder web yang awalnya **/var/www/html** menjadi **/var/www/web-8080**.
 
-![](/Web_Server/gambar/10.jpg)
+![](gambar/10.jpg)
 
 **STEP 3** - Tambahkan **port 8080** pada file **ports.conf**
 
-![](/Web_Server/gambar/11.jpg)
-![](/Web_Server/gambar/12.jpg)
+![](gambar/11.jpg)
+![](gambar/12.jpg)
 
 **STEP 4** - Untuk mengaktifkan konfigurasi **default-8080** jalankan perintah
 `a2ensite` dan ketik nama **file konfigurasi tanpa .conf**
     
-![](/Web_Server/gambar/13.jpg)
+![](gambar/13.jpg)
     
 kemudian tekan enter.
 
@@ -149,7 +157,7 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
 
 **STEP 6** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **web-8080**
 
-![](/Web_Server/gambar/14.jpg)
+![](gambar/14.jpg)
 
 **STEP 7** - Masuk ke folder **web-8080** dan buat file **index.php** yang berisi
     
@@ -157,11 +165,11 @@ Atau bisa ketikkan langsung `a2ensite (namafile)`
         echo "Halo ini port 8080 loo";
     ?>
     
-![](/Web_Server/gambar/15.jpg)
+![](gambar/15.jpg)
         
 **STEP 8** - Buka browser dan akses alamat http://[IP Pizza]:8080
 
-![](/Web_Server/gambar/16.jpg)
+![](gambar/16.jpg)
 
 ## H. Mari Berimajinasi
 ### H.1. Setting Domain Pada Apache
@@ -171,7 +179,7 @@ Maka yang harus dilakukan Adi untuk menyenangkan hati Nisa adalah:
 
 **STEP 1** - Pindah ke folder **/etc/apache2/sites-available** dan copy file **default** menjadi **jarkomtc.com**
 
-![](/Web_Server/gambar/17.jpg)
+![](gambar/17.jpg)
     
 **STEP 2** - Buka file **jarkomtc.com**, kemudian
     
@@ -184,17 +192,17 @@ agar dapat mengakses **www.jarkomtc.com**
          
 ***2.3*** - Ganti tempat **DocumentRoot** yang awalnya **/var/www/html** menjadi **/var/www/jarkomtc.com**
     
-![](/Web_Server/gambar/18.jpg)
+![](gambar/18.jpg)
     
 **STEP 3** - Aktifkan konfigurasi **jarkomtc.com** dengan menjalankan `a2ensite jarkomtc.com`
  
-![](/Web_Server/gambar/19.jpg)
+![](gambar/19.jpg)
  
 **STEP 4** - Restart apache dengan menjalankan `service apache2 restart`
 
 **STEP 5** - Pindah ke folder **/var/www** dan buat folder baru dengan nama **jarkomtc.com**
 
-![](/Web_Server/gambar/20.jpg)
+![](gambar/20.jpg)
 
 **STEP 6** - Buat file **index.php** dengan isi file
 
@@ -202,15 +210,22 @@ agar dapat mengakses **www.jarkomtc.com**
         echo "Semangat Jarkom TC";
     ?>
 
-![](/Web_Server/gambar/21.jpg)
+![](gambar/21.jpg)
 
-**STEP 7** - Ganti DNS laptop/komputer sesuai **IP Katsu** masing-masing.
+**STEP 7** - Ganti DNS laptop/komputer sesuai **IP Katsu** masing-masing.<br>
+**Pada Windows**
+![](gambar/22.jpg)<br>
 
-![](/Web_Server/gambar/22.jpg)
+**Pada Linux**
+- Ubah file yang ada pada **/etc/resolv.conf**
+- Caranya dengan `sudo nano /etc/resolv.conf`
+- Simpan hasil perubahannya
+
+![](gambar/38.png)<br>
 
 **STEP 8** - Buka browser dan akses **jarkomtc.com**
 
-![](/Web_Server/gambar/23.jpg)
+![](gambar/23.jpg)
 
 ### H.2. Directory Listing
 
@@ -237,7 +252,9 @@ Maka yang harus dilakukan Adi adalah:
         mkdir /var/www/jarkomtc.com/assets
         mkdir /var/www/jarkomtc.com/assets/javascript
 
-![](/Web_Server/gambar/24.jpg)
+![](gambar/24.jpg)
+
+
 **STEP 2** - Mengaktifkan Directory Listing
 
 ***2.1*** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
@@ -248,7 +265,7 @@ Maka yang harus dilakukan Adi adalah:
     
 agar folder **download** menampilkan isi folder.
     
-![](/Web_Server/gambar/25.jpg)
+![](gambar/25.jpg)
     
 ***2.2*** - Simpan dan restart apache `service apache2 restart`
 
@@ -278,7 +295,7 @@ Contoh untuk mengatur /var/www/jarkomtc.com/download
 
 agar folder **assets** tidak menampilkan isi folder.
 
-![](/Web_Server/gambar/26.jpg)
+![](gambar/26.jpg)
     
 ***3.2*** - Simpan dan restart apache `service apache2 restart`
 
@@ -300,7 +317,7 @@ Maka yang dilakukan Adi adalah
         Options +Indexes
     </Directory>
 
-![](/Web_Server/gambar/27.jpg)
+![](gambar/27.jpg)
         
 **STEP 2** - Restart apache2 `service apache2 restart`
 
@@ -318,7 +335,7 @@ Maka yang dilakukan Adi adalah
 
 **STEP 1** - Menjalankan perintah `a2enmod` dan menuliskan **rewrite** untuk mengaktikan module rewrite.
 
-![](/Web_Server/gambar/28.jpg)
+![](gambar/28.jpg)
 
 **STEP 2** - Restart apache `service apache2 restart`
 
@@ -343,7 +360,7 @@ Maka yang dilakukan adalah
     </IfModule>
 
 
-![](/Web_Server/gambar/33.jpg)
+![](gambar/33.jpg)
 
 **Keterangan** :
 
@@ -365,7 +382,7 @@ Maka yang dilakukan adalah
         AllowOverride All
     </Directory>
 
-![](/Web_Server/gambar/33.jpg)
+![](gambar/33.jpg)
 
 **Keterangan** :
 
@@ -375,7 +392,7 @@ Maka yang dilakukan adalah
 
 **STEP 5** - Buka browser dan akses **http://jarkomtc.com/aboutus**
 
-![](/Web_Server/gambar/34.jpg)
+![](gambar/34.jpg)
 
 ### H.5 Otorisasi
 
@@ -392,7 +409,7 @@ Maka yang dilakukan Adi agar Nisa tetap aman adalah
         Allow from 10.151.252.0/255.255.252.0
     </Directory>
 
-![](/Web_Server/gambar/35.jpg)
+![](gambar/35.jpg)
 
 **Keterangan** :
 
@@ -411,15 +428,24 @@ Maka yang dilakukan Adi agar Nisa tetap aman adalah
 
 **STEP 3** - Buka browser dan akses **http://jarkomtc.com/data**
 
-![](/Web_Server/gambar/37.jpg)
+![](gambar/37.jpg)
 
 Gambar diatas ketika pengguna **tidak memiliki ip nid 10.151.252.0/22**
 
-![](/Web_Server/gambar/36.jpg)
+![](gambar/36.jpg)
 
 Gambar diatas ketika pengguna **memiliki ip nid 10.151.252.0/22**
 
-<br>
+
+### 4. Latihan
+1. Download halaman MakanMakan di 10.151.36.5/MakanMakan
+2. Atur agar jika kalian mengetikkan IP_KATSU Web MakanMakan dapat terbuka
+3. Buat domain baru dengan nama ayomakan.xxx.id untuk membuka halaman tersebut
+
+#### Catatan
+- Untuk download halaman web `wget 10.151.36.5/makanmakan.tar.xz`
+- Untuk nomor 3, xxx diisi dengan nama kelompok. Contoh: ayomakan.b02.id
+
 
 ## <center>MODUL DNS DAN WEB SERVER SELESAI</center>
 ## <center>Selamat Menunggu Soal Shift :)</center>
