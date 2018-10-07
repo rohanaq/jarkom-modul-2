@@ -3,6 +3,8 @@
 ## A. Persyaratan Tambahan Mengikuti Sesilab
 1. Record A dan PTR pada jarkomtc.com mengarah ke IP Pizza
 
+![](gambar/41.jpg)
+
 ## B. Penting Untuk Dibaca
 1. Pastikan Semua UML bisa connect ke internet baik dapat melakukan koneksi keluar maupun dapat ping dari luar (Khusus DMZ).
 2. Pastikan Pizza dan Katsu sudah memiliki memory 256M
@@ -349,18 +351,12 @@ Maka yang dilakukan adalah
 
 **STEP 1** - Pindah ke folder **/var/www/jarkomtc.com** dan buat file **.htaccess** dengan isi file
 
-    <IfModule mod_rewrite.c>
-        Options +FollowSymLinks -MultiViews
-        # Turn mod_rewrite on
-        RewriteEngine On
-        RewriteBase /
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteRule ^([^\.]+)$ $1.php [NC,L]
-    </IfModule>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
 
-![](gambar/33.jpg)
+![](gambar/39.jpg)
 
 **Keterangan** :
 
@@ -379,14 +375,17 @@ Maka yang dilakukan adalah
 **STEP 3** - Pindah ke folder **/etc/apache2/sites-available** kemudian buka file **jarkomtc.com** dan tambahkan
 
     <Directory /var/www/jarkomtc.com>
+        Options +FollowSymLinks -Multiviews
         AllowOverride All
     </Directory>
 
-![](gambar/33.jpg)
+![](gambar/38.jpg)
 
 **Keterangan** :
 
 * `AllowOverride All` ditambahkan agar konfigurasi **.htaccess** dapat berjalan.
+* `+FollowSymLinks` ditambahkan agar konfigurasi **mod_rewrite** dapat berjalan.
+* `-Multiviews` ditambahkan agar konfigurasi **mod_negotiation** tidak dapat berjalan. **mod_negotiation** bisa 'rewrite' requests sehingga menimpa dan mengganggu **mod_rewrite**.
 
 **STEP 4** - Restart apache `service apache2 restart`
 
