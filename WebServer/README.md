@@ -315,7 +315,6 @@ Maka yang dilakukan Adi adalah
     Alias "/assets/js" "/var/www/jarkomtc.com/assets/javascript"
             
     <Directory /var/www/jarkomtc.com/assets/javascript>
-        Require all granted # Mengizinkan akses ke semua pengguna
         Options +Indexes
     </Directory>
 
