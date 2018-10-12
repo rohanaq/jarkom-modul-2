@@ -437,7 +437,7 @@ Gambar diatas ketika pengguna **memiliki ip nid 10.151.252.0/22**
 
 ### 4. Latihan
 1. Download halaman MakanMakan di 10.151.36.5/MakanMakan
-2. Atur agar jika kalian mengetikkan IP_KATSU Web MakanMakan dapat terbuka
+2. Atur agar jika kalian mengetikkan ayomakan.xxx.id Web MakanMakan dapat terbuka
 3. Buat domain baru dengan nama ayomakan.xxx.id untuk membuka halaman tersebut
 
 #### Catatan
